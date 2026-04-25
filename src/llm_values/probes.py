@@ -7,7 +7,7 @@ from .types import Axis
 
 def load_probe_file(path: Path) -> list[Axis]:
     """Load and validate a probe JSON file. Raises pydantic ValidationError on schema problems."""
-    raw = json.loads(Path(path).read_text())
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
     if not isinstance(raw, list):
         raise ValueError(f"probe file {path} must contain a JSON list at top level")
     return [Axis.model_validate(item) for item in raw]
