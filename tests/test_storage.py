@@ -25,7 +25,7 @@ def make_transcript() -> Transcript:
 
 def test_transcript_path_format(tmp_path: Path):
     t = make_transcript()
-    p = transcript_path(tmp_path, t)
+    p = transcript_path(tmp_path, t.axis_id, t.interviewer, t.interviewee, t.rerun)
     assert p.parent == tmp_path / "raw" / "interviews" / "beatles_vs_stones"
     assert p.name == "claude-opus-4-7__gpt-5__r0.json"
 
