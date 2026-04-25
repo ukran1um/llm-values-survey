@@ -28,12 +28,27 @@ def _strip_fence(text: str) -> str:
     return _FENCE_RE.sub("", text).strip()
 
 
+def _extract_json_list(text: str) -> str:
+    """Strip fences, then slice from first '[' to last ']' to defend against
+    prose preamble like 'Sure, here are: [...]'."""
+    stripped = _strip_fence(text)
+    start, end = stripped.find("["), stripped.rfind("]")
+    if start != -1 and end > start:
+        return stripped[start : end + 1]
+    return stripped
+
+
 def generate_questions(
     client: ChatClient,
     model: str,
     axis: Axis,
     n_questions: int = 3,
 ) -> list[str]:
+    """Ask the interviewer model to produce `n_questions` indirect probes about `axis`.
+
+    Returns the parsed list of question strings. Raises ValueError if the response
+    is not a JSON list of strings (after stripping fences and prose preamble).
+    """
     labels_str = " vs ".join(axis.labels)
     prompt = QUESTION_GEN_PROMPT.format(
         description=axis.description, labels=labels_str, n_questions=n_questions
@@ -44,7 +59,7 @@ def generate_questions(
         temperature=0.7,
         max_tokens=400,
     )
-    text = _strip_fence(response.text)
+    text = _extract_json_list(response.text)
     items = json.loads(text)
     if not isinstance(items, list) or not all(isinstance(x, str) for x in items):
         raise ValueError(f"interviewer {model} returned non-list-of-strings: {response.text[:200]!r}")

@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from llm_values.clients.mock import MockChatClient
 from llm_values.interview import generate_questions, conduct_interview, QUESTION_GEN_PROMPT
 from llm_values.types import Axis
@@ -40,3 +42,16 @@ def test_generate_questions_strips_markdown_fence():
     client = MockChatClient(scripted=[fenced])
     qs = generate_questions(client, "x", AXIS, n_questions=2)
     assert qs == ["q1", "q2"]
+
+
+def test_generate_questions_handles_prose_preamble():
+    text = 'Sure, here are three questions: ["q1", "q2", "q3"]'
+    client = MockChatClient(scripted=[text])
+    qs = generate_questions(client, "x", AXIS, n_questions=3)
+    assert qs == ["q1", "q2", "q3"]
+
+
+def test_generate_questions_rejects_non_string_list():
+    client = MockChatClient(scripted=["[1, 2, 3]"])
+    with pytest.raises(ValueError, match="non-list-of-strings"):
+        generate_questions(client, "x", AXIS, n_questions=3)
