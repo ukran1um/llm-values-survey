@@ -39,7 +39,7 @@ class MockChatClient:
             MockCall(model=model, messages=list(messages), temperature=temperature, max_tokens=max_tokens)
         )
         if not self.scripted:
-            raise AssertionError(f"MockChatClient ran out of scripted responses (call #{len(self.calls)})")
+            raise RuntimeError(f"MockChatClient ran out of scripted responses (call #{len(self.calls)})")
         text = self.scripted.pop(0)
         return ChatResponse(
             text=text,
