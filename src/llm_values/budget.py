@@ -29,12 +29,16 @@ class Budget:
         )
 
     def add(self, cost_usd: float) -> None:
+        # Re-read from disk so multi-instance usage in the same process
+        # cannot silently overwrite each other's progress.
+        self._spent = self._load()
         if self._spent + cost_usd > self.cap_usd:
             raise BudgetExceeded(
                 f"would exceed cap (${self.cap_usd:.2f}); "
                 f"spent ${self._spent:.4f}, attempted +${cost_usd:.4f}"
             )
-        self._spent += cost_usd
+        # Round to 6 decimals to keep accumulated float drift below visible precision.
+        self._spent = round(self._spent + cost_usd, 6)
         self._save()
 
     @property
