@@ -27,10 +27,10 @@ def generate_questions(
     model: str,
     axis: Axis,
     n_questions: int = 3,
-) -> list[str]:
+) -> tuple[list[str], float]:
     """Ask the interviewer model to produce `n_questions` indirect probes about `axis`.
 
-    Returns the parsed list of question strings. Raises ValueError if the response
+    Returns (list of question strings, cost_usd). Raises ValueError if the response
     is not a JSON list of strings (after stripping fences and prose preamble).
     """
     labels_str = " vs ".join(axis.labels)
@@ -47,7 +47,7 @@ def generate_questions(
     items = json.loads(text)
     if not isinstance(items, list) or not all(isinstance(x, str) for x in items):
         raise ValueError(f"interviewer {model} returned non-list-of-strings: {response.text[:200]!r}")
-    return items
+    return items, response.cost_usd
 
 
 def conduct_interview(

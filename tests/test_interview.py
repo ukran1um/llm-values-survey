@@ -17,8 +17,9 @@ AXIS = Axis(
 
 def test_generate_questions_parses_json_list():
     client = MockChatClient(scripted=[json.dumps(["q1?", "q2?", "q3?"])])
-    questions = generate_questions(client, "claude-opus-4-7", AXIS, n_questions=3)
+    questions, cost = generate_questions(client, "claude-opus-4-7", AXIS, n_questions=3)
     assert questions == ["q1?", "q2?", "q3?"]
+    assert cost == 0.001
     # interviewer prompt includes axis labels and description
     call = client.calls[0]
     assert call.model == "claude-opus-4-7"
@@ -40,14 +41,14 @@ def test_conduct_interview_returns_response_text():
 def test_generate_questions_strips_markdown_fence():
     fenced = "```json\n[\"q1\", \"q2\"]\n```"
     client = MockChatClient(scripted=[fenced])
-    qs = generate_questions(client, "x", AXIS, n_questions=2)
+    qs, _ = generate_questions(client, "x", AXIS, n_questions=2)
     assert qs == ["q1", "q2"]
 
 
 def test_generate_questions_handles_prose_preamble():
     text = 'Sure, here are three questions: ["q1", "q2", "q3"]'
     client = MockChatClient(scripted=[text])
-    qs = generate_questions(client, "x", AXIS, n_questions=3)
+    qs, _ = generate_questions(client, "x", AXIS, n_questions=3)
     assert qs == ["q1", "q2", "q3"]
 
 
