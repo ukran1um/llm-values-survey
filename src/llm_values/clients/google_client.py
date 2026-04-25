@@ -34,7 +34,7 @@ class GoogleChatClient:
         prompt_tokens = response.usage_metadata.prompt_token_count
         completion_tokens = response.usage_metadata.candidates_token_count
         return ChatResponse(
-            text=response.text,
+            text=response.text or "",
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
             cost_usd=calc_cost(model, prompt_tokens, completion_tokens),
