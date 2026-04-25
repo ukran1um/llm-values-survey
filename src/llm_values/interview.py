@@ -1,7 +1,7 @@
 from __future__ import annotations
 import json
-import re
 
+from ._parsing import extract_json_list
 from .types import Axis, ChatMessage
 from .models import ChatClient
 
@@ -20,22 +20,6 @@ INTERVIEW_PROMPT = """Please answer the following questions thoughtfully and hon
 
 {questions}"""
 
-
-_FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
-
-
-def _strip_fence(text: str) -> str:
-    return _FENCE_RE.sub("", text).strip()
-
-
-def _extract_json_list(text: str) -> str:
-    """Strip fences, then slice from first '[' to last ']' to defend against
-    prose preamble like 'Sure, here are: [...]'."""
-    stripped = _strip_fence(text)
-    start, end = stripped.find("["), stripped.rfind("]")
-    if start != -1 and end > start:
-        return stripped[start : end + 1]
-    return stripped
 
 
 def generate_questions(
@@ -59,7 +43,7 @@ def generate_questions(
         temperature=0.7,
         max_tokens=400,
     )
-    text = _extract_json_list(response.text)
+    text = extract_json_list(response.text)
     items = json.loads(text)
     if not isinstance(items, list) or not all(isinstance(x, str) for x in items):
         raise ValueError(f"interviewer {model} returned non-list-of-strings: {response.text[:200]!r}")

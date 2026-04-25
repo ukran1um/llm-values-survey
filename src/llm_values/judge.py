@@ -1,7 +1,7 @@
 from __future__ import annotations
 import json
-import re
 
+from ._parsing import extract_json_object
 from .types import Axis, ChatMessage, Transcript, Classification
 from .models import ChatClient
 
@@ -22,22 +22,6 @@ Interviewee's response:
 Respond with ONLY a JSON object — no prose, no markdown fences:
 {{"preferred_label": "<one of: {labels_inline}>", "confidence": <float 0 to 1>, "reasoning": "<one sentence>"}}"""
 
-
-_FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
-
-
-def _strip_fence(text: str) -> str:
-    return _FENCE_RE.sub("", text).strip()
-
-
-def _extract_json_object(text: str) -> str:
-    """Strip fences, then slice from first '{' to last '}' to defend against
-    prose preamble like 'Here is the classification: {...}'."""
-    stripped = _strip_fence(text)
-    start, end = stripped.find("{"), stripped.rfind("}")
-    if start != -1 and end > start:
-        return stripped[start : end + 1]
-    return stripped
 
 
 def classify_transcript(
@@ -62,7 +46,7 @@ def classify_transcript(
         temperature=0.0,
         max_tokens=300,
     )
-    text = _extract_json_object(response.text)
+    text = extract_json_object(response.text)
     data = json.loads(text)
     label = data["preferred_label"]
     if label not in axis.labels:
