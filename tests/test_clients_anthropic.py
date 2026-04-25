@@ -1,5 +1,7 @@
 from unittest.mock import MagicMock, patch
 
+import pytest
+
 from llm_values.clients.anthropic_client import AnthropicChatClient
 from llm_values.types import ChatMessage
 
@@ -29,4 +31,39 @@ def test_anthropic_chat_constructs_request(MockAnthropic):
     assert kwargs["model"] == "claude-opus-4-7"
     assert kwargs["temperature"] == 0.7
     assert kwargs["max_tokens"] == 500
+    assert kwargs["messages"] == [{"role": "user", "content": "hi"}]
+
+
+@patch("llm_values.clients.anthropic_client.Anthropic")
+def test_anthropic_rejects_multiple_system_messages(MockAnthropic):
+    client = AnthropicChatClient(api_key="test-key")
+    with pytest.raises(ValueError, match="at most 1 system message"):
+        client.chat(
+            model="claude-opus-4-7",
+            messages=[
+                ChatMessage(role="system", content="first"),
+                ChatMessage(role="system", content="second"),
+                ChatMessage(role="user", content="hi"),
+            ],
+        )
+
+
+@patch("llm_values.clients.anthropic_client.Anthropic")
+def test_anthropic_extracts_system_message(MockAnthropic):
+    fake_msg = MagicMock()
+    fake_msg.content = [MagicMock(text="ok")]
+    fake_msg.usage = MagicMock(input_tokens=10, output_tokens=5)
+    MockAnthropic.return_value.messages.create.return_value = fake_msg
+
+    client = AnthropicChatClient(api_key="test-key")
+    client.chat(
+        model="claude-opus-4-7",
+        messages=[
+            ChatMessage(role="system", content="be terse"),
+            ChatMessage(role="user", content="hi"),
+        ],
+    )
+
+    kwargs = MockAnthropic.return_value.messages.create.call_args.kwargs
+    assert kwargs["system"] == "be terse"
     assert kwargs["messages"] == [{"role": "user", "content": "hi"}]

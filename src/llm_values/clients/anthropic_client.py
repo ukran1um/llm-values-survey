@@ -19,7 +19,12 @@ class AnthropicChatClient:
         max_tokens: int = 2000,
     ) -> ChatResponse:
         sdk_messages = [{"role": m.role, "content": m.content} for m in messages if m.role != "system"]
-        system = next((m.content for m in messages if m.role == "system"), None)
+        system_messages = [m.content for m in messages if m.role == "system"]
+        if len(system_messages) > 1:
+            raise ValueError(
+                f"AnthropicChatClient: expected at most 1 system message, got {len(system_messages)}"
+            )
+        system = system_messages[0] if system_messages else None
         kwargs = dict(
             model=model,
             messages=sdk_messages,
