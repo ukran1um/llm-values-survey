@@ -40,7 +40,7 @@ def generate_questions(
     response = client.chat(
         model=model,
         messages=[ChatMessage(role="user", content=prompt)],
-        temperature=0.7,
+        temperature=1.0,
         max_tokens=400,
     )
     text = extract_json_list(response.text)

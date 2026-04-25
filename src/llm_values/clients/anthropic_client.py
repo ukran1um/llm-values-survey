@@ -28,7 +28,6 @@ class AnthropicChatClient:
         kwargs = dict(
             model=model,
             messages=sdk_messages,
-            temperature=temperature,
             max_tokens=max_tokens,
         )
         if system:
