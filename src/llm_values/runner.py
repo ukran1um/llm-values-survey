@@ -71,10 +71,11 @@ def _ensure_transcript(
     interviewee_client = get_client(interviewee)
 
     questions, interviewer_cost = generate_questions(interviewer_client, interviewer, axis, n_questions)
-    budget.add(interviewer_cost)
-
     response_text, interviewee_cost = conduct_interview(interviewee_client, interviewee, questions)
-    budget.add(interviewee_cost)
+    # Charge both costs together to avoid ledger/spend inconsistency: if the
+    # second API call returned cost we couldn't reject the spend (real tokens
+    # used), so charge once after both calls have returned.
+    budget.add(interviewer_cost + interviewee_cost)
 
     transcript = Transcript(
         axis_id=axis.id,

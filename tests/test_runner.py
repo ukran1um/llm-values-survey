@@ -84,3 +84,31 @@ def test_run_axis_skips_judge_equal_to_interviewer_or_interviewee(tmp_path: Path
     files = sorted(p.name for p in judg_dir.iterdir())
     assert all("jC" in name for name in files)
     assert not any("jA" in name for name in files)
+
+
+def test_run_axis_reuses_transcript_when_judgments_missing(tmp_path: Path, monkeypatch):
+    """Existing transcript on disk should be loaded; only missing judgments are computed."""
+    models = ["A", "B"]
+    # First run: no judges, only transcripts get written
+    client_first = MockChatClient(scripted=script_for(n_pairs=2, n_reruns=1, n_judges=0))
+    import llm_values.runner as r
+    monkeypatch.setattr(r, "get_client", lambda model: client_first)
+    budget = Budget(state_path=tmp_path / "budget.json", cap_usd=10.0)
+    run_axis(AXIS, models=models, judges=[], n_reruns=1, data_dir=tmp_path, budget=budget)
+
+    # Sanity check: transcripts exist, no judgments yet
+    assert (tmp_path / "raw" / "interviews" / AXIS.id / "A__B__r0.json").exists()
+    assert not (tmp_path / "raw" / "judgments" / AXIS.id).exists()
+
+    # Second run: same models, now with judge C — should NOT do question_gen or
+    # answer calls again, only judge calls (one per existing transcript)
+    client_second = MockChatClient(
+        scripted=[make_judge_payload(), make_judge_payload()]  # 2 judge calls only
+    )
+    monkeypatch.setattr(r, "get_client", lambda model: client_second)
+    run_axis(AXIS, models=models, judges=["C"], n_reruns=1, data_dir=tmp_path, budget=budget)
+
+    # Only 2 calls happened on the second run (one judgment per existing transcript)
+    assert len(client_second.calls) == 2
+    assert (tmp_path / "raw" / "judgments" / AXIS.id / "A__B__r0__jC.json").exists()
+    assert (tmp_path / "raw" / "judgments" / AXIS.id / "B__A__r0__jC.json").exists()
