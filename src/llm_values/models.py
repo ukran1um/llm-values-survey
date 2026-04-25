@@ -16,26 +16,28 @@ class ChatClient(Protocol):
 
 
 # model_id → provider key
+# Roster locked April 2026. Update before pre-registration commit if newer
+# snapshots become available, but do not update silently mid-run.
 MODEL_TO_PROVIDER: dict[str, str] = {
-    # Anthropic
+    # Anthropic (bare names resolve to current snapshot per Anthropic API conventions)
     "claude-opus-4-7": "anthropic",
     "claude-sonnet-4-6": "anthropic",
-    # OpenAI
-    "gpt-5": "openai",
+    # OpenAI (dated snapshot for reproducibility)
+    "gpt-5.5-2026-04-23": "openai",
     # Google
     "gemini-2.5-pro": "google",
     # xAI (OpenAI-compatible)
-    "grok-4": "xai",
-    # DeepSeek (OpenAI-compatible)
-    "deepseek-v3": "deepseek",
+    "grok-4.20": "xai",
+    # DeepSeek (OpenAI-compatible; deepseek-chat alias routes to V3.2; deprecates 2026-07-24)
+    "deepseek-chat": "deepseek",
     # OpenRouter-served (OpenAI-compatible)
-    "qwen3-max": "openrouter",
-    "glm-4.5": "openrouter",
+    "qwen/qwen3.6-plus": "openrouter",
+    "z-ai/glm-4.7": "openrouter",
     # Together AI (OpenAI-compatible)
-    "llama-3.3-70b": "together",
-    "mistral-large-2": "together",
-    "phi-4": "together",
-    "qwen3-7b": "together",
+    "meta-llama/Llama-3.3-70B-Instruct-Turbo": "together",
+    "mistralai/Mistral-Large-Instruct-2411": "together",
+    "microsoft/Phi-4": "together",
+    "Qwen/Qwen2.5-7B-Instruct-Turbo": "together",
 }
 
 # provider → (env var for API key, base URL or None)

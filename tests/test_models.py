@@ -11,9 +11,9 @@ def setup_function():
 
 def test_model_provider_known():
     assert model_provider("claude-opus-4-7") == "anthropic"
-    assert model_provider("gpt-5") == "openai"
+    assert model_provider("gpt-5.5-2026-04-23") == "openai"
     assert model_provider("gemini-2.5-pro") == "google"
-    assert model_provider("deepseek-v3") == "deepseek"
+    assert model_provider("deepseek-chat") == "deepseek"
 
 
 def test_model_provider_unknown_raises():
@@ -41,5 +41,5 @@ def test_get_client_memoizes(monkeypatch):
 
 
 def test_required_models_all_mapped():
-    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5", "gemini-2.5-pro", "deepseek-v3"}
+    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "deepseek-chat"}
     assert required.issubset(set(MODEL_TO_PROVIDER.keys()))
