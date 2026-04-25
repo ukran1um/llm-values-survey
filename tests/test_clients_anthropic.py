@@ -29,7 +29,7 @@ def test_anthropic_chat_constructs_request(MockAnthropic):
     MockAnthropic.return_value.messages.create.assert_called_once()
     kwargs = MockAnthropic.return_value.messages.create.call_args.kwargs
     assert kwargs["model"] == "claude-opus-4-7"
-    assert kwargs["temperature"] == 0.7
+    assert "temperature" not in kwargs
     assert kwargs["max_tokens"] == 500
     assert kwargs["messages"] == [{"role": "user", "content": "hi"}]
 

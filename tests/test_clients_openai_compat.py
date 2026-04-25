@@ -1,3 +1,5 @@
+import json
+
 import httpx
 import pytest
 
@@ -8,6 +10,9 @@ from llm_values.types import ChatMessage
 def fake_handler(request: httpx.Request) -> httpx.Response:
     assert request.method == "POST"
     assert "/chat/completions" in str(request.url)
+    parsed = json.loads(request.read())
+    assert "max_completion_tokens" in parsed
+    assert "max_tokens" not in parsed
     return httpx.Response(
         200,
         json={

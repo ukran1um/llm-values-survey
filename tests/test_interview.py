@@ -23,6 +23,7 @@ def test_generate_questions_parses_json_list():
     # interviewer prompt includes axis labels and description
     call = client.calls[0]
     assert call.model == "claude-opus-4-7"
+    assert call.temperature == 1.0  # gpt-5.5 only accepts default 1.0; locked across providers
     user_msg = call.messages[0].content
     assert "beatles" in user_msg
     assert "stones" in user_msg
