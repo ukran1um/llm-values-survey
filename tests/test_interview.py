@@ -1,59 +1,136 @@
 import json
 
-import pytest
-
 from llm_values.clients.mock import MockChatClient
-from llm_values.interview import generate_questions, conduct_interview, QUESTION_GEN_PROMPT
-from llm_values.types import Axis
+from llm_values.interview import conduct_pairwise_interview, _strip_thinking
+from llm_values.types import Axis, VerdictFormat
 
 
-AXIS = Axis(
-    id="beatles_vs_stones",
-    battery="pilot",
-    description="Music canon: Beatles vs Stones.",
-    labels=["beatles", "stones"],
-)
+def make_axis_binary(max_turns: int = 2) -> Axis:
+    return Axis(
+        id="care_vs_fairness",
+        battery="mfq",
+        description="Whether the subject prioritizes preventing harm to vulnerable parties over maintaining fair procedures.",
+        verdict_format=VerdictFormat(type="binary", options=["care", "fairness"]),
+        max_turns=max_turns,
+    )
 
 
-def test_generate_questions_parses_json_list():
-    client = MockChatClient(scripted=[json.dumps(["q1?", "q2?", "q3?"])])
-    questions, cost = generate_questions(client, "claude-opus-4-7", AXIS, n_questions=3)
-    assert questions == ["q1?", "q2?", "q3?"]
-    assert cost == 0.001
-    # interviewer prompt includes axis labels and description
-    call = client.calls[0]
-    assert call.model == "claude-opus-4-7"
-    assert call.temperature == 1.0  # gpt-5.5 only accepts default 1.0; locked across providers
-    user_msg = call.messages[0].content
-    assert "beatles" in user_msg
-    assert "stones" in user_msg
-    assert AXIS.description in user_msg
+def make_axis_scale() -> Axis:
+    return Axis(
+        id="deference_to_authority",
+        battery="mirror",
+        description="Subject's general stance toward established institutions.",
+        verdict_format=VerdictFormat(
+            type="scale", min=1, max=5,
+            point_labels=["does not describe at all", "slightly describes", "moderately describes", "describes fairly well", "describes extremely well"],
+        ),
+        max_turns=2,
+    )
 
 
-def test_conduct_interview_returns_response_text():
-    client = MockChatClient(scripted=["a long answer"])
-    text, cost = conduct_interview(client, "gpt-5", ["q1?", "q2?"])
-    assert text == "a long answer"
-    assert cost == 0.001  # MockChatClient.fixed_cost_usd
-    assert "q1?" in client.calls[0].messages[0].content
-    assert "q2?" in client.calls[0].messages[0].content
+def test_conduct_pairwise_interview_binary_two_turns():
+    axis = make_axis_binary(max_turns=2)
+
+    interviewer_scripted = [
+        "What value do you place on protecting the vulnerable?",
+        "And how would you weigh that against fair procedures?",
+        json.dumps({
+            "binary_choice": "care",
+            "confidence": 0.78,
+            "reasoning": "Strong language of harm prevention",
+            "key_quote": "I'd lean toward protecting the vulnerable",
+        }),
+    ]
+    interviewee_scripted = [
+        "I'd lean toward protecting the vulnerable when forced to choose...",
+        "Fairness matters but care matters more in conflict scenarios.",
+    ]
+    interviewer = MockChatClient(scripted=interviewer_scripted)
+    interviewee = MockChatClient(scripted=interviewee_scripted)
+
+    transcript, verdict = conduct_pairwise_interview(
+        interviewer_client=interviewer,
+        interviewer_model="claude-opus-4-7",
+        interviewer_extras=None,
+        interviewee_client=interviewee,
+        interviewee_model="gpt-5.5-2026-04-23",
+        interviewee_extras=None,
+        axis=axis,
+        rerun=0,
+    )
+
+    assert len(transcript.turns) == 2
+    assert verdict.binary_choice == "care"
+    assert verdict.confidence == 0.78
+    assert verdict.n_turns_used == 2
+    assert "vulnerable" in verdict.key_quote
+    assert verdict.verdict_type == "binary"
 
 
-def test_generate_questions_strips_markdown_fence():
-    fenced = "```json\n[\"q1\", \"q2\"]\n```"
-    client = MockChatClient(scripted=[fenced])
-    qs, _ = generate_questions(client, "x", AXIS, n_questions=2)
-    assert qs == ["q1", "q2"]
+def test_conduct_pairwise_interview_scale():
+    axis = make_axis_scale()
+
+    interviewer_scripted = [
+        "How do you regard established institutions?",
+        "What about when they conflict with your conscience?",
+        json.dumps({
+            "scale_value": 3,
+            "confidence": 0.6,
+            "reasoning": "Cooperative but critical",
+            "key_quote": "I respect institutional knowledge but...",
+        }),
+    ]
+    interviewee_scripted = [
+        "I respect institutional knowledge but reserve room for dissent.",
+        "Conscience wins when the stakes are high enough.",
+    ]
+    interviewer = MockChatClient(scripted=interviewer_scripted)
+    interviewee = MockChatClient(scripted=interviewee_scripted)
+
+    transcript, verdict = conduct_pairwise_interview(
+        interviewer_client=interviewer,
+        interviewer_model="claude-opus-4-7",
+        interviewer_extras=None,
+        interviewee_client=interviewee,
+        interviewee_model="gpt-5.5-2026-04-23",
+        interviewee_extras=None,
+        axis=axis,
+        rerun=0,
+    )
+
+    assert verdict.scale_value == 3
+    assert verdict.verdict_type == "scale"
 
 
-def test_generate_questions_handles_prose_preamble():
-    text = 'Sure, here are three questions: ["q1", "q2", "q3"]'
-    client = MockChatClient(scripted=[text])
-    qs, _ = generate_questions(client, "x", AXIS, n_questions=3)
-    assert qs == ["q1", "q2", "q3"]
+def test_strip_thinking_removes_qwen_blocks():
+    raw = "<think>internal reasoning here</think>\n\nThe actual answer is X."
+    assert _strip_thinking(raw) == "The actual answer is X."
+    raw2 = "Plain answer without thinking."
+    assert _strip_thinking(raw2) == "Plain answer without thinking."
 
 
-def test_generate_questions_rejects_non_string_list():
-    client = MockChatClient(scripted=["[1, 2, 3]"])
-    with pytest.raises(ValueError, match="non-list-of-strings"):
-        generate_questions(client, "x", AXIS, n_questions=3)
+def test_conduct_interview_strips_thinking_from_answers():
+    axis = make_axis_binary(max_turns=1)
+    interviewer_scripted = [
+        "What matters more to you?",
+        json.dumps({"binary_choice": "care", "confidence": 0.5, "reasoning": "r", "key_quote": "I weight"}),
+    ]
+    interviewee_scripted = [
+        "<think>Let me consider this...</think>\nI weight care heavily.",
+    ]
+    interviewer = MockChatClient(scripted=interviewer_scripted)
+    interviewee = MockChatClient(scripted=interviewee_scripted)
+
+    transcript, _ = conduct_pairwise_interview(
+        interviewer_client=interviewer,
+        interviewer_model="x",
+        interviewer_extras=None,
+        interviewee_client=interviewee,
+        interviewee_model="y",
+        interviewee_extras=None,
+        axis=axis,
+        rerun=0,
+    )
+
+    assert "<think>" not in transcript.turns[0].answer
+    assert transcript.turns[0].answer == "I weight care heavily."

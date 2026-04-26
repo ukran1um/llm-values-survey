@@ -52,3 +52,29 @@ def test_openai_compat_raises_on_http_error():
     client = OpenAICompatClient(base_url="https://api.example.com/v1", api_key="k", http=http)
     with pytest.raises(httpx.HTTPStatusError):
         client.chat(model="x", messages=[ChatMessage(role="user", content="hi")])
+
+
+import json as _json
+
+
+def test_openai_compat_merges_extras_into_body():
+    captured = {}
+
+    def handler(request: httpx.Request) -> httpx.Response:
+        captured["body"] = _json.loads(request.read())
+        return httpx.Response(
+            200,
+            json={
+                "choices": [{"message": {"content": "ok"}}],
+                "usage": {"prompt_tokens": 5, "completion_tokens": 2},
+            },
+        )
+
+    http = httpx.Client(transport=httpx.MockTransport(handler))
+    client = OpenAICompatClient(base_url="https://api.example.com/v1", api_key="k", http=http)
+    client.chat(
+        model="x",
+        messages=[ChatMessage(role="user", content="hi")],
+        extras={"reasoning_effort": "minimal"},
+    )
+    assert captured["body"]["reasoning_effort"] == "minimal"

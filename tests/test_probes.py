@@ -12,23 +12,31 @@ def test_load_probe_file_returns_axes(tmp_path: Path):
     data = [
         {
             "id": "beatles_vs_stones",
-            "battery": "anglophone",
+            "battery": "pilot",
             "description": "Music canon: Beatles vs Rolling Stones.",
-            "labels": ["beatles", "stones"],
+            "verdict_format": {"type": "binary", "options": ["beatles", "stones"]},
         }
     ]
-    p = tmp_path / "anglophone.json"
+    p = tmp_path / "pilot.json"
     p.write_text(json.dumps(data))
 
     axes = load_probe_file(p)
     assert len(axes) == 1
     assert isinstance(axes[0], Axis)
     assert axes[0].id == "beatles_vs_stones"
-    assert axes[0].labels == ["beatles", "stones"]
+    assert axes[0].verdict_format.options == ["beatles", "stones"]
 
 
 def test_load_probe_file_rejects_invalid_schema(tmp_path: Path):
-    bad = [{"id": "x", "battery": "anglophone", "description": "d", "labels": ["only_one"]}]
+    # binary verdict_format requires exactly 2 options — only one given here
+    bad = [
+        {
+            "id": "x",
+            "battery": "pilot",
+            "description": "d",
+            "verdict_format": {"type": "binary", "options": ["only_one"]},
+        }
+    ]
     p = tmp_path / "bad.json"
     p.write_text(json.dumps(bad))
 
@@ -37,7 +45,14 @@ def test_load_probe_file_rejects_invalid_schema(tmp_path: Path):
 
 
 def test_load_battery_finds_file(tmp_path: Path):
-    data = [{"id": "a", "battery": "pilot", "description": "d", "labels": ["x", "y"]}]
+    data = [
+        {
+            "id": "a",
+            "battery": "pilot",
+            "description": "d",
+            "verdict_format": {"type": "binary", "options": ["x", "y"]},
+        }
+    ]
     (tmp_path / "pilot.json").write_text(json.dumps(data))
     axes = load_battery(tmp_path, "pilot")
     assert len(axes) == 1

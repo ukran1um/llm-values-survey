@@ -27,6 +27,7 @@ class OpenAICompatClient:
         messages: list[ChatMessage],
         temperature: float = 1.0,
         max_tokens: int = 2000,
+        extras: dict | None = None,
     ) -> ChatResponse:
         body = {
             "model": model,
@@ -34,6 +35,8 @@ class OpenAICompatClient:
             "temperature": temperature,
             "max_completion_tokens": max_tokens,
         }
+        if extras:
+            body.update(extras)
         headers = {
             "Authorization": f"Bearer {self.api_key}",
             "Content-Type": "application/json",

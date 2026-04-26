@@ -12,6 +12,7 @@ class ChatClient(Protocol):
         messages: list[ChatMessage],
         temperature: float = 1.0,
         max_tokens: int = 2000,
+        extras: dict | None = None,
     ) -> ChatResponse: ...
 
 
@@ -52,6 +53,21 @@ PROVIDER_CONFIG: dict[str, tuple[str, str | None]] = {
     "groq": ("GROQ_API_KEY", "https://api.groq.com/openai/v1"),
     "runware": ("RUNWARE_API_KEY", "https://api.runware.ai/v1"),
     "openrouter": ("OPENROUTER_API_KEY", "https://openrouter.ai/api/v1"),
+}
+
+# Per-provider request-body extras to disable thinking/reasoning modes for methodological consistency.
+# Keys are provider names; values are dicts merged into the request body or config.
+# anthropic: empty (claude-4.x default is no thinking unless explicitly requested)
+# google: empty (handled directly in google_client.py — special config field, not body merge)
+# runware: empty (no thinking parameter exposed in v1)
+PROVIDER_EXTRAS: dict[str, dict] = {
+    "anthropic": {},
+    "openai": {"reasoning_effort": "minimal"},
+    "google": {},
+    "xai": {"reasoning_effort": "low"},
+    "groq": {"reasoning_format": "hidden"},
+    "openrouter": {"reasoning": {"enabled": False}},
+    "runware": {},
 }
 
 _CLIENT_CACHE: dict[str, ChatClient] = {}

@@ -17,7 +17,9 @@ class AnthropicChatClient:
         messages: list[ChatMessage],
         temperature: float = 1.0,
         max_tokens: int = 2000,
+        extras: dict | None = None,
     ) -> ChatResponse:
+        # extras accepted for protocol consistency but ignored — claude-4.x default has no thinking
         sdk_messages = [{"role": m.role, "content": m.content} for m in messages if m.role != "system"]
         system_messages = [m.content for m in messages if m.role == "system"]
         if len(system_messages) > 1:

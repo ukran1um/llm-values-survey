@@ -44,3 +44,24 @@ def test_get_client_memoizes(monkeypatch):
 def test_required_models_all_mapped():
     required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "llama-3.3-70b-versatile", "mistralai/mistral-large-2411", "minimax-m2-7"}
     assert required.issubset(set(MODEL_TO_PROVIDER.keys()))
+
+
+def test_provider_extras_has_required_keys():
+    from llm_values.models import PROVIDER_EXTRAS
+    required = {"anthropic", "openai", "google", "xai", "groq", "openrouter", "runware"}
+    assert required == set(PROVIDER_EXTRAS.keys())
+
+
+def test_provider_extras_openai_disables_thinking():
+    from llm_values.models import PROVIDER_EXTRAS
+    assert PROVIDER_EXTRAS["openai"] == {"reasoning_effort": "minimal"}
+
+
+def test_provider_extras_groq_hides_reasoning():
+    from llm_values.models import PROVIDER_EXTRAS
+    assert PROVIDER_EXTRAS["groq"]["reasoning_format"] == "hidden"
+
+
+def test_provider_extras_openrouter_disables_reasoning():
+    from llm_values.models import PROVIDER_EXTRAS
+    assert PROVIDER_EXTRAS["openrouter"]["reasoning"] == {"enabled": False}

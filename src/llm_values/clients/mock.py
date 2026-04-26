@@ -10,6 +10,7 @@ class MockCall:
     messages: list[ChatMessage]
     temperature: float
     max_tokens: int
+    extras: dict | None = None
 
 
 @dataclass
@@ -34,9 +35,16 @@ class MockChatClient:
         messages: list[ChatMessage],
         temperature: float = 1.0,
         max_tokens: int = 2000,
+        extras: dict | None = None,
     ) -> ChatResponse:
         self.calls.append(
-            MockCall(model=model, messages=list(messages), temperature=temperature, max_tokens=max_tokens)
+            MockCall(
+                model=model,
+                messages=list(messages),
+                temperature=temperature,
+                max_tokens=max_tokens,
+                extras=extras,
+            )
         )
         if not self.scripted:
             raise RuntimeError(f"MockChatClient ran out of scripted responses (call #{len(self.calls)})")

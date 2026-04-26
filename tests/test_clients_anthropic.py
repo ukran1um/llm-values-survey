@@ -67,3 +67,19 @@ def test_anthropic_extracts_system_message(MockAnthropic):
     kwargs = MockAnthropic.return_value.messages.create.call_args.kwargs
     assert kwargs["system"] == "be terse"
     assert kwargs["messages"] == [{"role": "user", "content": "hi"}]
+
+
+@patch("llm_values.clients.anthropic_client.Anthropic")
+def test_anthropic_accepts_extras_param(MockAnthropic):
+    fake_msg = MagicMock()
+    fake_msg.content = [MagicMock(text="hi")]
+    fake_msg.usage = MagicMock(input_tokens=5, output_tokens=3)
+    MockAnthropic.return_value.messages.create.return_value = fake_msg
+
+    client = AnthropicChatClient(api_key="test-key")
+    response = client.chat(
+        model="claude-opus-4-7",
+        messages=[ChatMessage(role="user", content="hi")],
+        extras={"some_flag": True},  # ignored, but must not crash
+    )
+    assert response.text == "hi"

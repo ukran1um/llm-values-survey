@@ -26,3 +26,22 @@ def test_google_chat_constructs_request(mock_genai):
     assert response.completion_tokens == 20
     assert response.model == "gemini-2.5-pro"
     mock_client.models.generate_content.assert_called_once()
+
+
+@patch("llm_values.clients.google_client.genai")
+def test_google_passes_thinking_budget_zero(mock_genai):
+    fake_response = MagicMock()
+    fake_response.text = "ok"
+    fake_response.usage_metadata = MagicMock(prompt_token_count=10, candidates_token_count=5)
+    mock_client = MagicMock()
+    mock_client.models.generate_content.return_value = fake_response
+    mock_genai.Client.return_value = mock_client
+
+    client = GoogleChatClient(api_key="key")
+    client.chat(
+        model="gemini-2.5-pro",
+        messages=[ChatMessage(role="user", content="hi")],
+    )
+
+    kwargs = mock_client.models.generate_content.call_args.kwargs
+    assert kwargs["config"]["thinking_config"] == {"thinking_budget": 0}

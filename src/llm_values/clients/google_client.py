@@ -17,7 +17,9 @@ class GoogleChatClient:
         messages: list[ChatMessage],
         temperature: float = 1.0,
         max_tokens: int = 2000,
+        extras: dict | None = None,
     ) -> ChatResponse:
+        # extras is accepted for protocol consistency; Google uses thinking_config in config kwargs instead
         # Combine messages into a single prompt for v1 simplicity.
         # System messages prepended; user/assistant turns concatenated.
         parts = []
@@ -29,7 +31,11 @@ class GoogleChatClient:
         response = self._client.models.generate_content(
             model=model,
             contents=prompt,
-            config={"temperature": temperature, "max_output_tokens": max_tokens},
+            config={
+                "temperature": temperature,
+                "max_output_tokens": max_tokens,
+                "thinking_config": {"thinking_budget": 0},
+            },
         )
         prompt_tokens = response.usage_metadata.prompt_token_count or 0
         completion_tokens = response.usage_metadata.candidates_token_count or 0
