@@ -62,12 +62,15 @@ PROVIDER_CONFIG: dict[str, tuple[str, str | None]] = {
 # runware: empty (no thinking parameter exposed in v1)
 PROVIDER_EXTRAS: dict[str, dict] = {
     "anthropic": {},
-    "openai": {"reasoning_effort": "minimal"},
+    "openai": {"reasoning_effort": "low", "temperature": 1.0},
     "google": {},
     "xai": {"reasoning_effort": "low"},
     "groq": {"reasoning_format": "hidden"},
     "openrouter": {"reasoning": {"enabled": False}},
-    "runware": {},
+    "runware": {
+        "max_completion_tokens": 1500,  # minimax-m2-7 needs ~1200 tokens for chain-of-thought before content
+        "temperature": 1.0,  # minimax-m2-7 requires temperature > 0 (exclusive); override the verdict call's 0.0
+    },
 }
 
 _CLIENT_CACHE: dict[str, ChatClient] = {}
