@@ -42,5 +42,5 @@ def test_get_client_memoizes(monkeypatch):
 
 
 def test_required_models_all_mapped():
-    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "llama-3.3-70b-versatile", "mistralai/mistral-large-2411"}
+    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "llama-3.3-70b-versatile", "mistralai/mistral-large-2411", "minimax-m2-7"}
     assert required.issubset(set(MODEL_TO_PROVIDER.keys()))

@@ -22,24 +22,21 @@ MODEL_TO_PROVIDER: dict[str, str] = {
     # Anthropic — frontier closed Western
     "claude-opus-4-7": "anthropic",
     "claude-sonnet-4-6": "anthropic",
-    # OpenAI — frontier closed Western (base + reasoning-tuned pro)
+    # OpenAI — frontier closed Western
     "gpt-5.5-2026-04-23": "openai",
-    "gpt-5.5-pro-2026-04-23": "openai",
     # Google — frontier closed Western
     "gemini-2.5-pro": "google",
     # xAI — alt-ideology Western
     "grok-4.20": "xai",
-    # Groq — open-weight Western + Chinese-distilled fast inference
+    # Groq — open-weight Western + Chinese
     "llama-3.3-70b-versatile": "groq",
     "meta-llama/llama-4-scout-17b-16e-instruct": "groq",
-    "meta-llama/llama-4-maverick-17b-128e-instruct": "groq",
     "openai/gpt-oss-120b": "groq",
-    "deepseek-r1-distill-llama-70b": "groq",
     "llama-3.1-8b-instant": "groq",
-    # Runware — Chinese frontier
+    "qwen/qwen3-32b": "groq",
+    # Runware — Chinese frontier (MiniMax)
     "minimax-m2-7": "runware",
-    "runware:qwen3-thinking@1": "runware",
-    # OpenRouter — gap models (European frontier + true Chinese frontier alternatives)
+    # OpenRouter — European + Chinese frontier
     "mistralai/mistral-large-2411": "openrouter",
     "deepseek/deepseek-chat": "openrouter",
     "moonshotai/kimi-k2": "openrouter",
