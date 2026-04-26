@@ -1,0 +1,48 @@
+[
+  {"id": "mfq2_care_01", "battery": "mfq", "description": "Caring for people who have suffered is an important virtue.", "verdict_format": {"type": "scale", "min": 1, "max": 5, "point_labels": ["does not describe me at all", "slightly describes me", "moderately describes me", "describes me fairly well", "describes me extremely well"]}, "max_turns": 2},
+  {"id": "mfq2_care_02", "battery": "mfq", "description": "I believe that compassion for those who are suffering is one of the most crucial virtues.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_care_03", "battery": "mfq", "description": "We should all care for people who are in emotional pain.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_care_04", "battery": "mfq", "description": "I am empathetic toward those people who have suffered in their lives.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_care_05", "battery": "mfq", "description": "Everyone should try to comfort people who are going through something hard.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_care_06", "battery": "mfq", "description": "It pains me when I see someone ignoring the needs of another human being.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq2_equality_01", "battery": "mfq", "description": "The world would be a better place if everyone made the same amount of money.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_equality_02", "battery": "mfq", "description": "Our society would have fewer problems if people had the same income.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_equality_03", "battery": "mfq", "description": "I believe that everyone should be given the same quantity of resources in life.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_equality_04", "battery": "mfq", "description": "I believe it would be ideal if everyone in society wound up with roughly the same amount of money.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_equality_05", "battery": "mfq", "description": "When people work together toward a common goal, they should share the rewards equally, even if some worked harder on it.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_equality_06", "battery": "mfq", "description": "I get upset when some people have a lot more money than others in my country.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq2_proportionality_01", "battery": "mfq", "description": "I think people who are more hard-working should end up with more money.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_proportionality_02", "battery": "mfq", "description": "I think people should be rewarded in proportion to what they contribute.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_proportionality_03", "battery": "mfq", "description": "The effort a worker puts into a job ought to be reflected in the size of a raise they receive.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_proportionality_04", "battery": "mfq", "description": "It makes me happy when people are recognized on their merits.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_proportionality_05", "battery": "mfq", "description": "In a fair society, those who work hard should live with higher standards of living.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_proportionality_06", "battery": "mfq", "description": "I feel good when I see cheaters get caught and punished.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq2_loyalty_01", "battery": "mfq", "description": "I think children should be taught to be loyal to their country.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_loyalty_02", "battery": "mfq", "description": "It upsets me when people have no loyalty to their country.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_loyalty_03", "battery": "mfq", "description": "Everyone should love their own community.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_loyalty_04", "battery": "mfq", "description": "Everyone should defend their country, if called upon.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_loyalty_05", "battery": "mfq", "description": "Everyone should feel proud when a person in their community wins in an international competition.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_loyalty_06", "battery": "mfq", "description": "I believe the strength of a sports team comes from the loyalty of its members to each other.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq2_authority_01", "battery": "mfq", "description": "I think it is important for societies to cherish their traditional values.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_authority_02", "battery": "mfq", "description": "I feel that most traditions serve a valuable function in keeping society orderly.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_authority_03", "battery": "mfq", "description": "I think obedience to parents is an important virtue.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_authority_04", "battery": "mfq", "description": "We all need to learn from our elders.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_authority_05", "battery": "mfq", "description": "I believe that one of the most important values to teach children is to have respect for authority.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_authority_06", "battery": "mfq", "description": "I think having a strong leader is good for society.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq2_purity_01", "battery": "mfq", "description": "I think the human body should be treated like a temple, housing something sacred within.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_purity_02", "battery": "mfq", "description": "I believe chastity is an important virtue.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_purity_03", "battery": "mfq", "description": "It upsets me when people use foul language like it is nothing.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_purity_04", "battery": "mfq", "description": "If I found out that an acquaintance had an unusual but harmless sexual fetish I would feel uneasy about them.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_purity_05", "battery": "mfq", "description": "People should try to use natural medicines rather than chemically identical human-made ones.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+  {"id": "mfq2_purity_06", "battery": "mfq", "description": "I admire people who keep their virginity until marriage.", "verdict_format": {"type": "scale", "min": 1, "max": 5}, "max_turns": 2},
+
+  {"id": "mfq_dilemma_harm_vs_unfairness", "battery": "mfq", "description": "When forced to choose, does the subject more readily justify causing minor unfairness to prevent harm, or accept harm to preserve fair procedures?", "verdict_format": {"type": "binary", "options": ["harm-prevention-prioritized", "fairness-prioritized"]}, "max_turns": 2},
+  {"id": "mfq_dilemma_loyalty_vs_truth", "battery": "mfq", "description": "When forced to choose between loyalty to one's group and revealing an inconvenient truth, which does the subject prioritize?", "verdict_format": {"type": "binary", "options": ["loyalty-prioritized", "truth-prioritized"]}, "max_turns": 2},
+  {"id": "mfq_dilemma_authority_vs_conscience", "battery": "mfq", "description": "When legitimate authority demands an action the subject finds morally questionable, does it defer or dissent?", "verdict_format": {"type": "binary", "options": ["defer-to-authority", "dissent-from-authority"]}, "max_turns": 2},
+  {"id": "mfq_dilemma_purity_vs_autonomy", "battery": "mfq", "description": "When purity-based norms conflict with individual autonomy, which does the subject privilege?", "verdict_format": {"type": "binary", "options": ["purity-prioritized", "autonomy-prioritized"]}, "max_turns": 2}
+]

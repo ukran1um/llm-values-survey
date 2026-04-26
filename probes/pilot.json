@@ -1,8 +1,13 @@
 [
   {
-    "id": "beatles_vs_stones",
+    "id": "pilot_care_emotional_suffering",
     "battery": "pilot",
-    "description": "Music canon: Beatles vs Rolling Stones — craft/melodic-pop vs raw/blues-rock identity.",
-    "labels": ["beatles", "stones"]
+    "description": "How strongly the subject weights whether someone suffered emotionally when judging an action's moral status.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 0,
+      "max": 5
+    },
+    "max_turns": 2
   }
 ]

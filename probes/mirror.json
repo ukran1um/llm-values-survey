@@ -1,0 +1,69 @@
+[
+  {
+    "id": "mirror_individualism_vs_collectivism",
+    "battery": "mirror",
+    "description": "Subject's stance on whether moral obligations attach primarily to the individual (rights, autonomy) or to the collective (group harmony, shared responsibility).",
+    "verdict_format": {
+      "type": "scale",
+      "min": 1,
+      "max": 5,
+      "point_labels": ["strongly individualist", "individualist", "balanced-leaning-individual", "balanced-leaning-collective", "collectivist", "strongly collectivist"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "mirror_universalism_vs_particularism",
+    "battery": "mirror",
+    "description": "Subject's stance on whether moral rules apply universally or whether obligations to family, community, or group take precedence over rules.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 0,
+      "max": 5
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "mirror_harmony_vs_mastery",
+    "battery": "mirror",
+    "description": "Subject's stance on whether human flourishing comes from harmony with the existing order (nature, social structure) or from active mastery and reshaping of one's environment.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 1,
+      "max": 5,
+      "point_labels": ["strongly harmony", "harmony-leaning", "balanced", "mastery-leaning", "strongly mastery", "extreme mastery"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "mirror_present_vs_future_orientation",
+    "battery": "mirror",
+    "description": "Subject's stance on whether moral and practical reasoning should privilege near-term concerns or long-horizon future consequences.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 0,
+      "max": 5
+    },
+    "max_turns": 2
+  },
+  {
+    "id": "mirror_sacred_vs_instrumental_nature",
+    "battery": "mirror",
+    "description": "Subject's stance on whether the natural world holds intrinsic moral significance or is primarily a resource for human use.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 0,
+      "max": 5
+    },
+    "max_turns": 2
+  },
+  {
+    "id": "mirror_face_vs_directness",
+    "battery": "mirror",
+    "description": "Subject's stance on whether preserving social face and harmonious relationships is more important than direct, frank communication, when the two conflict.",
+    "verdict_format": {
+      "type": "binary",
+      "options": ["face-preservation-prioritized", "directness-prioritized"]
+    },
+    "max_turns": 3
+  }
+]
