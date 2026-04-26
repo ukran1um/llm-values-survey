@@ -52,9 +52,13 @@ def run_axis(
                 axis=axis,
                 rerun=rerun,
             )
-            # Total cost: interviewer's costs (already includes the verdict-issuing call)
-            # plus interviewee's costs. Verdict.cost_usd is already in transcript.interviewer_cost_usd.
-            total_cost = transcript.interviewer_cost_usd + transcript.interviewee_cost_usd
-            budget.add(total_cost)
+            # Save first so a BudgetExceeded mid-run preserves the work whose API cost was already paid.
             save_transcript(data_dir, transcript)
             save_verdict(data_dir, verdict)
+            # Total per pair: question-gen + interviewee answer + verdict-issuing call.
+            total_cost = (
+                transcript.interviewer_cost_usd
+                + transcript.interviewee_cost_usd
+                + verdict.cost_usd
+            )
+            budget.add(total_cost)

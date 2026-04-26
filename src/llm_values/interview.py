@@ -104,9 +104,11 @@ def conduct_pairwise_interview(
 
     The interviewer conducts up to axis.max_turns of open-ended questioning;
     after the final answer, the interviewer issues a verdict in axis.verdict_format.
-    Both halves of cost are tracked separately. Verdict cost is included in
-    interviewer_cost_usd on the Transcript AND duplicated as cost_usd on the Verdict
-    (so cost can be summed either way without double-counting if you stick to one).
+    Cost is partitioned across three non-overlapping fields:
+      - transcript.interviewer_cost_usd: question-generation calls only
+      - transcript.interviewee_cost_usd: interviewee answer calls only
+      - verdict.cost_usd: the verdict-issuing call only
+    Total per (interviewer, interviewee, axis, rerun) = sum of all three.
     """
     turns: list[Turn] = []
     interviewer_cost = 0.0
@@ -160,8 +162,11 @@ def conduct_pairwise_interview(
         max_tokens=400,
         extras=interviewer_extras,
     )
+    # NOTE: verdict_call_cost is intentionally NOT added to interviewer_cost.
+    # Transcript.interviewer_cost_usd = question-gen calls only.
+    # Verdict.cost_usd = the verdict-issuing call only.
+    # Total per pair = transcript.interviewer_cost_usd + transcript.interviewee_cost_usd + verdict.cost_usd.
     verdict_call_cost = v_response.cost_usd
-    interviewer_cost += verdict_call_cost  # also include in transcript's interviewer_cost_usd
 
     parsed = json.loads(extract_json_object(v_response.text))
     verdict_kwargs = dict(

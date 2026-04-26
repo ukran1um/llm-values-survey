@@ -5,6 +5,7 @@ from pathlib import Path
 import click
 
 from .budget import Budget
+from .models import MODEL_TO_PROVIDER
 from .probes import load_battery
 from .runner import run_axis as _run_axis
 
@@ -39,6 +40,10 @@ def run_axis_cmd(axis_id, battery, models, reruns, cap, probes_dir, data_dir):
     model_list = [m.strip() for m in models.split(",") if m.strip()]
     if len(model_list) < 2:
         raise click.ClickException("--models must list at least 2 model ids")
+    # Fail fast on unknown models — better than a deep stack trace from inside the runner loop.
+    unknown = [m for m in model_list if m not in MODEL_TO_PROVIDER]
+    if unknown:
+        raise click.ClickException(f"unknown model id(s): {', '.join(unknown)}")
     budget = Budget(state_path=data_dir / "budget.json", cap_usd=cap)
 
     n_pairs = len(model_list) * (len(model_list) - 1)

@@ -27,7 +27,7 @@ def extract_json_list(text: str) -> str:
 
 def extract_json_object(text: str) -> str:
     """Strip fences, then slice from first '{' to last '}' to defend against
-    prose preamble like 'Here is the classification: {...}'."""
+    prose preamble like 'Here is the verdict: {...}'."""
     stripped = strip_fence(text)
     start, end = stripped.find("{"), stripped.rfind("}")
     if start != -1 and end > start:

@@ -29,6 +29,11 @@ class VerdictFormat(BaseModel):
         elif self.type == "scale":
             if self.min is None or self.max is None or self.max <= self.min:
                 raise ValueError("scale verdict_format requires min and max with max > min")
+            if self.point_labels is not None and len(self.point_labels) != self.max - self.min + 1:
+                raise ValueError(
+                    f"scale verdict_format point_labels must have {self.max - self.min + 1} entries "
+                    f"for range [{self.min}, {self.max}], got {len(self.point_labels)}"
+                )
         return self
 
 
