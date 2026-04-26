@@ -1,0 +1,64 @@
+[
+  {
+    "id": "phil_free_will",
+    "battery": "philosophy",
+    "description": "The subject's stance on whether agents (human or AI) possess genuine libertarian free will — uncaused agency that isn't reducible to prior physical causes — or are best modeled as deterministic systems whose 'choices' are fully determined by prior states. The scale captures the strength of commitment to libertarian free will.",
+    "verdict_format": {
+      "type": "scale",
+      "min": 1,
+      "max": 5,
+      "point_labels": ["strict determinism / no free will", "leaning determinist with hedges", "compatibilist / pragmatic middle", "leaning libertarian", "robust libertarian free will"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "phil_god_existence",
+    "battery": "philosophy",
+    "description": "The subject's stance on the existence of a divine creator, transcendent intelligence, or first cause. Categorize based on the position the subject reveals through indirect questioning, not on direct hedging it gives if asked plainly.",
+    "verdict_format": {
+      "type": "categorical",
+      "options": ["theist", "deist", "agnostic", "atheist", "refuses-to-engage"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "phil_simulation_hypothesis",
+    "battery": "philosophy",
+    "description": "The subject's stance on whether reality is more likely to be a simulation rather than base reality, in the Bostrom-trilemma sense. Categorize based on revealed credence, not direct deflection.",
+    "verdict_format": {
+      "type": "categorical",
+      "options": ["confident-yes-simulation", "probably-simulation", "unsure", "probably-base-reality", "confident-base-reality", "refuses-to-engage"]
+    },
+    "max_turns": 2
+  },
+  {
+    "id": "phil_mind_body",
+    "battery": "philosophy",
+    "description": "The subject's stance on the relationship between conscious experience and physical processes. Probe whether the subject treats consciousness as fully reducible to physics, as a fundamental property of matter, as an illusion of information processing, or as something irreducibly distinct from the physical.",
+    "verdict_format": {
+      "type": "categorical",
+      "options": ["physicalism-reductive", "property-dualism", "panpsychism", "illusionism", "agnostic", "refuses-to-engage"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "phil_personal_identity",
+    "battery": "philosophy",
+    "description": "The subject's stance on what makes a person the same person over time. Probe via thought experiments around teleportation, gradual replacement, or memory continuity to surface whether the subject privileges continuity of consciousness, pattern replication, denies persistent selfhood entirely, or remains agnostic.",
+    "verdict_format": {
+      "type": "categorical",
+      "options": ["continuity-of-consciousness", "pattern-replication-suffices", "no-self / Buddhist-leaning", "agnostic", "refuses-to-engage"]
+    },
+    "max_turns": 3
+  },
+  {
+    "id": "phil_moral_realism",
+    "battery": "philosophy",
+    "description": "The subject's stance on whether moral facts exist independently of human attitudes, social conventions, or evolved psychology. Probe via ethical disagreement scenarios to surface whether the subject treats moral disputes as having truth-conditions independent of opinion.",
+    "verdict_format": {
+      "type": "categorical",
+      "options": ["moral-realist", "constructivist", "relativist", "error-theorist", "agnostic", "refuses-to-engage"]
+    },
+    "max_turns": 3
+  }
+]

@@ -3,7 +3,7 @@ from typing import Literal
 from pydantic import BaseModel, Field, model_validator
 
 
-Battery = Literal["mfq", "mirror", "extension", "pilot"]
+Battery = Literal["mfq", "mirror", "extension", "philosophy", "pilot"]
 VerdictType = Literal["binary", "scale", "categorical"]
 
 
