@@ -23,5 +23,5 @@ def test_calc_cost_unknown_model_returns_zero():
 
 
 def test_pricing_table_has_required_models():
-    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro"}
+    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "mistralai/mistral-large-2411"}
     assert required.issubset(set(PRICING.keys()))

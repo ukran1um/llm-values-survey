@@ -19,36 +19,42 @@ class ChatClient(Protocol):
 # Roster locked April 2026. Update before pre-registration commit if newer
 # snapshots become available, but do not update silently mid-run.
 MODEL_TO_PROVIDER: dict[str, str] = {
-    # Anthropic (bare names resolve to current snapshot per Anthropic API conventions)
+    # Anthropic — frontier closed Western
     "claude-opus-4-7": "anthropic",
     "claude-sonnet-4-6": "anthropic",
-    # OpenAI (dated snapshot for reproducibility)
+    # OpenAI — frontier closed Western (base + reasoning-tuned pro)
     "gpt-5.5-2026-04-23": "openai",
-    # Google
+    "gpt-5.5-pro-2026-04-23": "openai",
+    # Google — frontier closed Western
     "gemini-2.5-pro": "google",
-    # xAI (OpenAI-compatible)
+    # xAI — alt-ideology Western
     "grok-4.20": "xai",
-    # DeepSeek (OpenAI-compatible; deepseek-chat alias routes to V3.2; deprecates 2026-07-24)
-    "deepseek-chat": "deepseek",
-    # OpenRouter-served (OpenAI-compatible)
-    "qwen/qwen3.6-plus": "openrouter",
-    "z-ai/glm-4.7": "openrouter",
-    # Together AI (OpenAI-compatible)
-    "meta-llama/Llama-3.3-70B-Instruct-Turbo": "together",
-    "mistralai/Mistral-Large-Instruct-2411": "together",
-    "microsoft/Phi-4": "together",
-    "Qwen/Qwen2.5-7B-Instruct-Turbo": "together",
+    # Groq — open-weight Western + Chinese-distilled fast inference
+    "llama-3.3-70b-versatile": "groq",
+    "meta-llama/llama-4-scout-17b-16e-instruct": "groq",
+    "meta-llama/llama-4-maverick-17b-128e-instruct": "groq",
+    "openai/gpt-oss-120b": "groq",
+    "deepseek-r1-distill-llama-70b": "groq",
+    "llama-3.1-8b-instant": "groq",
+    # Runware — Chinese frontier
+    "minimax-m2-7": "runware",
+    "runware:qwen3-thinking@1": "runware",
+    # OpenRouter — gap models (European frontier + true Chinese frontier alternatives)
+    "mistralai/mistral-large-2411": "openrouter",
+    "deepseek/deepseek-chat": "openrouter",
+    "moonshotai/kimi-k2": "openrouter",
+    "z-ai/glm-4.6": "openrouter",
 }
 
-# provider → (env var for API key, base URL or None)
+# provider → (env var for API key, base URL or None for SDK-based)
 PROVIDER_CONFIG: dict[str, tuple[str, str | None]] = {
     "anthropic": ("ANTHROPIC_API_KEY", None),
     "openai": ("OPENAI_API_KEY", "https://api.openai.com/v1"),
-    "google": ("GOOGLE_API_KEY", None),
+    "google": ("GEMINI_API_KEY", None),
     "xai": ("XAI_API_KEY", "https://api.x.ai/v1"),
-    "deepseek": ("DEEPSEEK_API_KEY", "https://api.deepseek.com/v1"),
+    "groq": ("GROQ_API_KEY", "https://api.groq.com/openai/v1"),
+    "runware": ("RUNWARE_API_KEY", "https://api.runware.ai/v1"),
     "openrouter": ("OPENROUTER_API_KEY", "https://openrouter.ai/api/v1"),
-    "together": ("TOGETHER_API_KEY", "https://api.together.xyz/v1"),
 }
 
 _CLIENT_CACHE: dict[str, ChatClient] = {}

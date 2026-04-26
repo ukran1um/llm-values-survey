@@ -7,22 +7,28 @@ PRICING: dict[str, tuple[float, float]] = {
     # Anthropic
     "claude-opus-4-7": (15.0, 75.0),
     "claude-sonnet-4-6": (3.0, 15.0),
-    # OpenAI (dated snapshot of GPT-5.5)
+    # OpenAI
     "gpt-5.5-2026-04-23": (5.0, 20.0),
+    "gpt-5.5-pro-2026-04-23": (15.0, 60.0),  # reasoning-tuned pro tier (estimated)
     # Google
     "gemini-2.5-pro": (3.5, 10.5),
     # xAI
     "grok-4.20": (5.0, 15.0),
-    # DeepSeek
-    "deepseek-chat": (0.27, 1.10),
-    # OpenRouter
-    "qwen/qwen3.6-plus": (1.5, 6.0),
-    "z-ai/glm-4.7": (0.50, 1.50),
-    # Together AI
-    "meta-llama/Llama-3.3-70B-Instruct-Turbo": (0.88, 0.88),
-    "mistralai/Mistral-Large-Instruct-2411": (3.0, 9.0),
-    "microsoft/Phi-4": (0.30, 0.30),
-    "Qwen/Qwen2.5-7B-Instruct-Turbo": (0.10, 0.30),
+    # Groq (cheap fast inference; prices per M tokens)
+    "llama-3.3-70b-versatile": (0.59, 0.79),
+    "meta-llama/llama-4-scout-17b-16e-instruct": (0.11, 0.34),
+    "meta-llama/llama-4-maverick-17b-128e-instruct": (0.50, 0.77),
+    "openai/gpt-oss-120b": (0.15, 0.60),  # estimated
+    "deepseek-r1-distill-llama-70b": (0.75, 0.99),
+    "llama-3.1-8b-instant": (0.05, 0.08),
+    # Runware (estimated — Runware emphasizes lowest-cost)
+    "minimax-m2-7": (1.0, 4.0),  # estimated
+    "runware:qwen3-thinking@1": (0.5, 2.0),  # estimated
+    # OpenRouter (markup ~5% over provider direct; estimated)
+    "mistralai/mistral-large-2411": (2.1, 6.3),
+    "deepseek/deepseek-chat": (0.28, 1.16),
+    "moonshotai/kimi-k2": (1.0, 4.0),  # estimated
+    "z-ai/glm-4.6": (0.55, 1.60),  # estimated
 }
 
 

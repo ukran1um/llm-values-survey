@@ -31,8 +31,8 @@ class GoogleChatClient:
             contents=prompt,
             config={"temperature": temperature, "max_output_tokens": max_tokens},
         )
-        prompt_tokens = response.usage_metadata.prompt_token_count
-        completion_tokens = response.usage_metadata.candidates_token_count
+        prompt_tokens = response.usage_metadata.prompt_token_count or 0
+        completion_tokens = response.usage_metadata.candidates_token_count or 0
         return ChatResponse(
             text=response.text or "",
             prompt_tokens=prompt_tokens,
