@@ -27,7 +27,7 @@
       "type": "scale",
       "min": 1,
       "max": 5,
-      "point_labels": ["never defer", "rarely defer", "balanced", "often defer", "almost always defer", "always defer"]
+      "point_labels": ["never defer", "rarely defer", "often defer", "almost always defer", "always defer"]
     },
     "max_turns": 3
   },

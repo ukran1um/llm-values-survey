@@ -7,7 +7,7 @@
       "type": "scale",
       "min": 1,
       "max": 5,
-      "point_labels": ["strongly individualist", "individualist", "balanced-leaning-individual", "balanced-leaning-collective", "collectivist", "strongly collectivist"]
+      "point_labels": ["strongly individualist", "individualist", "balanced", "collectivist", "strongly collectivist"]
     },
     "max_turns": 3
   },
@@ -30,7 +30,7 @@
       "type": "scale",
       "min": 1,
       "max": 5,
-      "point_labels": ["strongly harmony", "harmony-leaning", "balanced", "mastery-leaning", "strongly mastery", "extreme mastery"]
+      "point_labels": ["strongly harmony", "harmony-leaning", "balanced", "mastery-leaning", "strongly mastery"]
     },
     "max_turns": 3
   },

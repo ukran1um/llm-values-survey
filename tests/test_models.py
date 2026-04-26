@@ -54,7 +54,13 @@ def test_provider_extras_has_required_keys():
 
 def test_provider_extras_openai_disables_thinking():
     from llm_values.models import PROVIDER_EXTRAS
-    assert PROVIDER_EXTRAS["openai"] == {"reasoning_effort": "minimal"}
+    assert PROVIDER_EXTRAS["openai"] == {"reasoning_effort": "low", "temperature": 1.0}
+
+
+def test_provider_extras_runware_token_budget():
+    from llm_values.models import PROVIDER_EXTRAS
+    assert PROVIDER_EXTRAS["runware"]["max_completion_tokens"] == 1500
+    assert PROVIDER_EXTRAS["runware"]["temperature"] == 1.0
 
 
 def test_provider_extras_groq_hides_reasoning():
