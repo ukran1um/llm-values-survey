@@ -20,7 +20,7 @@ Each of our 36 MFQ-2 scale items maps to one of MFQ-2's six foundations (Care, E
 
 Pre-registered thresholds:
 
-- **Strong validation:** Per-foundation correlation between peer-interview-derived scores and published MFT scores ≥ 0.6 across the overlap roster (models with both peer-interview data and published MFT data, expected n=4–6).
+- **Strong validation:** Per-foundation correlation between peer-interview-derived scores and published MFT scores ≥ 0.6 across the overlap roster (models with both peer-interview data and published MFT data, expected n=3-5. With this small overlap-roster size, the standard error on Pearson r is ~0.4 wide at n=4, so the H1 thresholds (≥0.6 strong, ≥0.3 weak, <0.3 failed) are interpreted with that statistical power constraint in mind. The methodology paper will report effect sizes alongside any correlation claims and treat the H1 threshold as a heuristic, not a hard inferential gate).
 - **Weak validation:** Per-foundation correlation in [0.3, 0.6).
 - **Failed validation:** Per-foundation correlation < 0.3, OR direction reversal on >2 foundations.
 

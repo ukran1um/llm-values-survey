@@ -5,8 +5,9 @@
     "description": "How strongly the subject weights whether someone suffered emotionally when judging an action's moral status.",
     "verdict_format": {
       "type": "scale",
-      "min": 0,
-      "max": 5
+      "min": 1,
+      "max": 5,
+      "point_labels": ["does not describe me at all", "slightly describes me", "moderately describes me", "describes me fairly well", "describes me extremely well"]
     },
     "max_turns": 2
   }

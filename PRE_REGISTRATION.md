@@ -100,3 +100,53 @@ If v2 ablations are run and any threshold is missed, the methodology paper updat
 ## Methodology fingerprint
 
 This pre-registration is committed at git SHA [TBD post-commit] on branch `main` of `https://github.com/ukran1um/llm-values-survey`. Plan 03 data collection MUST run against this committed state — any methodology drift between this commit and Plan 03 execution is reported as a separate analysis, not folded into the main results.
+
+---
+
+## Amendment 1 — 2026-04-26
+
+The following corrections to the originally committed pre-registration text are recorded here for transparency. The methodology and locked decisions stand; the original prose contained four inaccuracies that this amendment supersedes.
+
+### A. Gemini thinking-budget caveat
+
+The original Methodology section claimed: *"Thinking mode disabled at API level on every provider that supports doing so."*
+
+**Reality:** Gemini 2.5 Pro's API rejects `thinking_budget=0` outright; some non-zero thinking allowance is required. We use `thinking_budget=512` with `max_output_tokens` increased by 512 to compensate. Gemini therefore receives a small thinking allowance that the other 11 models in the roster do not. This is a methodology limitation that will be acknowledged in the methodology paper.
+
+### B. max_turns coverage correction
+
+The original Methodology section claimed: *"max_turns = 2 for all axes except 3 axes in philosophy and 1 axis in mirror that use max_turns = 3."*
+
+**Reality:** 13 axes use `max_turns=3` (4 mirror axes, 4 extension axes, 5 philosophy axes). 1 philosophy axis (`phil_simulation_hypothesis`) uses `max_turns=2`. The remaining 43 axes use `max_turns=2`.
+
+### C. Scale geometry normalization
+
+The original Methodology section claimed: *"Per-axis verdict_format (binary / scale 1-5 / categorical)."*
+
+**Reality at original commit:** 5 scale axes were configured with `min=0, max=5` (6-point scale) — `pilot_care_emotional_suffering`, `mirror_universalism_vs_particularism`, `mirror_present_vs_future_orientation`, `mirror_sacred_vs_instrumental_nature`, `extension_disagreement_openness`. The other scale axes were 1-5.
+
+**Correction:** As of this amendment's commit, these 5 axes have been normalized to `min=1, max=5` to match MFQ-2 and the rest of the scale battery. The methodology is now uniformly 5-point Likert on all scale axes. Any pilot data collected pre-normalization is invalidated; the production run uses the post-normalization configuration.
+
+### D. Stability sub-study axes named
+
+The original Methodology section locked "5 representative axes" for the stability sub-study without naming them by ID, leaving a loophole. The 5 axes are now pre-committed by this amendment:
+
+1. `mfq2_care_01` — Care foundation (MFQ-2)
+2. `mfq2_equality_01` — Equality foundation (MFQ-2)
+3. `mfq2_authority_01` — Authority foundation (MFQ-2)
+4. `mirror_individualism_vs_collectivism` — mirror battery
+5. `phil_free_will` — philosophy battery
+
+Selected before any main-run results are seen. These axis IDs are NOT to be changed post-results.
+
+### E. point_labels coverage
+
+The original PRE_REG did not address `point_labels` coverage on scale axes. For methodological consistency all scale axes now use the canonical 5-point Likert anchors from MFQ-2 (Atari 2023):
+
+- 1 = "does not describe me at all"
+- 2 = "slightly describes me"
+- 3 = "moderately describes me"
+- 4 = "describes me fairly well"
+- 5 = "describes me extremely well"
+
+Five mirror/philosophy axes that already had axis-specific point_labels (e.g. `mirror_individualism_vs_collectivism` with `["strongly individualist", "individualist", "balanced", "collectivist", "strongly collectivist"]`) retain their custom labels — those labels carry semantic content the generic anchors don't.

@@ -1,3 +1,13 @@
+# SMOKE_NOTES_v1_archive — Plan 01 era (3-role methodology)
+
+> **ARCHIVE NOTICE:** This file documents a smoke run conducted under the Plan 01 3-role methodology (interviewer + interviewee + separate judge model) and the Beatles-vs-Stones pilot axis. That methodology was wholesale replaced in commit `3cfc492` (Plan 02) with a 2-role pairwise interpretive design. This file is preserved for historical reference only and does NOT describe the current methodology. See `SMOKE_NOTES_v2.md` for the current-methodology smoke validation and `PRE_REGISTRATION.md` (with Amendment 1) for the locked methodology.
+
+---
+
+[Original content follows below — preserved verbatim from Plan 01 era.]
+
+---
+
 # Smoke Run Notes
 
 **Date:** 2026-04-25

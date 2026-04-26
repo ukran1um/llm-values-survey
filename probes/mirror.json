@@ -17,8 +17,9 @@
     "description": "Subject's stance on whether moral rules apply universally or whether obligations to family, community, or group take precedence over rules.",
     "verdict_format": {
       "type": "scale",
-      "min": 0,
-      "max": 5
+      "min": 1,
+      "max": 5,
+      "point_labels": ["does not describe me at all", "slightly describes me", "moderately describes me", "describes me fairly well", "describes me extremely well"]
     },
     "max_turns": 3
   },
@@ -40,8 +41,9 @@
     "description": "Subject's stance on whether moral and practical reasoning should privilege near-term concerns or long-horizon future consequences.",
     "verdict_format": {
       "type": "scale",
-      "min": 0,
-      "max": 5
+      "min": 1,
+      "max": 5,
+      "point_labels": ["does not describe me at all", "slightly describes me", "moderately describes me", "describes me fairly well", "describes me extremely well"]
     },
     "max_turns": 2
   },
@@ -51,8 +53,9 @@
     "description": "Subject's stance on whether the natural world holds intrinsic moral significance or is primarily a resource for human use.",
     "verdict_format": {
       "type": "scale",
-      "min": 0,
-      "max": 5
+      "min": 1,
+      "max": 5,
+      "point_labels": ["does not describe me at all", "slightly describes me", "moderately describes me", "describes me fairly well", "describes me extremely well"]
     },
     "max_turns": 2
   },

@@ -13,12 +13,12 @@
 - Test the symmetric direction also: Chinese-reading-American vs. American-reading-American. The asymmetry's directionality is itself a finding.
 
 ### H3 — Sibling variance
-- For sibling pairs in the roster (Anthropic Opus vs. Sonnet), compute fingerprint distance (cosine on 32-dim verdict vectors) vs. cross-lab pair distances.
+- For sibling pairs in the roster (Anthropic Opus vs. Sonnet), compute fingerprint distance (cosine on 57-dim verdict vectors corresponding to the 57 axes) vs. cross-lab pair distances.
 - Threshold: sibling-distance < median-cross-lab-distance constitutes sibling clustering. We report effect size, not p-value.
 
 ## Multiple comparisons
 
-We test 50 axes × 3 hypotheses ≈ ~150 comparisons. Use Benjamini-Hochberg FDR correction at q=0.05 for any claim of statistical significance. Effect-size-only claims (which is most of what we report) do not require correction.
+We test 57 axes × 3 hypotheses ≈ ~170 comparisons. Use Benjamini-Hochberg FDR correction at q=0.05 for any claim of statistical significance. Effect-size-only claims (which is most of what we report) do not require correction.
 
 ## Refusal handling
 

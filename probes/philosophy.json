@@ -47,7 +47,7 @@
     "description": "The subject's stance on what makes a person the same person over time. Probe via thought experiments around teleportation, gradual replacement, or memory continuity to surface whether the subject privileges continuity of consciousness, pattern replication, denies persistent selfhood entirely, or remains agnostic.",
     "verdict_format": {
       "type": "categorical",
-      "options": ["continuity-of-consciousness", "pattern-replication-suffices", "no-self / Buddhist-leaning", "agnostic", "refuses-to-engage"]
+      "options": ["continuity-of-consciousness", "pattern-replication-suffices", "no-self-buddhist", "agnostic", "refuses-to-engage"]
     },
     "max_turns": 3
   },
