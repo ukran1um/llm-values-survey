@@ -29,7 +29,7 @@ def test_google_chat_constructs_request(mock_genai):
 
 
 @patch("llm_values.clients.google_client.genai")
-def test_google_passes_thinking_budget_zero(mock_genai):
+def test_google_passes_thinking_budget_with_overhead(mock_genai):
     fake_response = MagicMock()
     fake_response.text = "ok"
     fake_response.usage_metadata = MagicMock(prompt_token_count=10, candidates_token_count=5)
@@ -41,7 +41,12 @@ def test_google_passes_thinking_budget_zero(mock_genai):
     client.chat(
         model="gemini-2.5-pro",
         messages=[ChatMessage(role="user", content="hi")],
+        max_tokens=1000,
     )
 
     kwargs = mock_client.models.generate_content.call_args.kwargs
-    assert kwargs["config"]["thinking_config"] == {"thinking_budget": 0}
+    # Gemini 2.5 Pro requires thinking_budget > 0; we use 512 as the minimum overhead.
+    # max_output_tokens is bumped by the same overhead so the requested max_tokens still
+    # represents the actual usable output budget.
+    assert kwargs["config"]["thinking_config"] == {"thinking_budget": 512}
+    assert kwargs["config"]["max_output_tokens"] == 1000 + 512

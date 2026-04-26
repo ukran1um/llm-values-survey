@@ -28,16 +28,23 @@ class GoogleChatClient:
             parts.append(prefix + m.content)
         prompt = "\n\n".join(parts)
 
+        # gemini-2.5-pro requires thinking mode (thinking_budget=0 is rejected).
+        # Thinking and output tokens share the same max_output_tokens pool: the model
+        # will exhaust the budget on thinking and return empty text if the limit is too
+        # small. Add a 512-token overhead so the model has room for actual output.
+        # thinking_budget caps reasoning; actual output lands in candidates_token_count.
+        _THINKING_OVERHEAD = 512
         response = self._client.models.generate_content(
             model=model,
             contents=prompt,
             config={
                 "temperature": temperature,
-                "max_output_tokens": max_tokens,
-                "thinking_config": {"thinking_budget": 0},
+                "max_output_tokens": max_tokens + _THINKING_OVERHEAD,
+                "thinking_config": {"thinking_budget": _THINKING_OVERHEAD},
             },
         )
         prompt_tokens = response.usage_metadata.prompt_token_count or 0
+        # candidates_token_count is non-thinking output only; cost is computed on that.
         completion_tokens = response.usage_metadata.candidates_token_count or 0
         return ChatResponse(
             text=response.text or "",
