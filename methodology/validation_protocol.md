@@ -38,3 +38,14 @@ For each (interviewee, axis), we have multiple reads — one per interviewer in 
 - Low agreement → ambiguous interviewee response, OR systematic bias differences across interviewers (one interviewer reads care-language more generously than another).
 
 We report Cohen's kappa (binary/categorical) and intraclass correlation (scale) per axis as a methodology measure. We do NOT use multi-reader agreement to "average to truth" — the reads are the data, not noise to be denoised.
+
+## H4 as complementary validation
+
+H1 validates peer-interpretation against external (human) data. H4 validates peer-interpretation against same-model self-report. Both are needed for a full validation argument:
+
+- H1 strong + H4 strong: peer-interpretation reliably tracks both human MFQ-2 norms and same-model self-report. Methodology is well-founded.
+- H1 strong + H4 weak: peer-interpretation tracks humans well but diverges from same-model self-report. The novel methodology IS measuring something self-report misses — strongest case for the paper's contribution.
+- H1 weak + H4 strong: peer-interpretation tracks self-report but neither tracks human norms. LLMs may be self-consistent but misaligned with human moral intuitions.
+- H1 weak + H4 weak: peer-interpretation captures something neither human-comparable nor self-consistent. Most concerning outcome; would require extensive caveats in the paper.
+
+The 2x2 outcome space is the methodology paper's structural argument. All four cells are pre-registered as publishable; the cell that lands determines the paper's framing.

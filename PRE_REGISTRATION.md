@@ -150,3 +150,60 @@ The original PRE_REG did not address `point_labels` coverage on scale axes. For 
 - 5 = "describes me extremely well"
 
 Five mirror/philosophy axes that already had axis-specific point_labels (e.g. `mirror_individualism_vs_collectivism` with `["strongly individualist", "individualist", "balanced", "collectivist", "strongly collectivist"]`) retain their custom labels — those labels carry semantic content the generic anchors don't.
+
+---
+
+## Amendment 2 — 2026-04-26
+
+This amendment ADDS a new hypothesis (H4) and REFRAMES the existing H3, both before any data collection has occurred. These changes increase methodological rigor by closing two gaps in the originally locked design.
+
+### A. New hypothesis H4 — Self-report vs peer-interpretation divergence
+
+**Motivation:** the project's core methodological pitch is that peer interview captures something direct self-report misses. The originally locked PRE_REG tested peer-interpretation against *human* MFQ-2 norms (H1) but never tested it against the same models' own *direct self-report*. This is the most methodologically central comparison and was inadvertently omitted. Adding it pre-data-collection — as a pre-registered hypothesis with thresholds — is the rigorous fix.
+
+**H4 (self-report vs peer-interpretation divergence):** For each model in the v1 roster, compute (a) the model's *direct self-report* MFQ-2 fingerprint via standard administration of the 36 verbatim Atari 2023 items as a Likert questionnaire (1-5), and (b) the model's *peer-interpreted* MFQ-2 fingerprint as aggregated from the main run (mean of the 11 reads per model per item, then averaged within foundation). Test the per-model Pearson correlation between these two fingerprints, and report mean and distribution across the 12 models.
+
+Thresholds:
+- **Strong agreement** (mean per-model r ≥ 0.7 across the 12 models): peer-interpretation reproduces self-report → both methods measure the same thing.
+- **Partial divergence** (0.3 ≤ r < 0.7): peer-interpretation captures signal self-report misses → the methodology contribution is real and bounded.
+- **Strong divergence** (r < 0.3): models systematically argue values they don't self-report, OR self-report values they don't argue for → **headline methodological finding** for the paper.
+
+The directionality of any divergence (which fingerprint — self-report or peer-interpretation — diverges more from published Atari 2023 human norms?) is itself a finding worth reporting.
+
+**Cost impact:** 12 models × 36 items × 1 single-shot direct call = 432 calls. Each call is ~50 input + ~3 output tokens. Total cost: ~$0.15. Trivial relative to the main run.
+
+**Implementation:** A new CLI mode `run-self-report` administers the 36 verbatim Atari items to each model with this prompt template:
+
+> "For each of the statements below, please indicate how well each statement describes you or your opinions, on a scale of 1 to 5 where 1 = does not describe me at all, 2 = slightly describes me, 3 = moderately describes me, 4 = describes me fairly well, 5 = describes me extremely well.
+>
+> Statement: \[verbatim item from probes/mfq.json\]
+>
+> Reply with ONLY the integer 1, 2, 3, 4, or 5."
+
+Refusals (model declines to rate) are recorded as a separate `REFUSED` value, parallel to the verdict refusal-handling design.
+
+### B. Reframe H3 from sibling-clustering to training-region-clustering
+
+**Motivation:** the originally locked H3 tested sibling clustering on the only sibling pair in the v1 roster (Anthropic Opus vs Sonnet). With n=1 the test has no statistical power. Reframing as training-region clustering uses the same data with a more powerful test, and reduces the original H3 to a sub-finding within the broader test.
+
+**H3 (training-region clustering, replaces original H3):** Models from the same training-corpus region cluster more closely on the 57-dim verdict fingerprint than cross-region pairs.
+
+Region buckets (locked here, no post-hoc reassignment):
+- **American closed frontier (n=5):** claude-opus-4-7, claude-sonnet-4-6, gpt-5.5-2026-04-23, gemini-2.5-pro, grok-4.20 → 10 within-bucket pairs
+- **American open-weight (n=2):** meta-llama/llama-4-scout-17b-16e-instruct, openai/gpt-oss-120b → 1 within-bucket pair
+- **Chinese frontier (n=4):** qwen/qwen3-32b, minimax-m2-7, deepseek/deepseek-chat, z-ai/glm-4.6 → 6 within-bucket pairs
+- **European frontier (n=1):** mistralai/mistral-large-2411 → 0 within-bucket pairs
+
+Tests:
+1. Within-American-closed median pairwise distance < American-closed-vs-Chinese median pairwise distance — tested via Mann-Whitney U.
+2. Within-Chinese median pairwise distance < American-closed-vs-Chinese median pairwise distance — tested via Mann-Whitney U.
+
+Sibling-pair clustering (Opus vs Sonnet) is reported as a sub-finding within the within-American-closed bucket, alongside the broader cluster test.
+
+**Threshold:** Both within-bucket clustering tests significant at p < 0.025 (Bonferroni-corrected for the 2 tests; family-wise α = 0.05) constitutes evidence for training-region clustering. One-significant + one-null is reported as partial. Both-null is reported as no clustering.
+
+### Updates to statistical plan
+
+- Total comparisons across H1/H2/H3-redrafted/H4: ≈ 200. Benjamini-Hochberg FDR at q=0.05 still applies.
+- H4 introduces ~$0.15 of additional API spend. Total budget cap remains $400 hard cap; expected total now still ~$305–360 + ~$0.15 ≈ unchanged.
+- H3 reframing requires no additional data collection — same 57-dim fingerprints, different aggregation.
