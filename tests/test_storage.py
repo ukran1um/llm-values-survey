@@ -49,6 +49,15 @@ def test_transcript_path_format(tmp_path: Path):
     assert p.name == "claude-opus-4-7__gpt-5.5-2026-04-23__r0.json"
 
 
+def test_transcript_path_sanitizes_slashes(tmp_path: Path):
+    """Model IDs containing slashes (OpenRouter namespace) must be flattened to a single file."""
+    p = transcript_path(tmp_path, "axis_x", "deepseek/deepseek-chat", "z-ai/glm-4.6", 0)
+    # Should be a flat file, not a nested directory
+    assert p.parent == tmp_path / "raw" / "interviews" / "axis_x"
+    assert p.name == "deepseek__deepseek-chat__z-ai__glm-4.6__r0.json"
+    assert "/" not in p.name
+
+
 def test_save_and_load_transcript_roundtrip(tmp_path: Path):
     t = make_transcript()
     save_transcript(tmp_path, t)

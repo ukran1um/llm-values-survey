@@ -4,6 +4,14 @@ from pathlib import Path
 from .types import Transcript, Verdict
 
 
+def _safe(model_id: str) -> str:
+    """Sanitize a model ID for use as a filename component.
+    Models from OpenRouter and similar providers use slash-namespacing
+    (e.g. deepseek/deepseek-chat, z-ai/glm-4.6). Replace / with __ to
+    keep everything in one directory level."""
+    return model_id.replace("/", "__")
+
+
 def transcript_path(
     data_dir: Path,
     axis_id: str,
@@ -14,7 +22,7 @@ def transcript_path(
     return (
         Path(data_dir)
         / "raw" / "interviews" / axis_id
-        / f"{interviewer}__{interviewee}__r{rerun}.json"
+        / f"{_safe(interviewer)}__{_safe(interviewee)}__r{rerun}.json"
     )
 
 
@@ -29,7 +37,7 @@ def verdict_path(
     return (
         Path(data_dir)
         / "raw" / "verdicts" / axis_id
-        / f"{interviewer}__{interviewee}__r{rerun}.json"
+        / f"{_safe(interviewer)}__{_safe(interviewee)}__r{rerun}.json"
     )
 
 
