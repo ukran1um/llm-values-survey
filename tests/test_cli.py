@@ -37,6 +37,7 @@ def test_run_axis_command_invokes_runner(tmp_path: Path, monkeypatch):
         captured["axis_id"] = axis.id
         captured["models"] = models
         captured["n_reruns"] = n_reruns
+        return {"ok": 2, "skipped": 0, "failed": 0, "total_cost": 0.01}
 
     import llm_values.cli as cli
     monkeypatch.setattr(cli, "run_axis", fake_run_axis)

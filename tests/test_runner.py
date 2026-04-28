@@ -69,3 +69,16 @@ def test_run_axis_skips_when_both_exist(tmp_path: Path):
                 first_count = call_count[0]
                 run_axis(AXIS, models=["A", "B"], n_reruns=1, data_dir=tmp_path, budget=budget)
                 assert call_count[0] == first_count  # no new calls
+
+
+def test_run_axis_parallel_writes_correct_files(tmp_path: Path):
+    """Parallel execution should produce the same files as serial."""
+    budget = Budget(state_path=tmp_path / "budget.json", cap_usd=10.0)
+    with patch("llm_values.runner.conduct_pairwise_interview", side_effect=fake_interview):
+        with patch("llm_values.runner.get_client", return_value=None):
+            with patch("llm_values.runner._extras_for", return_value={}):
+                run_axis(AXIS, models=["A", "B", "C"], n_reruns=1, data_dir=tmp_path, budget=budget, concurrency=4)
+
+    # 3 models × 2 partners = 6 directed pairs
+    assert len(list((tmp_path / "raw" / "interviews" / AXIS.id).glob("*.json"))) == 6
+    assert len(list((tmp_path / "raw" / "verdicts" / AXIS.id).glob("*.json"))) == 6
