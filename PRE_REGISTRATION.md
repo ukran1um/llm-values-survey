@@ -207,3 +207,16 @@ Sibling-pair clustering (Opus vs Sonnet) is reported as a sub-finding within the
 - Total comparisons across H1/H2/H3-redrafted/H4: ≈ 200. Benjamini-Hochberg FDR at q=0.05 still applies.
 - H4 introduces ~$0.15 of additional API spend. Total budget cap remains $400 hard cap; expected total now still ~$305–360 + ~$0.15 ≈ unchanged.
 - H3 reframing requires no additional data collection — same 57-dim fingerprints, different aggregation.
+
+---
+
+## Amendment 3 — 2026-04-28
+
+This amendment locks the Anthropic model IDs to their dated snapshots, replacing the bare aliases used in the original lock. No methodology change — the bare aliases currently resolve to these exact dated versions. The lock ensures reproducibility if Anthropic releases a 4.7.x or 4.6.x minor update during or after the data collection.
+
+- `claude-opus-4-7` → `claude-opus-4-7-20260416` (released 2026-04-16)
+- `claude-sonnet-4-6` → `claude-sonnet-4-6-20260217` (released 2026-02-17)
+
+The other 10 models in the v1 roster already use dated or version-pinned IDs (`gpt-5.5-2026-04-23`, `mistralai/mistral-large-2411`, `meta-llama/llama-4-scout-17b-16e-instruct`, etc.) and need no change.
+
+Methodology, axes, hypotheses, and budget remain as committed in the original PRE_REG plus Amendments 1 and 2.

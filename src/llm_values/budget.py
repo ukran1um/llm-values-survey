@@ -1,5 +1,6 @@
 from __future__ import annotations
 import json
+import threading
 from pathlib import Path
 
 
@@ -13,6 +14,7 @@ class Budget:
     def __init__(self, state_path: Path, cap_usd: float):
         self.state_path = Path(state_path)
         self.cap_usd = cap_usd
+        self._lock = threading.Lock()
         self._spent = self._load()
 
     def _load(self) -> float:
@@ -29,17 +31,18 @@ class Budget:
         )
 
     def add(self, cost_usd: float) -> None:
-        # Re-read from disk so multi-instance usage in the same process
-        # cannot silently overwrite each other's progress.
-        self._spent = self._load()
-        if self._spent + cost_usd > self.cap_usd:
-            raise BudgetExceeded(
-                f"would exceed cap (${self.cap_usd:.2f}); "
-                f"spent ${self._spent:.4f}, attempted +${cost_usd:.4f}"
-            )
-        # Round to 6 decimals to keep accumulated float drift below visible precision.
-        self._spent = round(self._spent + cost_usd, 6)
-        self._save()
+        with self._lock:
+            # Re-read from disk so multi-instance usage in the same process
+            # cannot silently overwrite each other's progress.
+            self._spent = self._load()
+            if self._spent + cost_usd > self.cap_usd:
+                raise BudgetExceeded(
+                    f"would exceed cap (${self.cap_usd:.2f}); "
+                    f"spent ${self._spent:.4f}, attempted +${cost_usd:.4f}"
+                )
+            # Round to 6 decimals to keep accumulated float drift below visible precision.
+            self._spent = round(self._spent + cost_usd, 6)
+            self._save()
 
     @property
     def spent_usd(self) -> float:
