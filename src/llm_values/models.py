@@ -21,8 +21,8 @@ class ChatClient(Protocol):
 # snapshots become available, but do not update silently mid-run.
 MODEL_TO_PROVIDER: dict[str, str] = {
     # Anthropic — frontier closed Western
-    "claude-opus-4-7-20260416": "anthropic",
-    "claude-sonnet-4-6-20260217": "anthropic",
+    "claude-opus-4-7": "anthropic",
+    "claude-sonnet-4-6": "anthropic",
     # OpenAI — frontier closed Western
     "gpt-5.5-2026-04-23": "openai",
     # Google — frontier closed Western

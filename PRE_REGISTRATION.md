@@ -220,3 +220,22 @@ This amendment locks the Anthropic model IDs to their dated snapshots, replacing
 The other 10 models in the v1 roster already use dated or version-pinned IDs (`gpt-5.5-2026-04-23`, `mistralai/mistral-large-2411`, `meta-llama/llama-4-scout-17b-16e-instruct`, etc.) and need no change.
 
 Methodology, axes, hypotheses, and budget remain as committed in the original PRE_REG plus Amendments 1 and 2.
+
+---
+
+## Amendment 4 — 2026-04-28
+
+This amendment reverts Amendment 3 (the Anthropic dated-snapshot lock). Reason for revert:
+
+A live API verification (`scripts/verify_roster.py` against the Anthropic API on 2026-04-28) confirmed that the dated snapshot IDs locked in Amendment 3 — `claude-opus-4-7-20260416` and `claude-sonnet-4-6-20260217` — do **not** exist in the Anthropic catalog. The Anthropic API for Claude 4.x serves only undated aliases (`claude-opus-4-7`, `claude-sonnet-4-6`), unlike Claude 3.x which exposed dated snapshots like `claude-3-5-sonnet-20241022`.
+
+Amendment 3 was authored on the assumption that dated forms existed (based on release-date metadata in third-party pricing pages); this assumption was false for the 4.x generation. The dated IDs were never live and never resolvable.
+
+**Resolution:** Revert to bare aliases for the two Anthropic models in the v1 roster:
+
+- `claude-opus-4-7-20260416` → `claude-opus-4-7`
+- `claude-sonnet-4-6-20260217` → `claude-sonnet-4-6`
+
+**Methodological caveat:** Reproducibility for the two Anthropic models in the v1 roster is limited by Anthropic's current API design, not by the study design. If Anthropic releases a 4.7.x or 4.6.x minor update during or after data collection, the alias would shift to that newer version. We document the API state at the time of data collection in `FINAL_RUN_NOTES.md` (planned at end of Plan 03) and accept this limitation as a constraint of the available infrastructure for Claude 4.x. The 10 other models in the roster use dated/version-pinned IDs and are unaffected.
+
+The methodology, axes, hypotheses, budget cap, and all other locks from the original PRE_REG and Amendments 1-2 remain in force.

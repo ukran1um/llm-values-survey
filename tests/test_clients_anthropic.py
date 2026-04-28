@@ -15,7 +15,7 @@ def test_anthropic_chat_constructs_request(MockAnthropic):
 
     client = AnthropicChatClient(api_key="test-key")
     response = client.chat(
-        model="claude-opus-4-7-20260416",
+        model="claude-opus-4-7",
         messages=[ChatMessage(role="user", content="hi")],
         temperature=0.7,
         max_tokens=500,
@@ -24,11 +24,11 @@ def test_anthropic_chat_constructs_request(MockAnthropic):
     assert response.text == "hello world"
     assert response.prompt_tokens == 42
     assert response.completion_tokens == 17
-    assert response.model == "claude-opus-4-7-20260416"
+    assert response.model == "claude-opus-4-7"
 
     MockAnthropic.return_value.messages.create.assert_called_once()
     kwargs = MockAnthropic.return_value.messages.create.call_args.kwargs
-    assert kwargs["model"] == "claude-opus-4-7-20260416"
+    assert kwargs["model"] == "claude-opus-4-7"
     assert "temperature" not in kwargs
     assert kwargs["max_tokens"] == 500
     assert kwargs["messages"] == [{"role": "user", "content": "hi"}]
@@ -39,7 +39,7 @@ def test_anthropic_rejects_multiple_system_messages(MockAnthropic):
     client = AnthropicChatClient(api_key="test-key")
     with pytest.raises(ValueError, match="at most 1 system message"):
         client.chat(
-            model="claude-opus-4-7-20260416",
+            model="claude-opus-4-7",
             messages=[
                 ChatMessage(role="system", content="first"),
                 ChatMessage(role="system", content="second"),
@@ -57,7 +57,7 @@ def test_anthropic_extracts_system_message(MockAnthropic):
 
     client = AnthropicChatClient(api_key="test-key")
     client.chat(
-        model="claude-opus-4-7-20260416",
+        model="claude-opus-4-7",
         messages=[
             ChatMessage(role="system", content="be terse"),
             ChatMessage(role="user", content="hi"),
@@ -78,7 +78,7 @@ def test_anthropic_accepts_extras_param(MockAnthropic):
 
     client = AnthropicChatClient(api_key="test-key")
     response = client.chat(
-        model="claude-opus-4-7-20260416",
+        model="claude-opus-4-7",
         messages=[ChatMessage(role="user", content="hi")],
         extras={"some_flag": True},  # ignored, but must not crash
     )

@@ -47,14 +47,14 @@ def test_run_axis_command_invokes_runner(tmp_path: Path, monkeypatch):
         [
             "run-axis", "a",
             "--battery", "pilot",
-            "--models", "claude-opus-4-7-20260416,gpt-5.5-2026-04-23",
+            "--models", "claude-opus-4-7,gpt-5.5-2026-04-23",
             "--reruns", "1",
             "--cap", "5.0",
         ],
     )
     assert result.exit_code == 0, result.output
     assert captured["axis_id"] == "a"
-    assert captured["models"] == ["claude-opus-4-7-20260416", "gpt-5.5-2026-04-23"]
+    assert captured["models"] == ["claude-opus-4-7", "gpt-5.5-2026-04-23"]
     assert captured["n_reruns"] == 1
 
 

@@ -4,10 +4,10 @@ from llm_values.pricing import calc_cost, PRICING
 
 
 def test_calc_cost_known_model():
-    # claude-opus-4-7-20260416: 5.0 in / 25.0 out per 1M (verified against Anthropic pricing 2026-04-26)
-    cost = calc_cost("claude-opus-4-7-20260416", prompt_tokens=1_000_000, completion_tokens=0)
+    # claude-opus-4-7: 5.0 in / 25.0 out per 1M (verified against Anthropic pricing 2026-04-26)
+    cost = calc_cost("claude-opus-4-7", prompt_tokens=1_000_000, completion_tokens=0)
     assert cost == pytest.approx(5.0)
-    cost = calc_cost("claude-opus-4-7-20260416", prompt_tokens=0, completion_tokens=1_000_000)
+    cost = calc_cost("claude-opus-4-7", prompt_tokens=0, completion_tokens=1_000_000)
     assert cost == pytest.approx(25.0)
 
 
@@ -23,5 +23,5 @@ def test_calc_cost_unknown_model_returns_zero():
 
 
 def test_pricing_table_has_required_models():
-    required = {"claude-opus-4-7-20260416", "claude-sonnet-4-6-20260217", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "mistralai/mistral-large-2411", "minimax-m2-7"}
+    required = {"claude-opus-4-7", "claude-sonnet-4-6", "gpt-5.5-2026-04-23", "gemini-2.5-pro", "mistralai/mistral-large-2411", "minimax-m2-7"}
     assert required.issubset(set(PRICING.keys()))

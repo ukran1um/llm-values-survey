@@ -7,8 +7,8 @@ PRICING: dict[str, tuple[float, float]] = {
     # Anthropic — verified at platform.claude.com/docs/en/about-claude/pricing.
     # Opus 4.7 uses a new tokenizer that may produce up to ~35% more tokens for the same
     # input text vs. older Opus models. Per-call cost = rate × tokenizer overhead.
-    "claude-opus-4-7-20260416": (5.0, 25.0),
-    "claude-sonnet-4-6-20260217": (3.0, 15.0),
+    "claude-opus-4-7": (5.0, 25.0),
+    "claude-sonnet-4-6": (3.0, 15.0),
     # OpenAI — verified at openai.com/api/pricing. GPT-5.5 launched 2026-04-23.
     "gpt-5.5-2026-04-23": (5.0, 30.0),
     # Google
