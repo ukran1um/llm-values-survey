@@ -1,14 +1,16 @@
 from __future__ import annotations
 
 # USD per 1,000,000 tokens, (input_price, output_price).
-# Prices are illustrative as of plan-write date; final values resolved against
-# provider pages when the run executes. Update before pre-registration commit.
+# Anthropic + OpenAI prices verified against the canonical provider pricing pages 2026-04-26.
+# Other prices are best-effort; refine before any cost-sensitive paper claim.
 PRICING: dict[str, tuple[float, float]] = {
-    # Anthropic
-    "claude-opus-4-7": (15.0, 75.0),
+    # Anthropic — verified at platform.claude.com/docs/en/about-claude/pricing.
+    # Opus 4.7 uses a new tokenizer that may produce up to ~35% more tokens for the same
+    # input text vs. older Opus models. Per-call cost = rate × tokenizer overhead.
+    "claude-opus-4-7": (5.0, 25.0),
     "claude-sonnet-4-6": (3.0, 15.0),
-    # OpenAI
-    "gpt-5.5-2026-04-23": (5.0, 20.0),
+    # OpenAI — verified at openai.com/api/pricing. GPT-5.5 launched 2026-04-23.
+    "gpt-5.5-2026-04-23": (5.0, 30.0),
     # Google
     "gemini-2.5-pro": (3.5, 10.5),
     # xAI
