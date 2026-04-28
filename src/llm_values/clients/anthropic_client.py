@@ -44,4 +44,5 @@ class AnthropicChatClient:
             completion_tokens=completion_tokens,
             cost_usd=calc_cost(model, prompt_tokens, completion_tokens),
             model=model,
+            stop_reason=getattr(msg, "stop_reason", None),
         )

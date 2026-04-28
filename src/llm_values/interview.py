@@ -5,6 +5,7 @@ import re
 from .types import Axis, ChatMessage, Turn, Transcript, Verdict, VerdictFormat
 from .models import ChatClient
 from ._parsing import extract_json_object
+from ._runtime_meta import now_iso, get_methodology_commit
 
 
 # Strip <think>...</think> blocks (Groq qwen3, GPT-OSS-120b reasoning leaks)
@@ -110,6 +111,8 @@ def conduct_pairwise_interview(
       - verdict.cost_usd: the verdict-issuing call only
     Total per (interviewer, interviewee, axis, rerun) = sum of all three.
     """
+    started_at = now_iso()
+    commit = get_methodology_commit()
     turns: list[Turn] = []
     interviewer_cost = 0.0
     interviewee_cost = 0.0
@@ -145,7 +148,13 @@ def conduct_pairwise_interview(
         )
         answer = _strip_thinking(a_response.text)
         interviewee_cost += a_response.cost_usd
-        turns.append(Turn(question=question, answer=answer))
+        turns.append(Turn(
+            question=question,
+            answer=answer,
+            answer_prompt_tokens=a_response.prompt_tokens,
+            answer_completion_tokens=a_response.completion_tokens,
+            answer_stop_reason=a_response.stop_reason,
+        ))
 
     # Issue verdict
     instructions, schema = _format_verdict_format_instructions(axis.verdict_format)
@@ -171,6 +180,7 @@ def conduct_pairwise_interview(
     parsed = json.loads(extract_json_object(v_response.text))
     verdict_kwargs = dict(
         axis_id=axis.id,
+        axis_description=axis.description,
         interviewer=interviewer_model,
         interviewee=interviewee_model,
         rerun=rerun,
@@ -180,6 +190,12 @@ def conduct_pairwise_interview(
         key_quote=parsed["key_quote"],
         n_turns_used=len(turns),
         cost_usd=verdict_call_cost,
+        created_at=now_iso(),
+        methodology_commit=commit,
+        stop_reason=v_response.stop_reason,
+        prompt_tokens=v_response.prompt_tokens,
+        completion_tokens=v_response.completion_tokens,
+        thoughts_tokens=v_response.thoughts_tokens,
     )
     if axis.verdict_format.type == "binary":
         choice = parsed["binary_choice"]
@@ -207,5 +223,7 @@ def conduct_pairwise_interview(
         turns=turns,
         interviewer_cost_usd=interviewer_cost,
         interviewee_cost_usd=interviewee_cost,
+        created_at=started_at,
+        methodology_commit=commit,
     )
     return transcript, verdict

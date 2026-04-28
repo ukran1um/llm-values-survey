@@ -46,10 +46,17 @@ class GoogleChatClient:
         prompt_tokens = response.usage_metadata.prompt_token_count or 0
         # candidates_token_count is non-thinking output only; cost is computed on that.
         completion_tokens = response.usage_metadata.candidates_token_count or 0
+        thoughts_tokens = getattr(response.usage_metadata, "thoughts_token_count", None) or 0
+        stop_reason = None
+        if response.candidates and len(response.candidates) > 0:
+            fr = getattr(response.candidates[0], "finish_reason", None)
+            stop_reason = str(fr) if fr is not None else None
         return ChatResponse(
             text=response.text or "",
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
+            thoughts_tokens=thoughts_tokens,
             cost_usd=calc_cost(model, prompt_tokens, completion_tokens),
             model=model,
+            stop_reason=stop_reason,
         )

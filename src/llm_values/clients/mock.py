@@ -28,6 +28,8 @@ class MockChatClient:
     fixed_prompt_tokens: int = 100
     fixed_completion_tokens: int = 200
     fixed_cost_usd: float = 0.001
+    fixed_stop_reason: str | None = "end_turn"
+    fixed_thoughts_tokens: int = 0
 
     def chat(
         self,
@@ -53,6 +55,8 @@ class MockChatClient:
             text=text,
             prompt_tokens=self.fixed_prompt_tokens,
             completion_tokens=self.fixed_completion_tokens,
+            thoughts_tokens=self.fixed_thoughts_tokens,
             cost_usd=self.fixed_cost_usd,
             model=model,
+            stop_reason=self.fixed_stop_reason,
         )

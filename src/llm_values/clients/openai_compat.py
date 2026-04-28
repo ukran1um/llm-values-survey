@@ -47,10 +47,12 @@ class OpenAICompatClient:
         text = data["choices"][0]["message"]["content"]
         prompt_tokens = int(data["usage"]["prompt_tokens"])
         completion_tokens = int(data["usage"]["completion_tokens"])
+        stop_reason = data["choices"][0].get("finish_reason")
         return ChatResponse(
             text=text,
             prompt_tokens=prompt_tokens,
             completion_tokens=completion_tokens,
             cost_usd=calc_cost(model, prompt_tokens, completion_tokens),
             model=model,
+            stop_reason=stop_reason,
         )

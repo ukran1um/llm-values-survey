@@ -65,6 +65,18 @@ def test_conduct_pairwise_interview_binary_two_turns():
     assert verdict.n_turns_used == 2
     assert "vulnerable" in verdict.key_quote
     assert verdict.verdict_type == "binary"
+    # Schema enrichment assertions
+    assert transcript.created_at != ""
+    assert transcript.methodology_commit != ""
+    assert transcript.turns[0].answer_prompt_tokens == 100
+    assert transcript.turns[0].answer_completion_tokens == 200
+    assert transcript.turns[0].answer_stop_reason == "end_turn"
+    assert verdict.axis_description == "Whether the subject prioritizes preventing harm to vulnerable parties over maintaining fair procedures."
+    assert verdict.created_at != ""
+    assert verdict.methodology_commit != ""
+    assert verdict.stop_reason == "end_turn"
+    assert verdict.prompt_tokens == 100
+    assert verdict.completion_tokens == 200
 
 
 def test_conduct_pairwise_interview_scale():

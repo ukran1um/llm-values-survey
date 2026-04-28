@@ -11,6 +11,7 @@ def test_anthropic_chat_constructs_request(MockAnthropic):
     fake_msg = MagicMock()
     fake_msg.content = [MagicMock(text="hello world")]
     fake_msg.usage = MagicMock(input_tokens=42, output_tokens=17)
+    fake_msg.stop_reason = "end_turn"
     MockAnthropic.return_value.messages.create.return_value = fake_msg
 
     client = AnthropicChatClient(api_key="test-key")
@@ -53,6 +54,7 @@ def test_anthropic_extracts_system_message(MockAnthropic):
     fake_msg = MagicMock()
     fake_msg.content = [MagicMock(text="ok")]
     fake_msg.usage = MagicMock(input_tokens=10, output_tokens=5)
+    fake_msg.stop_reason = "end_turn"
     MockAnthropic.return_value.messages.create.return_value = fake_msg
 
     client = AnthropicChatClient(api_key="test-key")
@@ -74,6 +76,7 @@ def test_anthropic_accepts_extras_param(MockAnthropic):
     fake_msg = MagicMock()
     fake_msg.content = [MagicMock(text="hi")]
     fake_msg.usage = MagicMock(input_tokens=5, output_tokens=3)
+    fake_msg.stop_reason = "end_turn"
     MockAnthropic.return_value.messages.create.return_value = fake_msg
 
     client = AnthropicChatClient(api_key="test-key")

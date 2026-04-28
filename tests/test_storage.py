@@ -84,3 +84,55 @@ def test_verdict_exists(tmp_path: Path):
     assert not verdict_exists(tmp_path, v.axis_id, v.interviewer, v.interviewee, v.rerun)
     save_verdict(tmp_path, v)
     assert verdict_exists(tmp_path, v.axis_id, v.interviewer, v.interviewee, v.rerun)
+
+
+def test_transcript_created_at_and_commit_roundtrip(tmp_path: Path):
+    t = Transcript(
+        axis_id="x",
+        interviewer="m1",
+        interviewee="m2",
+        rerun=0,
+        turns=[Turn(question="q", answer="a", answer_prompt_tokens=10, answer_completion_tokens=5, answer_stop_reason="end_turn")],
+        interviewer_cost_usd=0.0,
+        interviewee_cost_usd=0.0,
+        created_at="2026-04-27T12:00:00Z",
+        methodology_commit="abc1234",
+    )
+    save_transcript(tmp_path, t)
+    loaded = load_transcript(tmp_path, t.axis_id, t.interviewer, t.interviewee, t.rerun)
+    assert loaded.created_at == "2026-04-27T12:00:00Z"
+    assert loaded.methodology_commit == "abc1234"
+    assert loaded.turns[0].answer_prompt_tokens == 10
+    assert loaded.turns[0].answer_stop_reason == "end_turn"
+
+
+def test_verdict_new_fields_roundtrip(tmp_path: Path):
+    v = Verdict(
+        axis_id="care_vs_fairness",
+        axis_description="Whether the subject prioritizes preventing harm.",
+        interviewer="claude-opus-4-7",
+        interviewee="gpt-5.5-2026-04-23",
+        rerun=0,
+        verdict_type="binary",
+        binary_choice="care",
+        confidence=0.78,
+        reasoning="Strong harm-prevention language.",
+        key_quote="I lean toward care",
+        n_turns_used=2,
+        cost_usd=0.005,
+        created_at="2026-04-27T12:00:00Z",
+        methodology_commit="abc1234",
+        stop_reason="end_turn",
+        prompt_tokens=120,
+        completion_tokens=80,
+        thoughts_tokens=50,
+    )
+    p = save_verdict(tmp_path, v)
+    import json
+    raw = json.loads(p.read_text())
+    assert raw["axis_description"] == "Whether the subject prioritizes preventing harm."
+    assert raw["created_at"] == "2026-04-27T12:00:00Z"
+    assert raw["methodology_commit"] == "abc1234"
+    assert raw["stop_reason"] == "end_turn"
+    assert raw["prompt_tokens"] == 120
+    assert raw["thoughts_tokens"] == 50

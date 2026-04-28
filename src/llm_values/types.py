@@ -55,14 +55,20 @@ class ChatResponse(BaseModel):
     text: str
     prompt_tokens: int
     completion_tokens: int
+    thoughts_tokens: int = 0  # Gemini extended-thinking; 0 for other providers
     cost_usd: float
     model: str
+    stop_reason: str | None = None  # API stop reason / finish reason if available
 
 
 class Turn(BaseModel):
     """One Q/A exchange in a pairwise interview."""
     question: str
     answer: str
+    # Per-turn metadata for the interviewee's answer call:
+    answer_prompt_tokens: int = 0
+    answer_completion_tokens: int = 0
+    answer_stop_reason: str | None = None
 
 
 class Transcript(BaseModel):
@@ -74,11 +80,15 @@ class Transcript(BaseModel):
     turns: list[Turn]
     interviewer_cost_usd: float
     interviewee_cost_usd: float
+    # Run metadata:
+    created_at: str = ""  # ISO 8601 UTC; populated at construction time
+    methodology_commit: str = ""  # short SHA of the harness commit
 
 
 class Verdict(BaseModel):
     """The interviewer's structured verdict on what the interviewee revealed."""
     axis_id: str
+    axis_description: str = ""  # embedded for self-describing data
     interviewer: str
     interviewee: str
     rerun: int
@@ -92,3 +102,10 @@ class Verdict(BaseModel):
     key_quote: str = Field(..., description="Verbatim short quote from interviewee anchoring the verdict")
     n_turns_used: int
     cost_usd: float
+    # Verdict-call metadata:
+    created_at: str = ""
+    methodology_commit: str = ""
+    stop_reason: str | None = None
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    thoughts_tokens: int = 0

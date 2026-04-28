@@ -8,7 +8,14 @@ from llm_values.types import ChatMessage
 def test_google_chat_constructs_request(mock_genai):
     fake_response = MagicMock()
     fake_response.text = "google answer"
-    fake_response.usage_metadata = MagicMock(prompt_token_count=30, candidates_token_count=20)
+    fake_response.usage_metadata = MagicMock(
+        prompt_token_count=30,
+        candidates_token_count=20,
+        thoughts_token_count=50,
+    )
+    fake_candidate = MagicMock()
+    fake_candidate.finish_reason = "STOP"
+    fake_response.candidates = [fake_candidate]
     mock_client = MagicMock()
     mock_client.models.generate_content.return_value = fake_response
     mock_genai.Client.return_value = mock_client
@@ -32,7 +39,14 @@ def test_google_chat_constructs_request(mock_genai):
 def test_google_passes_thinking_budget_with_overhead(mock_genai):
     fake_response = MagicMock()
     fake_response.text = "ok"
-    fake_response.usage_metadata = MagicMock(prompt_token_count=10, candidates_token_count=5)
+    fake_response.usage_metadata = MagicMock(
+        prompt_token_count=10,
+        candidates_token_count=5,
+        thoughts_token_count=0,
+    )
+    fake_candidate = MagicMock()
+    fake_candidate.finish_reason = "STOP"
+    fake_response.candidates = [fake_candidate]
     mock_client = MagicMock()
     mock_client.models.generate_content.return_value = fake_response
     mock_genai.Client.return_value = mock_client
