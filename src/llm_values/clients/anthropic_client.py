@@ -9,7 +9,8 @@ class AnthropicChatClient:
     """ChatClient implementation using the Anthropic SDK."""
 
     def __init__(self, api_key: str):
-        self._client = Anthropic(api_key=api_key)
+        # 90s timeout matches openai_compat — a stalled read can't hang a worker.
+        self._client = Anthropic(api_key=api_key, timeout=90.0)
 
     def chat(
         self,

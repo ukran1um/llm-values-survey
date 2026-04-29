@@ -15,11 +15,15 @@ class OpenAICompatClient:
         base_url: str,
         api_key: str,
         http: Optional[httpx.Client] = None,
-        timeout: float = 120.0,
+        timeout: Optional[httpx.Timeout] = None,
     ):
         self.base_url = base_url.rstrip("/")
         self.api_key = api_key
-        self._http = http or httpx.Client(timeout=timeout)
+        # Explicit per-phase timeouts so a stalled read can't hang a worker forever.
+        # The Apr 28-29 production run wedged 8 worker threads on idle keep-alive
+        # sockets when the shorthand timeout=120.0 wasn't enforcing read timeouts.
+        default_timeout = httpx.Timeout(connect=10.0, read=90.0, write=30.0, pool=10.0)
+        self._http = http or httpx.Client(timeout=timeout or default_timeout)
 
     def chat(
         self,

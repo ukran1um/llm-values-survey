@@ -5,6 +5,7 @@ from itertools import permutations
 from pathlib import Path
 from typing import Iterable
 
+import httpx
 from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_exponential
 
 from .budget import Budget, BudgetExceeded
@@ -30,8 +31,17 @@ def _extras_for(model: str) -> dict:
 
 # Retry transient errors (rate limits, timeouts, 5xx) with exponential backoff.
 # Does NOT retry: BudgetExceeded, ValidationError, KeyError, ValueError (those are real bugs or genuine refusals).
+# httpx.* exceptions cover read/connect timeouts and remote protocol errors that the
+# Apr 28-29 production run hit when the openai_compat shorthand timeout wasn't enforcing reads.
 @retry(
-    retry=retry_if_exception_type((TimeoutError, ConnectionError, OSError)),
+    retry=retry_if_exception_type((
+        TimeoutError,
+        ConnectionError,
+        OSError,
+        httpx.TimeoutException,
+        httpx.RemoteProtocolError,
+        httpx.NetworkError,
+    )),
     stop=stop_after_attempt(3),
     wait=wait_exponential(multiplier=2, min=2, max=30),
     reraise=True,

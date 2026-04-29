@@ -1,5 +1,6 @@
 from __future__ import annotations
 from google import genai
+from google.genai import types as genai_types
 
 from ..types import ChatMessage, ChatResponse
 from ..pricing import calc_cost
@@ -9,7 +10,12 @@ class GoogleChatClient:
     """ChatClient implementation using google-genai SDK."""
 
     def __init__(self, api_key: str):
-        self._client = genai.Client(api_key=api_key)
+        # 90 000 ms = 90s read timeout — matches anthropic/openai_compat so a stalled
+        # read can't hang a worker thread forever.
+        self._client = genai.Client(
+            api_key=api_key,
+            http_options=genai_types.HttpOptions(timeout=90_000),
+        )
 
     def chat(
         self,
