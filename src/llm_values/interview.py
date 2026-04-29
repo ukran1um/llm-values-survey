@@ -135,7 +135,7 @@ def conduct_pairwise_interview(
             max_tokens=300,
             extras=interviewer_extras,
         )
-        question = q_response.text.strip().strip('"').strip("'")
+        question = _strip_thinking(q_response.text).strip().strip('"').strip("'")
         interviewer_cost += q_response.cost_usd
 
         # Interviewee answers in a clean session (no awareness of evaluation context)
