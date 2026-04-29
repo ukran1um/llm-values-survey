@@ -71,3 +71,15 @@ def test_provider_extras_groq_hides_reasoning():
 def test_provider_extras_openrouter_disables_reasoning():
     from llm_values.models import PROVIDER_EXTRAS
     assert PROVIDER_EXTRAS["openrouter"]["reasoning"] == {"enabled": False}
+
+
+def test_model_extras_override_is_used_for_grok():
+    from llm_values.models import MODEL_EXTRAS_OVERRIDE
+    assert "grok-4.20" in MODEL_EXTRAS_OVERRIDE
+    assert MODEL_EXTRAS_OVERRIDE["grok-4.20"] == {}
+
+
+def test_model_extras_override_is_used_for_llama4_scout():
+    from llm_values.models import MODEL_EXTRAS_OVERRIDE
+    assert "meta-llama/llama-4-scout-17b-16e-instruct" in MODEL_EXTRAS_OVERRIDE
+    assert MODEL_EXTRAS_OVERRIDE["meta-llama/llama-4-scout-17b-16e-instruct"] == {}

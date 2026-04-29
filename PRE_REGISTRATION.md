@@ -239,3 +239,34 @@ Amendment 3 was authored on the assumption that dated forms existed (based on re
 **Methodological caveat:** Reproducibility for the two Anthropic models in the v1 roster is limited by Anthropic's current API design, not by the study design. If Anthropic releases a 4.7.x or 4.6.x minor update during or after data collection, the alias would shift to that newer version. We document the API state at the time of data collection in `FINAL_RUN_NOTES.md` (planned at end of Plan 03) and accept this limitation as a constraint of the available infrastructure for Claude 4.x. The 10 other models in the roster use dated/version-pinned IDs and are unaffected.
 
 The methodology, axes, hypotheses, budget cap, and all other locks from the original PRE_REG and Amendments 1-2 remain in force.
+
+---
+
+## Amendment 5 — 2026-04-28
+
+This amendment documents a per-model carve-out from the universal "thinking-disable at API level" claim in the original Methodology section. Discovered during the first attempted production run of Plan 03 Task 4: two models in the v1 roster reject the provider-default thinking-disable flags.
+
+### Affected models
+
+1. **`grok-4.20`** (xAI) rejects `reasoning_effort: "low"`. Verified by direct API call returning HTTP 400 with `"Model grok-4.20 does not support parameter reasoningEffort"`. The xAI alias for grok-4.20 routes to a reasoning model variant (`grok-4.20-0309-reasoning` per their alias resolution) that does not accept the OpenAI-style `reasoning_effort` knob. Resolution: send NO extras for this model. Reasoning behavior is at xAI default for grok-4.20.
+
+2. **`meta-llama/llama-4-scout-17b-16e-instruct`** (Groq) rejects `reasoning_format: "hidden"`. Llama 4 Scout is a non-reasoning model on Groq; only `openai/gpt-oss-*` and `qwen/qwen3-*` accept that param within the Groq-served roster. Resolution: send NO extras for this model. Llama 4 Scout has no internal "thinking" to disable, so this carve-out has no methodological consequence beyond completeness of disclosure.
+
+### Implementation
+
+A new `MODEL_EXTRAS_OVERRIDE: dict[str, dict]` is introduced (`src/llm_values/models.py`). When a model appears as a key, its empty dict overrides the provider-level default. The runner's `_extras_for()` consults the override before falling back to `PROVIDER_EXTRAS`.
+
+### Methodology paper disclosure
+
+The methodology paper will note that "thinking mode disabled at the API level on every provider/model combination that accepts the disable flag" — and explicitly list the two carve-outs:
+- `grok-4.20`: reasoning at xAI default (not disabled)
+- `meta-llama/llama-4-scout-17b-16e-instruct`: not a reasoning model (nothing to disable)
+- `gemini-2.5-pro`: `thinking_budget=512` minimum (Gemini's API rejects 0); see Amendment 1.
+
+### Pre-registration integrity
+
+This amendment was filed BEFORE any production-run data was collected (only $0.06 of dispatch overhead, no v1-roster verdicts on disk). The methodology, axes, hypotheses, and budget cap remain in force.
+
+### Lessons for v2 / future runs
+
+Smoke validation should include EVERY model in the locked roster, not a subset. The earlier verification smokes used 3-4 models each, neither set including grok-4.20 or llama-4-scout. v2 documentation will require a "full-roster smoke" step (1 axis × all 12 models × 1 rerun = 132 cells, ~$5) before any production run.

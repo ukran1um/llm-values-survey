@@ -9,7 +9,7 @@ from tenacity import retry, retry_if_exception_type, stop_after_attempt, wait_ex
 
 from .budget import Budget, BudgetExceeded
 from .interview import conduct_pairwise_interview
-from .models import get_client, model_provider, PROVIDER_EXTRAS
+from .models import get_client, model_provider, PROVIDER_EXTRAS, MODEL_EXTRAS_OVERRIDE
 from .storage import (
     save_transcript,
     save_verdict,
@@ -23,6 +23,8 @@ log = logging.getLogger(__name__)
 
 
 def _extras_for(model: str) -> dict:
+    if model in MODEL_EXTRAS_OVERRIDE:
+        return MODEL_EXTRAS_OVERRIDE[model]
     return PROVIDER_EXTRAS.get(model_provider(model), {})
 
 

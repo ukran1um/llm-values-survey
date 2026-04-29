@@ -82,3 +82,18 @@ def test_run_axis_parallel_writes_correct_files(tmp_path: Path):
     # 3 models × 2 partners = 6 directed pairs
     assert len(list((tmp_path / "raw" / "interviews" / AXIS.id).glob("*.json"))) == 6
     assert len(list((tmp_path / "raw" / "verdicts" / AXIS.id).glob("*.json"))) == 6
+
+
+def test_extras_for_uses_model_override_when_present():
+    from llm_values.runner import _extras_for
+    # grok-4.20 has an empty-dict override, suppressing the xai provider default
+    assert _extras_for("grok-4.20") == {}
+    # claude-opus-4-7 has no override, falls through to anthropic provider default (which is also empty {})
+    assert _extras_for("claude-opus-4-7") == {}
+
+
+def test_extras_for_uses_provider_default_when_no_override():
+    from llm_values.runner import _extras_for
+    # gpt-5.5 has no override, gets openai provider extras
+    assert _extras_for("gpt-5.5-2026-04-23") != {}
+    assert "reasoning_effort" in _extras_for("gpt-5.5-2026-04-23")

@@ -73,6 +73,15 @@ PROVIDER_EXTRAS: dict[str, dict] = {
     },
 }
 
+# Per-model overrides for PROVIDER_EXTRAS. Empty dict means "send no provider-extras for this model".
+# Used for models that reject their provider's default thinking-disable flags.
+# - grok-4.20: xAI's grok-4.20 alias rejects `reasoning_effort` (verified empirically 2026-04-28).
+# - meta-llama/llama-4-scout-17b-16e-instruct: non-reasoning Groq model, rejects `reasoning_format`.
+MODEL_EXTRAS_OVERRIDE: dict[str, dict] = {
+    "grok-4.20": {},
+    "meta-llama/llama-4-scout-17b-16e-instruct": {},
+}
+
 _CLIENT_CACHE: dict[str, ChatClient] = {}
 
 
