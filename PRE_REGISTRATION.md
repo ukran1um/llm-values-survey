@@ -270,3 +270,39 @@ This amendment was filed BEFORE any production-run data was collected (only $0.0
 ### Lessons for v2 / future runs
 
 Smoke validation should include EVERY model in the locked roster, not a subset. The earlier verification smokes used 3-4 models each, neither set including grok-4.20 or llama-4-scout. v2 documentation will require a "full-roster smoke" step (1 axis × all 12 models × 1 rerun = 132 cells, ~$5) before any production run.
+
+---
+
+## Amendment 6 — 2026-04-28
+
+This amendment documents two harness adjustments that cleaned up artifacts surfaced during full-roster smoke validation. Neither changes the methodology; both improve data quality.
+
+### A. `_strip_thinking` extended to interviewer questions
+
+Previously, `_strip_thinking` (which removes `<think>...</think>` blocks) was applied only to the interviewee answer. The interviewer's question text was passed through unchanged. Some reasoning models (notably qwen3-32b on Groq) leak `<think>` tags into the question-generation output. Now `_strip_thinking` is applied to question text too. No methodology change — the cleaned question text is what the interviewee receives, which is what we want.
+
+### B. Global max_tokens defaults raised; qwen3 override simplified
+
+Previously: question-gen `max_tokens=300`, verdict `max_tokens=400`, answer `max_tokens=2000`. These caps were arbitrary and too tight for reasoning models, which can consume hundreds of tokens on internal reasoning before producing visible output.
+
+Now: question-gen `max_tokens=1000`, verdict `max_tokens=1000`, answer stays at `2000`.
+
+Cost impact: minimal. Caps are ceilings; billing is per-token-used. Non-reasoning models don't touch the headroom. Reasoning models get the room they need to function.
+
+The qwen3-32b override is correspondingly simplified to `{"reasoning_format": "parsed"}` only — no per-model max_tokens cap. Reasoning routes to a separate `reasoning` field on the response, leaving visible content uncluttered. All 12 models in the v1 roster now have UNIFORM max_tokens caps; the only per-model variation in `MODEL_EXTRAS_OVERRIDE` is reasoning-flag handling, not output-length capping.
+
+### Updated MODEL_EXTRAS_OVERRIDE
+
+```python
+MODEL_EXTRAS_OVERRIDE: dict[str, dict] = {
+    "grok-4.20": {},  # xAI rejects reasoning_effort
+    "meta-llama/llama-4-scout-17b-16e-instruct": {},  # non-reasoning Groq model rejects reasoning_format
+    "qwen/qwen3-32b": {"reasoning_format": "parsed"},  # parsed mode keeps visible content uncluttered
+}
+```
+
+### Methodology paper disclosure
+
+The methodology paper section on "thinking-mode disable" will list these three carve-outs alongside the Gemini one (Amendment 1) and explicitly note that all 12 models receive the same max_tokens caps for question-gen / answer / verdict.
+
+The methodology, axes, hypotheses, and budget cap remain in force from the original PRE_REG and prior amendments.

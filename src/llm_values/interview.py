@@ -132,7 +132,7 @@ def conduct_pairwise_interview(
             model=interviewer_model,
             messages=[ChatMessage(role="user", content=q_prompt)],
             temperature=1.0,
-            max_tokens=300,
+            max_tokens=1000,
             extras=interviewer_extras,
         )
         question = _strip_thinking(q_response.text).strip().strip('"').strip("'")
@@ -168,7 +168,7 @@ def conduct_pairwise_interview(
         model=interviewer_model,
         messages=[ChatMessage(role="user", content=v_prompt)],
         temperature=0.0,
-        max_tokens=400,
+        max_tokens=1000,
         extras=interviewer_extras,
     )
     # NOTE: verdict_call_cost is intentionally NOT added to interviewer_cost.
