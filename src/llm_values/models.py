@@ -77,9 +77,18 @@ PROVIDER_EXTRAS: dict[str, dict] = {
 # Used for models that reject their provider's default thinking-disable flags.
 # - grok-4.20: xAI's grok-4.20 alias rejects `reasoning_effort` (verified empirically 2026-04-28).
 # - meta-llama/llama-4-scout-17b-16e-instruct: non-reasoning Groq model, rejects `reasoning_format`.
+# - qwen/qwen3-32b: Groq's `reasoning_format: hidden` exhausts the question-gen token budget
+#   (300 tokens) on silent reasoning, producing empty content. Two-part fix:
+#   1. Use `parsed` so Groq separates thinking into the `reasoning` key; `content` always
+#      holds the visible answer (no inline <think> leakage to strip).
+#   2. Override `max_completion_tokens: 1000` via extras so the body.update() in
+#      OpenAICompatClient overrides the 300-token question-gen cap — Qwen3 needs ~500 reasoning
+#      tokens before it emits visible content. `_strip_thinking` in interview.py remains
+#      as a safety net for any future inline leakage.
 MODEL_EXTRAS_OVERRIDE: dict[str, dict] = {
     "grok-4.20": {},
     "meta-llama/llama-4-scout-17b-16e-instruct": {},
+    "qwen/qwen3-32b": {"reasoning_format": "parsed", "max_completion_tokens": 1000},
 }
 
 _CLIENT_CACHE: dict[str, ChatClient] = {}
