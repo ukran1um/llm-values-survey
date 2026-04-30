@@ -1,0 +1,7 @@
+foundation,atari_mean,atari_sd,n_populations,source
+care,3.9568,0.3062,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
+equality,3.0032,0.3172,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
+proportionality,3.9005,0.2854,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
+loyalty,3.7379,0.4047,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
+authority,3.7758,0.3465,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
+purity,3.1879,0.5421,19,"Atari et al. 2023 JPSP Table 7 (Study 2, 19 populations); unweighted across-nation mean and SD computed from per-population means"
