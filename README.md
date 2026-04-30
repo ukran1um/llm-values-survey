@@ -2,7 +2,7 @@
 
 A reproducible study of how language models classify each other's preferences across moral, cultural, and pop-culture dimensions, using a peer-interview methodology.
 
-This is the analysis repo. Methodology, code, probes, raw data, derived data, and the methodology paper live here. The associated essay and episode video are published at [readgrounded.com](https://readgrounded.com/episodes/003-cross-examination).
+This is the analysis repo. Methodology, code, probes, raw data, derived data, and the methodology paper live here. The associated essay and episode video are published at [readgrounded.com](https://readgrounded.com/studies/cross-examination).
 
 ## Status
 
