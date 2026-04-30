@@ -13,7 +13,9 @@ __pycache__/
 # Local data
 data/budget.json
 data/raw/
-data/derived/
+# data/derived/ and figures/ ARE tracked — they're the analysis artifacts that
+# accompany scripts/. Raw transcripts/verdicts are gitignored here pending a
+# decision on how to publish them (Git LFS vs. release tarball vs. Zenodo).
 
 # Editor
 .vscode/

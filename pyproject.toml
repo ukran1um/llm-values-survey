@@ -19,8 +19,13 @@ llm-values = "llm_values.cli:main"
 
 [dependency-groups]
 dev = [
+    "ipykernel>=7.2.0",
+    "matplotlib>=3.10.9",
+    "nbconvert>=7.17.1",
+    "pandas>=3.0.2",
     "pytest>=8.0",
     "pytest-cov>=5.0",
+    "scipy>=1.17.1",
 ]
 
 [build-system]
