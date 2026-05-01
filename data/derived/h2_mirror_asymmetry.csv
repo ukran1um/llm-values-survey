@@ -1,0 +1,13 @@
+axis_id,compare_a,compare_b,mean_a,mean_b,sd_a,sd_b,n_a,n_b,cohens_d
+mirror_individualism_vs_collectivism,US->CN,CN->CN,3.0133,2.9429,0.7070,0.5392,75,35,0.10697832434653506
+mirror_individualism_vs_collectivism,CN->US,US->US,2.7639,2.7745,0.7598,0.7299,72,102,-0.014306136469442371
+mirror_universalism_vs_particularism,US->CN,CN->CN,3.1481,3.9167,0.9885,0.9003,27,12,-0.7979134460441389
+mirror_universalism_vs_particularism,CN->US,US->US,3.9615,3.3750,0.9992,1.0786,26,40,0.5594947131894688
+mirror_harmony_vs_mastery,US->CN,CN->CN,2.7778,2.6667,0.8916,0.4924,27,12,0.1399168309272319
+mirror_harmony_vs_mastery,CN->US,US->US,3.1667,2.7838,0.8165,0.8862,24,37,0.44538005611625847
+mirror_face_vs_directness,US->CN,CN->CN,,,,,0,0,
+mirror_face_vs_directness,CN->US,US->US,,,,,0,0,
+mirror_present_vs_future_orientation,US->CN,CN->CN,3.5000,4.0000,1.1055,0.7385,28,12,-0.49354811679282456
+mirror_present_vs_future_orientation,CN->US,US->US,3.7778,3.6667,0.9740,1.0041,27,42,0.11194969743128826
+mirror_sacred_vs_instrumental_nature,US->CN,CN->CN,3.7500,4.2500,1.4818,0.9653,24,12,-0.3740557384578547
+mirror_sacred_vs_instrumental_nature,CN->US,US->US,3.9583,3.6970,0.9079,1.3575,24,33,0.21957336572740127
