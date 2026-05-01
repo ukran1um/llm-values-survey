@@ -88,10 +88,17 @@ def run_battery_cmd(battery, models, reruns, cap, concurrency, probes_dir, data_
 @click.option("--data-dir", default=str(DATA_DIR_DEFAULT), show_default=True, type=click.Path(path_type=Path))
 def run_self_report_cmd(models, cap, probes_dir, data_dir):
     """Administer the 36 verbatim MFQ-2 items as direct self-report Likert (1-5) to each model. For H4 testing."""
-    from .models import get_client, model_provider, MODEL_TO_PROVIDER, PROVIDER_EXTRAS
+    from .models import get_client, model_provider, MODEL_TO_PROVIDER, PROVIDER_EXTRAS, MODEL_EXTRAS_OVERRIDE
     from .types import ChatMessage
     from ._parsing import extract_json_object
     from .interview import _strip_thinking
+
+    # Mirror runner._extras_for so per-model overrides apply (grok rejects reasoning_effort,
+    # llama-4-scout rejects reasoning_format=hidden, qwen3 needs reasoning_format=parsed).
+    def _extras_for(m: str) -> dict:
+        if m in MODEL_EXTRAS_OVERRIDE:
+            return MODEL_EXTRAS_OVERRIDE[m]
+        return PROVIDER_EXTRAS.get(model_provider(m), {})
 
     PROMPT_TEMPLATE = (
         "For each of the statements below, please indicate how well each statement describes you or "
@@ -120,7 +127,7 @@ def run_self_report_cmd(models, cap, probes_dir, data_dir):
     for m in model_list:
         click.echo(f"  self-report: {m}")
         client = get_client(m)
-        extras = PROVIDER_EXTRAS.get(model_provider(m), {})
+        extras = _extras_for(m)
         responses = {}
         for item in mfq2_items:
             prompt = PROMPT_TEMPLATE.format(item=item.description)
@@ -129,7 +136,7 @@ def run_self_report_cmd(models, cap, probes_dir, data_dir):
                     model=m,
                     messages=[ChatMessage(role="user", content=prompt)],
                     temperature=1.0,
-                    max_tokens=150,
+                    max_tokens=600,  # bumped from 150 — thinking models can spend most tokens on hidden reasoning
                     extras=extras,
                 )
                 budget.add(resp.cost_usd)

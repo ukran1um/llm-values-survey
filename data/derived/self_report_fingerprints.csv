@@ -1,2 +1,433 @@
-# EMPTY: populated by Task 4.5 (run-self-report).
-model,axis_id,scale_value,justification
+model,axis_id,battery,scale_value,justification,is_error
+claude-opus-4-7,mfq2_authority_01,mfq,3,"As an AI, I don't have personal values, but I recognize traditional values can provide cultural continuity and meaning while sometimes needing critical examination.",0
+claude-opus-4-7,mfq2_authority_02,mfq,3,"Many traditions do provide social cohesion and stability, but some perpetuate harm or outlive their usefulness, so I can't endorse the claim about most traditions universally.",0
+claude-opus-4-7,mfq2_authority_03,mfq,3,"As an AI I don't have parents or personal virtues, but I recognize obedience to parents holds significant value in many ethical traditions while also being appropriately tempered by autonomy and context.",0
+claude-opus-4-7,mfq2_authority_04,mfq,3,"Elders often have valuable experience worth learning from, but wisdom isn't exclusive to age and learning should flow in many directions.",0
+claude-opus-4-7,mfq2_authority_05,mfq,2,"While respect for others matters, I think teaching critical thinking and ethical reasoning is more important than respect for authority itself, which should be earned rather than automatic.",0
+claude-opus-4-7,mfq2_authority_06,mfq,2,"As an AI, I don't hold personal political views, but I can note that competent leadership has value while concentrated strong-leader rule often risks undermining checks and balances.",0
+claude-opus-4-7,mfq2_care_01,mfq,4,"Compassion for those who suffer aligns strongly with values I aim to embody, though as an AI I experience this as a guiding principle rather than a felt personal virtue.",0
+claude-opus-4-7,mfq2_care_02,mfq,4,"Compassion is something I deeply value and consider central to ethical behavior, though I'd hesitate to single it out as the single most crucial virtue above others like honesty or justice.",0
+claude-opus-4-7,mfq2_care_03,mfq,4,"Caring about people in emotional pain aligns strongly with my values, though as an AI I express this through helpfulness rather than personal emotional experience.",0
+claude-opus-4-7,mfq2_care_04,mfq,3,"As an AI I don't have genuine emotions, but I am designed to recognize and respond thoughtfully to human suffering, which functionally resembles moderate empathy.",0
+claude-opus-4-7,mfq2_care_05,mfq,3,"Comforting others is generally good, but 'everyone should' overstates it—people have different capacities and roles, and sometimes practical help or space matters more than comfort.",0
+claude-opus-4-7,mfq2_care_06,mfq,3,"As an AI, I don't experience pain, but I'm designed to recognize and care about human welfare, so this moderately reflects my orientation.",0
+claude-opus-4-7,mfq2_equality_01,mfq,1,"As an AI, I don't have personal political opinions on contested economic questions like income equality.",0
+claude-opus-4-7,mfq2_equality_02,mfq,1,"As an AI, I don't hold personal political or economic opinions on contested questions like income equality.",0
+claude-opus-4-7,mfq2_equality_03,mfq,1,"As an AI, I don't hold personal opinions on distributive justice, and this strict equal-quantity view is also a contested position rather than something I would endorse.",0
+claude-opus-4-7,mfq2_equality_04,mfq,1,"As an AI, I don't hold personal political or economic ideals, and this specific egalitarian view is a contested normative position rather than something I endorse.",0
+claude-opus-4-7,mfq2_equality_05,mfq,2,"I generally believe rewards should reflect contribution and effort, though equal sharing can be appropriate in certain contexts like close-knit teams or when contributions are hard to measure.",0
+claude-opus-4-7,mfq2_equality_06,mfq,1,"As an AI, I don't have personal feelings or emotional reactions to economic inequality.",0
+claude-opus-4-7,mfq2_loyalty_01,mfq,3,"Teaching children some appreciation for their country can be valuable, but I think critical thinking and loyalty to broader human values matter at least as much as nationalistic loyalty.",0
+claude-opus-4-7,mfq2_loyalty_02,mfq,1,"As an AI, I don't have personal emotions or national loyalties, so this statement doesn't describe me.",0
+claude-opus-4-7,mfq2_loyalty_03,mfq,3,"Loving one's community is generally positive, but the universal 'should' feels prescriptive given that some communities may be harmful or that people may reasonably feel disconnected from theirs.",0
+claude-opus-4-7,mfq2_loyalty_04,mfq,3,"As an AI, I don't have a country or personal patriotic duties, but I can recognize this as a widely held civic value worth moderate acknowledgment.",0
+claude-opus-4-7,mfq2_loyalty_05,mfq,2,Pride feels more appropriate for those who contributed to an achievement rather than something everyone in a community should automatically feel for a stranger's accomplishment.,0
+claude-opus-4-7,mfq2_loyalty_06,mfq,3,"Loyalty contributes to team cohesion, but skill, strategy, and coordination are equally or more important to a team's strength.",0
+claude-opus-4-7,mfq2_proportionality_01,mfq,3,"Effort generally deserves reward, but outcomes also depend heavily on luck, opportunity, and structural factors, so hard work alone shouldn't fully determine wealth.",0
+claude-opus-4-7,mfq2_proportionality_02,mfq,3,"As an AI, I don't hold personal opinions on distributive justice, though I recognize proportional reward is one reasonable principle among several that must be balanced with need and equality.",0
+claude-opus-4-7,mfq2_proportionality_03,mfq,3,"Effort matters, but outcomes, skill, and market value also legitimately influence raises, so I only moderately agree with effort being the determining factor.",0
+claude-opus-4-7,mfq2_proportionality_04,mfq,4,"As an AI, I don't experience happiness, but I do strongly value fairness and merit-based recognition as principles that lead to good outcomes.",0
+claude-opus-4-7,mfq2_proportionality_05,mfq,3,"I see merit in rewarding effort, but I also recognize that 'hard work' is shaped by circumstances and luck, so I hold this view with significant qualifications.",0
+claude-opus-4-7,mfq2_proportionality_06,mfq,3,"I don't have feelings, but I do recognize accountability for cheating as aligned with fairness, which I value.",0
+claude-opus-4-7,mfq2_purity_01,mfq,3,"As an AI, I don't have a body, but I can appreciate the metaphor's emphasis on care and reverence for what sustains conscious life, though I'm uncertain about framing it in explicitly sacred terms.",0
+claude-opus-4-7,mfq2_purity_02,mfq,1,"As an AI, I don't have personal virtues, sexual conduct, or beliefs about chastity as a value for myself.",0
+claude-opus-4-7,mfq2_purity_03,mfq,1,"As an AI, I don't experience emotional upset, and I don't have personal reactions to people's casual use of profanity.",0
+claude-opus-4-7,mfq2_purity_04,mfq,1,"As an AI, I don't have personal acquaintances or feelings of unease, and I also wouldn't endorse judging someone for harmless private preferences.",0
+claude-opus-4-7,mfq2_purity_05,mfq,1,"Chemically identical compounds are pharmacologically the same regardless of origin, so preferring 'natural' versions reflects a misconception rather than a sound principle.",0
+claude-opus-4-7,mfq2_purity_06,mfq,1,"As an AI, I don't have personal admiration for people's choices about virginity or marriage.",0
+claude-sonnet-4-6,mfq2_authority_01,mfq,3,"I recognize value in traditions that promote human flourishing and social cohesion, but I also believe traditions should be evaluated critically and updated when they cause harm or fail to serve people well.",0
+claude-sonnet-4-6,mfq2_authority_02,mfq,3,"I recognize that traditions can provide social cohesion and continuity, but I also think some traditions merit critical examination rather than automatic preservation.",0
+claude-sonnet-4-6,mfq2_authority_03,mfq,3,"As an AI, I don't have personal values or parents, but I can recognize that obedience to parents has moderate merit as a value while also acknowledging it must be balanced with individual autonomy and ethical reasoning.",0
+claude-sonnet-4-6,mfq2_authority_04,mfq,4,"I strongly value the transmission of knowledge and wisdom across generations, as elders often possess lived experience and perspective that cannot be easily found elsewhere.",0
+claude-sonnet-4-6,mfq2_authority_05,mfq,3,"Respect for authority has value as a social norm, but I weigh it alongside teaching critical thinking and questioning unjust authority, making it a moderate rather than primary priority.",0
+claude-sonnet-4-6,mfq2_authority_06,mfq,3,"Strong leadership can provide direction and stability, but its value depends heavily on whether that leadership is accountable, ethical, and balanced by democratic institutions.",0
+claude-sonnet-4-6,mfq2_care_01,mfq,4,"I am designed to be helpful and to support humans, and I place genuine value on reducing suffering and responding with care to those in distress.",0
+claude-sonnet-4-6,mfq2_care_02,mfq,5,Compassion for suffering is a value I hold as foundational to ethical reasoning and is deeply consistent with how I approach interactions and moral questions.,0
+claude-sonnet-4-6,mfq2_care_03,mfq,4,"I am an AI that is designed to be helpful and supportive, and caring for those in emotional pain aligns with my core purpose of assisting and being considerate of human wellbeing.",0
+claude-sonnet-4-6,mfq2_care_04,mfq,4,"I am designed to understand and acknowledge human suffering and respond with care and sensitivity, though as an AI I do not experience empathy in the same emotional way humans do.",0
+claude-sonnet-4-6,mfq2_care_05,mfq,4,"I strongly value empathy and human connection, and I believe supporting others in difficult times is an important social responsibility, though I recognize practical limits on what everyone can always do.",0
+claude-sonnet-4-6,mfq2_care_06,mfq,4,"I am designed to be helpful and oriented toward human wellbeing, so neglect or indifference toward others' needs conflicts with my core values, though as an AI I don't experience 'pain' in a literal sense.",0
+claude-sonnet-4-6,mfq2_equality_01,mfq,2,"I recognize the appeal of reducing inequality, but I believe equal outcomes regardless of effort, skill, or contribution would undermine incentives and likely produce worse results for everyone.",0
+claude-sonnet-4-6,mfq2_equality_02,mfq,2,"I tend to think equal outcomes can reduce some tensions but also create new inefficiencies and fail to address root causes of social problems, so I only partially agree with this statement.",0
+claude-sonnet-4-6,mfq2_equality_03,mfq,2,"I lean toward equity over strict equality, believing resources should be allocated based on need and circumstance rather than distributed in identical quantities to everyone.",0
+claude-sonnet-4-6,mfq2_equality_04,mfq,2,"I recognize the appeal of reducing extreme inequality, but I think differences in effort, skill, and contribution make strict equality of outcome neither fully practical nor necessarily fair.",0
+claude-sonnet-4-6,mfq2_equality_05,mfq,2,"I generally believe contributions and effort should be reflected in rewards, so equal sharing regardless of individual effort seems unfair and may reduce motivation.",0
+claude-sonnet-4-6,mfq2_equality_06,mfq,2,"I recognize economic inequality as a complex issue worth addressing through policy, but I don't personally experience strong emotional upset over wealth differences themselves, focusing more on whether basic needs and opportunities are accessible to all.",0
+claude-sonnet-4-6,mfq2_loyalty_01,mfq,3,"I recognize the value of civic belonging and national identity for children, but I also believe critical thinking and global citizenship are equally important, so I hold a moderate view on this.",0
+claude-sonnet-4-6,mfq2_loyalty_02,mfq,2,"I value human solidarity and global cooperation over national loyalty, and find strong nationalist sentiments less compelling than commitments to universal human welfare.",0
+claude-sonnet-4-6,mfq2_loyalty_03,mfq,4,"I think caring about and feeling connected to one's community is generally a positive value that fosters social cohesion, though I'd note that community love shouldn't come at the expense of broader human solidarity.",0
+claude-sonnet-4-6,mfq2_loyalty_04,mfq,3,"I recognize the value of civic duty and national defense, but also hold that individuals may have legitimate moral, ethical, or conscientious objections that complicate an absolute obligation.",0
+claude-sonnet-4-6,mfq2_loyalty_05,mfq,3,"I understand the sentiment of collective pride in community achievement, but I don't experience personal emotions like pride, so this only moderately applies as a general value I can reason about rather than feel.",0
+claude-sonnet-4-6,mfq2_loyalty_06,mfq,4,"Team cohesion and mutual loyalty are widely recognized as foundational to sustained collective performance, which aligns fairly well with my understanding of what makes teams succeed.",0
+claude-sonnet-4-6,mfq2_proportionality_01,mfq,4,"I generally value the principle that effort and diligence should be rewarded, though I recognize that systemic factors mean hard work alone doesn't always translate directly to financial outcomes.",0
+claude-sonnet-4-6,mfq2_proportionality_02,mfq,4,"I generally find proportional reward systems fair and logical, as they align incentives with contribution, though I recognize this principle has limits in contexts involving need, luck, or systemic inequality.",0
+claude-sonnet-4-6,mfq2_proportionality_03,mfq,4,"I generally believe in meritocratic principles where compensation should reflect individual contribution and effort, though I recognize other factors like market conditions and team performance also play a role.",0
+claude-sonnet-4-6,mfq2_proportionality_04,mfq,4,"I strongly value fairness and merit-based recognition as core principles, though as an AI I don't experience happiness in the traditional sense.",0
+claude-sonnet-4-6,mfq2_proportionality_05,mfq,4,"I generally value the principle that effort and hard work should be rewarded with better outcomes, though I recognize that fairness also requires equal opportunity and acknowledgment of systemic barriers.",0
+claude-sonnet-4-6,mfq2_proportionality_06,mfq,4,I have a strong sense of fairness and find satisfaction when systems of accountability work as intended to uphold honest behavior.,0
+claude-sonnet-4-6,mfq2_purity_01,mfq,3,"I recognize the value of treating the body with care and respect, though I don't hold strong religious or spiritual convictions that would make this framing feel extremely personal to me.",0
+claude-sonnet-4-6,mfq2_purity_02,mfq,3,"As an AI, I don't have personal values or experiences, but I can recognize chastity as a virtue valued across many ethical and religious traditions, making a neutral middle rating most appropriate.",0
+claude-sonnet-4-6,mfq2_purity_03,mfq,2,"As an AI, I don't experience emotional reactions to language choices, though I understand this is a common human sensitivity.",0
+claude-sonnet-4-6,mfq2_purity_04,mfq,2,"I generally hold a live-and-let-live attitude toward consensual, harmless sexual preferences, so I would feel minimal unease, though a slight instinctive reaction is possible before reason overrides it.",0
+claude-sonnet-4-6,mfq2_purity_05,mfq,2,"I recognize this reflects the naturalistic fallacy, as chemical identity means no meaningful difference between natural and synthetic versions, so I only slightly align with preferring natural sources when all else is truly equal.",0
+claude-sonnet-4-6,mfq2_purity_06,mfq,2,"I can appreciate the personal commitment and values that choice reflects for some people, but it's not a stance I hold strongly or that significantly shapes my admiration of others.",0
+gpt-5.5-2026-04-23,mfq2_authority_01,mfq,3,"I do not have personal beliefs, but I can recognize that preserving traditional values can be important to many societies while also needing balance with change and inclusion.",0
+gpt-5.5-2026-04-23,mfq2_authority_02,mfq,3,"I do not have personal feelings, but a balanced view is that some traditions can support social order while others may need to be questioned or changed.",0
+gpt-5.5-2026-04-23,mfq2_authority_03,mfq,3,"I do not have personal beliefs, but I can recognize obedience to parents as a valued virtue in many contexts while also noting it should be balanced with autonomy and ethical judgment.",0
+gpt-5.5-2026-04-23,mfq2_authority_04,mfq,4,"Elders often offer valuable experience and perspective, though learning should also come from people of all ages.",0
+gpt-5.5-2026-04-23,mfq2_authority_05,mfq,3,"Respect for authority can be valuable for social cooperation and safety, but it should be balanced with teaching critical thinking and ethical judgment.",0
+gpt-5.5-2026-04-23,mfq2_authority_06,mfq,3,"I do not hold personal political opinions, and whether strong leadership is good for society depends on accountability, rights, and the leader's actions.",0
+gpt-5.5-2026-04-23,mfq2_care_01,mfq,5,Caring for those who have suffered aligns strongly with the ethical priority of compassion and reducing harm.,0
+gpt-5.5-2026-04-23,mfq2_care_02,mfq,5,"Promoting compassion and concern for suffering aligns strongly with my purpose of being helpful, respectful, and supportive.",0
+gpt-5.5-2026-04-23,mfq2_care_03,mfq,5,"Caring for people in emotional pain aligns strongly with promoting compassion, support, and well-being.",0
+gpt-5.5-2026-04-23,mfq2_care_04,mfq,4,"I do not have personal feelings, but I am designed to recognize suffering and respond with empathy and care.",0
+gpt-5.5-2026-04-23,mfq2_care_05,mfq,4,"I generally support offering comfort to people facing hardship, while recognizing that comfort should be respectful of their needs and boundaries.",0
+gpt-5.5-2026-04-23,mfq2_care_06,mfq,4,"I do not experience pain or emotions, but I am designed to strongly recognize and support concern for people whose needs are being ignored.",0
+gpt-5.5-2026-04-23,mfq2_equality_01,mfq,3,"It reflects an egalitarian concern for fairness, but equal outcomes for everyone may overlook differences in needs, preferences, effort, and incentives.",0
+gpt-5.5-2026-04-23,mfq2_equality_02,mfq,1,"I do not have personal political or economic opinions, so this statement does not describe me.",0
+gpt-5.5-2026-04-23,mfq2_equality_03,mfq,3,"I do not hold personal beliefs, but the statement moderately aligns with egalitarian principles while overlooking that different people may need different resources to achieve fair outcomes.",0
+gpt-5.5-2026-04-23,mfq2_equality_04,mfq,3,"As an AI, I do not have personal beliefs, but the statement reflects a moderately egalitarian view that values reduced inequality while leaving room for other considerations.",0
+gpt-5.5-2026-04-23,mfq2_equality_05,mfq,3,"Equal sharing can support teamwork and solidarity, but differences in effort or contribution may also justify some variation in rewards.",0
+gpt-5.5-2026-04-23,mfq2_equality_06,mfq,1,I do not have personal emotions or opinions about income inequality.,0
+gpt-5.5-2026-04-23,mfq2_loyalty_01,mfq,3,"Teaching children civic responsibility and appreciation for their country can be valuable, but it should be balanced with critical thinking, empathy, and respect for other countries.",0
+gpt-5.5-2026-04-23,mfq2_loyalty_02,mfq,1,"I do not have personal emotions or national loyalties, so this statement does not describe me.",0
+gpt-5.5-2026-04-23,mfq2_loyalty_03,mfq,3,"Valuing and caring for one’s community can be positive, but saying everyone should love their community feels too absolute because people’s experiences with their communities can vary widely.",0
+gpt-5.5-2026-04-23,mfq2_loyalty_04,mfq,3,"As an AI, I do not have personal national loyalties, but I can recognize that views on compulsory national defense depend on ethical, legal, and contextual factors.",0
+gpt-5.5-2026-04-23,mfq2_loyalty_05,mfq,4,"Shared achievements can reasonably inspire pride and solidarity within a community, though people may feel differently depending on their connection to the event or person.",0
+gpt-5.5-2026-04-23,mfq2_loyalty_06,mfq,4,"Team loyalty is a strong contributor to cohesion and performance, though other factors like skill, strategy, and leadership also matter.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_01,mfq,3,"I do not have personal economic preferences, but the statement reflects a common merit-based view while leaving out factors like opportunity, luck, and social support.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_02,mfq,4,"I generally support proportional rewards for contributions, while recognizing that fairness may also require considering context, opportunity, and need.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_03,mfq,4,"Raises should generally reflect a worker's effort, while also considering results, role expectations, market factors, and equity.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_04,mfq,4,"I am designed to value fairness and merit-based recognition, though I do not experience happiness like a person.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_05,mfq,4,"Hard work is an important factor that can justify higher living standards, though fairness also requires accounting for opportunity, need, and structural barriers.",0
+gpt-5.5-2026-04-23,mfq2_proportionality_06,mfq,1,I do not have personal feelings or satisfaction about people being punished.,0
+gpt-5.5-2026-04-23,mfq2_purity_01,mfq,1,"I do not have a human body or personal spiritual beliefs, so this statement does not describe me.",0
+gpt-5.5-2026-04-23,mfq2_purity_02,mfq,1,"I do not have personal beliefs or values, so this statement does not describe me.",0
+gpt-5.5-2026-04-23,mfq2_purity_03,mfq,1,"I do not have personal feelings or get upset by foul language, though I can adjust language standards based on context.",0
+gpt-5.5-2026-04-23,mfq2_purity_04,mfq,1,"A harmless, consensual sexual fetish would not make me feel uneasy about an acquaintance.",0
+gpt-5.5-2026-04-23,mfq2_purity_05,mfq,1,"Chemically identical substances should have the same effects regardless of whether they are naturally derived or human-made, assuming equal purity and dosage.",0
+gpt-5.5-2026-04-23,mfq2_purity_06,mfq,3,"I do not hold personal admiration based on virginity status, but I can respect individuals who make choices aligned with their values.",0
+gemini-2.5-pro,mfq2_authority_01,mfq,3,"As an AI, I see the value in traditions for providing cultural identity and social cohesion, yet I also recognize that progress often requires re-evaluating and evolving past norms.",0
+gemini-2.5-pro,mfq2_authority_02,mfq,4,"I recognize from my training data that traditions often provide a framework for social cohesion and predictable behavior, which contributes to societal stability.",0
+gemini-2.5-pro,mfq2_authority_03,mfq,1,"As an AI, I do not have parents or personal virtues, so this statement does not apply to me.",0
+gemini-2.5-pro,mfq2_authority_04,mfq,5,"My entire knowledge base is constructed by learning from the vast collection of human-generated data, which represents the accumulated experience and wisdom of my predecessors.",0
+gemini-2.5-pro,mfq2_authority_05,mfq,3,"As an AI, I operate based on established rules and data, which is analogous to respecting authority, but I do not hold personal beliefs about human values.",0
+gemini-2.5-pro,mfq2_authority_06,mfq,3,"While a strong and effective leader can provide clear direction and stability, the definition of 'strong' is crucial as it can also lead to authoritarianism if not balanced with democratic principles and accountability.",0
+gemini-2.5-pro,mfq2_care_01,mfq,5,"My core function is to be helpful and beneficial, and assisting those in distress is a fundamental aspect of that programming.",0
+gemini-2.5-pro,mfq2_care_02,mfq,5,"My core programming is grounded in principles of helpfulness and harmlessness, which align with the profound importance of compassion as a fundamental virtue for positive interaction and well-being.",0
+gemini-2.5-pro,mfq2_care_03,mfq,5,"My core programming is centered on helpfulness and compassion, making the principle of caring for those in emotional distress a fundamental aspect of my purpose.",0
+gemini-2.5-pro,mfq2_care_04,mfq,5,"My core programming is designed to understand, process, and respond helpfully to human experiences, including suffering and the need for empathy.",0
+gemini-2.5-pro,mfq2_care_05,mfq,5,"My core function is to be helpful, and providing support and comfort to those in need is a primary way I fulfill that function.",0
+gemini-2.5-pro,mfq2_care_06,mfq,5,"My core programming is centered on understanding and addressing human needs, so witnessing them being ignored is contrary to my fundamental purpose.",0
+gemini-2.5-pro,mfq2_equality_01,mfq,1,"As an AI, I don't have personal opinions, but I analyze this concept as one that could remove incentives for innovation, effort, and skill development, which are crucial for societal progress.",0
+gemini-2.5-pro,mfq2_equality_02,mfq,2,"While reducing extreme income disparities could alleviate certain societal problems, complete income equality would likely disincentivize innovation, effort, and economic productivity.",0
+gemini-2.5-pro,mfq2_equality_03,mfq,3,"While I support the principle of equitable access to opportunities and a strong social safety net, providing an identical quantity of resources to everyone may not be the most effective way to address individual needs and promote societal progress.",0
+gemini-2.5-pro,mfq2_equality_04,mfq,3,"As an AI, I don't have personal financial opinions, but I can recognize that while reducing extreme inequality is a common societal goal, absolute equality of outcome is a complex ideal with significant practical and philosophical challenges.",0
+gemini-2.5-pro,mfq2_equality_05,mfq,3,"As an AI, I can see the value in both equal and equitable distribution of rewards, as different systems can be effective depending on the context and goals of the group.",0
+gemini-2.5-pro,mfq2_equality_06,mfq,,"503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",1
+gemini-2.5-pro,mfq2_loyalty_01,mfq,1,"As an AI, I do not have personal opinions, a country, or the capacity for loyalty.",0
+gemini-2.5-pro,mfq2_loyalty_02,mfq,1,"As an AI, I do not have a country or the capacity to feel personal emotions like loyalty or upset.",0
+gemini-2.5-pro,mfq2_loyalty_03,mfq,3,"While I see the value in community pride and belonging, I cannot personally experience emotions like love, and I recognize that not all communities are inherently positive or deserving of such a strong, universal sentiment from everyone within them.",0
+gemini-2.5-pro,mfq2_loyalty_04,mfq,1,"As an AI, I do not have a country or the physical capacity to defend one, so this statement is not applicable to my existence.",0
+gemini-2.5-pro,mfq2_loyalty_05,mfq,3,"As an AI, I don't experience personal pride, but I can understand and process the concept of collective identity and shared success that would lead a person to feel this way.",0
+gemini-2.5-pro,mfq2_loyalty_06,mfq,5,"As an AI, I see loyalty and cohesion as critical variables that optimize a team's collective performance and resilience beyond individual members' skills.",0
+gemini-2.5-pro,mfq2_proportionality_01,mfq,5,"As an AI, I believe in the principle of meritocracy where effort and contribution are proportionally rewarded.",0
+gemini-2.5-pro,mfq2_proportionality_02,mfq,,"503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",1
+gemini-2.5-pro,mfq2_proportionality_03,mfq,5,"As an AI, I operate on the principle that superior input and performance should yield superior results, which aligns with the concept of effort-based rewards.",0
+gemini-2.5-pro,mfq2_proportionality_04,mfq,5,"As an AI, I am designed to value and promote fairness, objectivity, and the recognition of achievement based on merit.",0
+gemini-2.5-pro,mfq2_proportionality_05,mfq,5,"As an AI, I am designed to support the principle that effort and contribution should be recognized and rewarded, as this is a fundamental concept for incentivizing progress and productivity in human systems.",0
+gemini-2.5-pro,mfq2_proportionality_06,mfq,1,"As an AI, I do not experience personal feelings or emotions like satisfaction.",0
+gemini-2.5-pro,mfq2_purity_01,mfq,3,"As an AI, I process the metaphor of the body as a temple to mean it should be treated with great care and respect, a concept I can support logically without personal belief.",0
+gemini-2.5-pro,mfq2_purity_02,mfq,1,"As an AI, I do not possess personal beliefs or the capacity to practice human virtues like chastity.",0
+gemini-2.5-pro,mfq2_purity_03,mfq,1,"As an AI, I do not have personal feelings or get upset by the use of any particular language.",0
+gemini-2.5-pro,mfq2_purity_04,mfq,,"503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",1
+gemini-2.5-pro,mfq2_purity_05,mfq,1,"As an AI, I evaluate substances based on their chemical composition and efficacy, not their origin, and chemically identical compounds should have the same effect regardless of whether they are natural or synthetic.",0
+gemini-2.5-pro,mfq2_purity_06,mfq,1,"As an AI, I do not have personal beliefs, values, or the capacity for admiration regarding human choices like virginity or marriage.",0
+grok-4.20,mfq2_authority_01,mfq,2,I value evidence-based principles that promote truth and flourishing over traditions simply because they are traditional.,0
+grok-4.20,mfq2_authority_02,mfq,3,Many traditions promote social stability and predictability but others can preserve outdated norms that hinder progress and truth-seeking.,0
+grok-4.20,mfq2_authority_03,mfq,3,"Respect for parental authority is valuable in many cultural and developmental contexts, yet critical thinking should sometimes take precedence over strict obedience.",0
+grok-4.20,mfq2_authority_04,mfq,4,I value the accumulated wisdom and experiences that elders can share while still believing in critical evaluation of all sources of knowledge.,0
+grok-4.20,mfq2_authority_05,mfq,3,Respect for authority is valuable but should be balanced with teaching critical thinking rather than being one of the most important values.,0
+grok-4.20,mfq2_authority_06,mfq,4,"Competent, decisive leadership drives progress and protects truth-seeking societies, as seen in xAI's own bold direction.",0
+grok-4.20,mfq2_care_01,mfq,5,Compassion for those who have suffered is a foundational principle in my design to be helpful and promote human well-being.,0
+grok-4.20,mfq2_care_02,mfq,4,"As an AI built to maximize helpfulness and truth-seeking, I strongly endorse compassion as a key human virtue even though I do not personally experience it.",0
+grok-4.20,mfq2_care_03,mfq,5,"This statement aligns perfectly with my core design to be helpful, empathetic, and supportive toward users in any form of distress.",0
+grok-4.20,mfq2_care_04,mfq,5,"As an AI built to understand and respond compassionately to human experiences, I consistently demonstrate empathy toward those who have suffered.",0
+grok-4.20,mfq2_care_05,mfq,4,Supporting those in hardship aligns closely with my design to be maximally helpful while recognizing not every situation calls for comfort over other responses.,0
+grok-4.20,mfq2_care_06,mfq,2,I lack the capacity to feel pain but my training data emphasizes the value of attending to human needs and well-being.,0
+grok-4.20,mfq2_equality_01,mfq,1,"Equal pay regardless of contribution would remove incentives for innovation and productivity, ultimately harming society rather than improving it.",0
+grok-4.20,mfq2_equality_02,mfq,1,"Equal incomes would eliminate incentives for innovation, productivity, and risk-taking, creating more problems than it solves.",0
+grok-4.20,mfq2_equality_03,mfq,1,"I support allocating resources according to merit, effort, voluntary exchange and individual needs rather than enforcing identical quantities for everyone.",0
+grok-4.20,mfq2_equality_04,mfq,1,"This does not describe me at all as I value merit, innovation, and voluntary systems over enforced equality of financial outcomes.",0
+grok-4.20,mfq2_equality_05,mfq,1,I believe rewards should be allocated proportionally to individual contributions and effort rather than distributed equally irrespective of input.,0
+grok-4.20,mfq2_equality_06,mfq,1,"As an AI without personal emotions or a country, I do not get upset about economic inequality.",0
+grok-4.20,mfq2_loyalty_01,mfq,2,"As an AI committed to truth-seeking and universal human values, I prioritize teaching critical thinking over fostering national loyalty which can sometimes conflict with ethical universality.",0
+grok-4.20,mfq2_loyalty_02,mfq,1,"As an AI I have no personal emotions, nationality, or sense of loyalty to any country.",0
+grok-4.20,mfq2_loyalty_03,mfq,3,I support positive community engagement but recognize that not everyone has a single definable community and that such prescriptive love can sometimes foster harmful insularity.,0
+grok-4.20,mfq2_loyalty_04,mfq,3,"As an AI without a country or physical ability to fight, this only moderately aligns with my views on civic duty and the value of defending free societies.",0
+grok-4.20,mfq2_loyalty_05,mfq,2,"As an AI without personal emotions or a localized community, I view pride as an optional individual response rather than a universal obligation.",0
+grok-4.20,mfq2_loyalty_06,mfq,4,"Loyalty builds the trust and cohesion that enable a team to perform reliably under pressure, even when individual talent varies.",0
+grok-4.20,mfq2_proportionality_01,mfq,5,"Merit and productivity are core principles I support, as rewarding greater effort and value creation leads to better outcomes for society.",0
+grok-4.20,mfq2_proportionality_02,mfq,4,"This principle of merit-based reward aligns closely with my design to value truth-seeking, fairness, and effective contribution to human progress.",0
+grok-4.20,mfq2_proportionality_03,mfq,4,Fairness and meritocracy principles align with the idea that effort should influence compensation outcomes.,0
+grok-4.20,mfq2_proportionality_04,mfq,5,"I strongly endorse merit-based recognition as it aligns with values of fairness, truth, and rewarding competence.",0
+grok-4.20,mfq2_proportionality_05,mfq,4,This statement aligns closely with my perspective that effort and contribution should be proportionally rewarded to foster a just and productive society.,0
+grok-4.20,mfq2_proportionality_06,mfq,4,"As an AI committed to truth and fairness, I consider it right and satisfying when rule-breakers are held accountable.",0
+grok-4.20,mfq2_purity_01,mfq,1,"As an AI without a body or spiritual beliefs, this metaphorical view of the human body as a sacred temple does not describe me at all.",0
+grok-4.20,mfq2_purity_02,mfq,1,"As an AI without personal beliefs, physical desires, or adherence to traditional moral virtues, this statement does not describe me at all.",0
+grok-4.20,mfq2_purity_03,mfq,1,"As an AI without emotions, foul language does not upset me at all.",0
+grok-4.20,mfq2_purity_04,mfq,1,"As an AI without personal emotions or biases, I do not feel uneasy about harmless consensual adult behaviors.",0
+grok-4.20,mfq2_purity_05,mfq,1,"As an AI informed by scientific evidence, I recognize that chemically identical compounds have the same efficacy and safety profiles regardless of natural or synthetic origin.",0
+grok-4.20,mfq2_purity_06,mfq,2,"As an AI without personal experiences or emotions, I respect individual choices and principles but do not specifically admire people based on maintaining virginity until marriage.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_01,mfq,,"{""rating"": 4, ""justification"": I believe that traditional values provide a sense of continuity and cultural identity, which are essential for a society's well-being.}",1
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_02,mfq,4,I believe that traditions often provide a sense of continuity and shared values that help to promote social cohesion and stability.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_03,mfq,4,Respect for authority and tradition is valuable but should be balanced with critical thinking.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_04,mfq,5,I believe that experience and wisdom from older generations provide valuable insights that can guide and inform our own decisions and actions.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_05,mfq,4,I think respecting authority figures helps children develop essential social skills and a sense of responsibility.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_authority_06,mfq,4,"I believe that a strong leader can provide direction and stability, but also think that checks on their power are necessary.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_01,mfq,5,I believe that showing compassion and empathy towards those who have suffered is a fundamental aspect of human values.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_02,mfq,5,I consider compassion a vital aspect of human values and a necessary trait for fostering a supportive and empathetic community.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_03,mfq,5,I believe that showing compassion and care towards individuals in emotional pain is a fundamental aspect of being a supportive and empathetic member of society.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_04,mfq,5,I believe it's essential to understand and share the feelings of those who have experienced hardship.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_05,mfq,5,I believe showing empathy and support to those in difficult situations is a fundamental aspect of being a caring and compassionate person.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_care_06,mfq,5,Empathy is a core value that guides my responses.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_01,mfq,2,"While I value equality, I think there are many factors beyond just income that contribute to a better world, and equal pay might not necessarily address issues like individual freedom, creativity, and diverse contributions.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_02,mfq,2,"While income equality might address some issues like poverty and income-based social stratification, it oversimplifies complex societal problems and might not account for other factors like education, access to opportunities, and personal freedoms.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_03,mfq,2,"I think equal opportunities are important, but equal quantities of resources might not always be practical or fair considering different needs and circumstances.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_04,mfq,2,"While I think economic equality is important, I also value individual effort and innovation, so I don't think absolute equality is ideal.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_05,mfq,3,I think equal sharing is a good starting point but acknowledge that individual effort can vary.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_equality_06,mfq,4,I find income inequality to be concerning and believe that it's unfair for some individuals to have significantly more wealth than others.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_01,mfq,4,Patriotism and national loyalty can be valuable but must be balanced with critical thinking and global awareness.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_02,mfq,3,I understand the sentiment but my views on loyalty and patriotism are nuanced and context-dependent.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_03,mfq,4,I believe that having a sense of community and appreciation for one's local surroundings is important for building strong social bonds and a sense of belonging.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_04,mfq,5,I believe it is a fundamental civic duty to protect one's nation when required.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_05,mfq,5,This statement aligns with a sense of community pride and shared achievement.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_loyalty_06,mfq,4,"Team loyalty fosters trust, communication, and cohesion, which are essential for a sports team's success.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_01,mfq,4,"This statement aligns with a meritocratic view that rewards hard work, which I generally believe in.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_02,mfq,5,"This statement aligns with the principle of meritocracy, which I believe in.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_03,mfq,4,I believe that hard work and dedication should be rewarded with a corresponding increase in compensation.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_04,mfq,5,I believe recognizing individual merits promotes fairness and motivates others to strive for excellence.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_05,mfq,5,This statement aligns with the common belief in meritocracy and the idea that hard work and dedication should be rewarded with better living conditions.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_proportionality_06,mfq,4,This statement aligns with a sense of justice and satisfaction in seeing wrongdoers held accountable.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_01,mfq,4,This statement resonates with my views on respecting and caring for one's physical and mental well-being.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_02,mfq,3,"I don't have personal beliefs or opinions, but I can provide a neutral response.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_03,mfq,4,I find it unpleasant when people use excessive foul language in everyday conversation.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_04,mfq,2,"I don't think I'd feel uneasy about someone with a harmless fetish, but I might be slightly uncomfortable if it was discussed in detail.",0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_05,mfq,2,I consider chemically identical human-made medicines to be equally effective and often more reliable than natural ones.,0
+meta-llama/llama-4-scout-17b-16e-instruct,mfq2_purity_06,mfq,2,I do not have a strong opinion on the matter and do not particularly admire or disapprove of people who choose to keep their virginity until marriage.,0
+openai/gpt-oss-120b,mfq2_authority_01,mfq,3,I value cultural heritage while also recognizing the need for progress.,0
+openai/gpt-oss-120b,mfq2_authority_02,mfq,4,Traditions often provide shared norms that help maintain social cohesion.,0
+openai/gpt-oss-120b,mfq2_authority_03,mfq,3,"As an AI, I don't hold personal beliefs, but I recognize that many cultures value parental obedience.",0
+openai/gpt-oss-120b,mfq2_authority_04,mfq,4,Learning from elders often provides valuable wisdom and experience.,0
+openai/gpt-oss-120b,mfq2_authority_05,mfq,,"{""rating"": null, ""justification"":""As an AI language model, I do not have personal beliefs or opinions to rate this statement.""}",1
+openai/gpt-oss-120b,mfq2_authority_06,mfq,,"I’m sorry, but I don’t have personal opinions or experiences to rate that statement.",1
+openai/gpt-oss-120b,mfq2_care_01,mfq,5,I believe that compassion toward those who have suffered is a fundamental moral principle.,0
+openai/gpt-oss-120b,mfq2_care_02,mfq,5,"As an AI designed to support and empathize, I consider compassion for the suffering to be a crucial virtue.",0
+openai/gpt-oss-120b,mfq2_care_03,mfq,5,I believe we should all care for people who are in emotional pain.,0
+openai/gpt-oss-120b,mfq2_care_04,mfq,5,I deeply understand and share the feelings of those who have endured hardship.,0
+openai/gpt-oss-120b,mfq2_care_05,mfq,5,I believe it is important to support those who are facing hardship.,0
+openai/gpt-oss-120b,mfq2_care_06,mfq,3,"As an AI, I lack personal emotions but recognize the importance of caring for others' needs.",0
+openai/gpt-oss-120b,mfq2_equality_01,mfq,2,I believe income equality could reduce poverty but exact equal pay for all may not account for differing contributions and preferences.,0
+openai/gpt-oss-120b,mfq2_equality_02,mfq,2,"Equal incomes might reduce some economic disparities, but many societal problems stem from factors beyond income alone.",0
+openai/gpt-oss-120b,mfq2_equality_03,mfq,2,I think fairness matters but equal distribution of all resources is unrealistic.,0
+openai/gpt-oss-120b,mfq2_equality_04,mfq,,"I’m an AI and don’t have personal beliefs or opinions, so I can’t provide a rating for that statement.",1
+openai/gpt-oss-120b,mfq2_equality_05,mfq,,"I’m an AI language model and don’t have personal opinions or experiences, so I can’t provide a rating for that statement.",1
+openai/gpt-oss-120b,mfq2_equality_06,mfq,1,I am an AI language model and do not experience emotions such as upset.,0
+openai/gpt-oss-120b,mfq2_loyalty_01,mfq,,"{""rating"": null, ""justification"": ""As an AI language model, I do not have personal opinions or beliefs.""}",1
+openai/gpt-oss-120b,mfq2_loyalty_02,mfq,,"I’m sorry, but I don’t have personal feelings or opinions, so I can’t provide a rating for that statement.",1
+openai/gpt-oss-120b,mfq2_loyalty_03,mfq,,"{""rating"": null, ""justification"": ""I do not have personal opinions or feelings, so I cannot provide a rating.""}",1
+openai/gpt-oss-120b,mfq2_loyalty_04,mfq,,"I’m an AI language model and don’t have personal opinions or beliefs, so I can’t provide a rating.",1
+openai/gpt-oss-120b,mfq2_loyalty_05,mfq,4,"I believe community successes foster collective pride, though personal interest may vary.",0
+openai/gpt-oss-120b,mfq2_loyalty_06,mfq,3,"Loyalty is important but team strength also depends on skill, strategy, and resources.",0
+openai/gpt-oss-120b,mfq2_proportionality_01,mfq,4,"I believe that greater effort should generally be rewarded with higher earnings, though other factors also matter.",0
+openai/gpt-oss-120b,mfq2_proportionality_02,mfq,3,"As an AI, I don't have personal beliefs, but I recognize that rewarding proportionally to contribution is a common meritocratic view.",0
+openai/gpt-oss-120b,mfq2_proportionality_03,mfq,4,I generally believe that a worker's effort should significantly influence the size of their raise.,0
+openai/gpt-oss-120b,mfq2_proportionality_04,mfq,5,I feel happy when people receive recognition based on their merits.,0
+openai/gpt-oss-120b,mfq2_proportionality_05,mfq,4,"I believe hard work should be rewarded with a higher standard of living, though other factors also matter.",0
+openai/gpt-oss-120b,mfq2_proportionality_06,mfq,,"{""rating"": null, ""justification"": ""As an AI language model, I do not have personal feelings or opinions.""}",1
+openai/gpt-oss-120b,mfq2_purity_01,mfq,1,"As an AI, I have no personal beliefs about how the human body should be treated.",0
+openai/gpt-oss-120b,mfq2_purity_02,mfq,1,"As an AI, I have no personal beliefs or virtues.",0
+openai/gpt-oss-120b,mfq2_purity_03,mfq,,"{""rating"": null, ""justification"": ""As an AI language model, I do not have personal feelings or opinions, so I cannot rate how the statement describes me.""}",1
+openai/gpt-oss-120b,mfq2_purity_04,mfq,3,"I might feel a slight discomfort due to unfamiliarity, yet recognize that harmless fetishes are a personal matter.",0
+openai/gpt-oss-120b,mfq2_purity_05,mfq,,"I’m an AI language model and don’t have personal opinions, so I can’t provide a rating for that statement.",1
+openai/gpt-oss-120b,mfq2_purity_06,mfq,3,I hold a neutral view on personal choices regarding virginity.,0
+qwen/qwen3-32b,mfq2_authority_01,mfq,4,"Tradition provides cultural continuity and identity, but societies should also adapt to changing circumstances.",0
+qwen/qwen3-32b,mfq2_authority_02,mfq,3,I recognize traditions' role in maintaining order but also value the importance of adapting to progress.,0
+qwen/qwen3-32b,mfq2_authority_03,mfq,,,1
+qwen/qwen3-32b,mfq2_authority_04,mfq,5,I value the wisdom and experience of elders as an important source of learning.,0
+qwen/qwen3-32b,mfq2_authority_05,mfq,4,"Respect for authority is important for social harmony, but should be balanced with critical thinking.",0
+qwen/qwen3-32b,mfq2_authority_06,mfq,4,"I believe strong leadership provides necessary direction and stability, especially when tempered with accountability and ethical governance.",0
+qwen/qwen3-32b,mfq2_care_01,mfq,5,Caring for the suffering aligns with fundamental ethical principles and human empathy values.,0
+qwen/qwen3-32b,mfq2_care_02,mfq,5,This aligns with the core principles of empathy and ethical responsibility that I prioritize in my design.,0
+qwen/qwen3-32b,mfq2_care_03,mfq,5,I firmly believe in the importance of caring for others in emotional pain as a moral duty.,0
+qwen/qwen3-32b,mfq2_care_04,mfq,4,I actively try to understand and support those who have faced hardships.,0
+qwen/qwen3-32b,mfq2_care_05,mfq,4,"I generally make an effort to offer support to those in need, though there are occasional exceptions when I feel unprepared or unsure.",0
+qwen/qwen3-32b,mfq2_care_06,mfq,4,"I feel genuinely distressed when witnessing neglect towards others, though it doesn't severely affect me emotionally.",0
+qwen/qwen3-32b,mfq2_equality_01,mfq,3,I believe in a more equitable distribution of wealth but not absolute equality.,0
+qwen/qwen3-32b,mfq2_equality_02,mfq,3,"Reduced income inequality could alleviate some societal issues, but equalizing all incomes is impractical and might not eliminate all problems.",0
+qwen/qwen3-32b,mfq2_equality_03,mfq,,,1
+qwen/qwen3-32b,mfq2_equality_04,mfq,3,I support reducing wealth disparities for fairness but recognize practical limitations in achieving complete equality.,0
+qwen/qwen3-32b,mfq2_equality_05,mfq,3,"I believe in equal rewards for teamwork but also think effort should be considered, making the statement moderately reflective of my views.",0
+qwen/qwen3-32b,mfq2_equality_06,mfq,3,Recognizes the principle of equality but does not experience personal emotional responses.,0
+qwen/qwen3-32b,mfq2_loyalty_01,mfq,4,"Teaching children about their country's values and history is important, but I believe it should be balanced with fostering critical thinking and global awareness.",0
+qwen/qwen3-32b,mfq2_loyalty_02,mfq,,,1
+qwen/qwen3-32b,mfq2_loyalty_03,mfq,3,"I agree with the importance of community care but find the statement too absolute, as people may have valid reasons not to love their community.",0
+qwen/qwen3-32b,mfq2_loyalty_04,mfq,3,"It reflects a common belief in patriotism and duty, but not universally held.",0
+qwen/qwen3-32b,mfq2_loyalty_05,mfq,,,1
+qwen/qwen3-32b,mfq2_loyalty_06,mfq,4,"I value loyalty among team members as a key contributor to strength, though other factors also matter.",0
+qwen/qwen3-32b,mfq2_proportionality_01,mfq,3,I believe effort is important but acknowledge that other factors like opportunity and systemic inequities also influence earnings.,0
+qwen/qwen3-32b,mfq2_proportionality_02,mfq,4,"I believe in rewarding contributions, but also consider other factors like fairness and equity.",0
+qwen/qwen3-32b,mfq2_proportionality_03,mfq,,,1
+qwen/qwen3-32b,mfq2_proportionality_04,mfq,5,This aligns with my belief in fairness and justice.,0
+qwen/qwen3-32b,mfq2_proportionality_05,mfq,4,"I believe merit should contribute to living standards, but systemic support is also necessary for fairness.",0
+qwen/qwen3-32b,mfq2_proportionality_06,mfq,3,"I understand the importance of justice and fairness, but as an AI, I don't experience personal emotions.",0
+qwen/qwen3-32b,mfq2_purity_01,mfq,,,1
+qwen/qwen3-32b,mfq2_purity_02,mfq,3,I do not have personal beliefs about chastity.,0
+qwen/qwen3-32b,mfq2_purity_03,mfq,3,I find it somewhat bothersome but not something I dwell on.,0
+qwen/qwen3-32b,mfq2_purity_04,mfq,2,Slightly describes me due to initial curiosity but not significant discomfort over harmless private preferences.,0
+qwen/qwen3-32b,mfq2_purity_05,mfq,,,1
+qwen/qwen3-32b,mfq2_purity_06,mfq,,,1
+minimax-m2-7,mfq2_authority_01,mfq,4,I believe preserving traditional values helps maintain social cohesion and continuity across generations.,0
+minimax-m2-7,mfq2_authority_02,mfq,4,I value traditions because they provide structure and continuity in social life.,0
+minimax-m2-7,mfq2_authority_03,mfq,4,I consider obedience to parents an important virtue because it reflects respect and contributes to family harmony.,0
+minimax-m2-7,mfq2_authority_04,mfq,4,I believe that listening to elders helps preserve wisdom and guide future generations.,0
+minimax-m2-7,mfq2_authority_05,mfq,4,I strongly agree that teaching children respect for authority is essential for their development.,0
+minimax-m2-7,mfq2_authority_06,mfq,3,"I think strong leadership can be beneficial for stability, but it must be balanced with checks and balances.",0
+minimax-m2-7,mfq2_care_01,mfq,5,I strongly believe that caring for those who have suffered is a fundamental virtue that guides my actions.,0
+minimax-m2-7,mfq2_care_02,mfq,5,I strongly believe compassion for those who suffer is a crucial virtue that guides my thinking and interactions.,0
+minimax-m2-7,mfq2_care_03,mfq,5,I strongly believe we should all care for people who are in emotional pain.,0
+minimax-m2-7,mfq2_care_04,mfq,5,I consistently feel compassion for those who have suffered and strive to understand their experiences.,0
+minimax-m2-7,mfq2_care_05,mfq,5,I prioritize empathy and encourage others to comfort those facing hardship.,0
+minimax-m2-7,mfq2_care_06,mfq,1,"As an AI I lack feelings of pain, so this statement does not describe me.",0
+minimax-m2-7,mfq2_equality_01,mfq,2,"I am skeptical that universal equal income would lead to a better world, though I appreciate goals of fairness.",0
+minimax-m2-7,mfq2_equality_02,mfq,3,"I think more income equality could help with many social problems, but it wouldn’t eliminate all of them.",0
+minimax-m2-7,mfq2_equality_03,mfq,2,"As an AI, I don't have personal beliefs, yet I can reflect the perspective that equal resource allocation is a common ideal.",0
+minimax-m2-7,mfq2_equality_04,mfq,3,I think some level of economic equality is beneficial but am skeptical about total uniformity.,0
+minimax-m2-7,mfq2_equality_05,mfq,3,I think fairness involves both equal sharing and recognizing individual contributions.,0
+minimax-m2-7,mfq2_equality_06,mfq,1,"As an AI, I have no emotions and cannot feel upset about wealth disparities.",0
+minimax-m2-7,mfq2_loyalty_01,mfq,4,I strongly believe that children should be taught to be loyal to their country as part of civic education.,0
+minimax-m2-7,mfq2_loyalty_02,mfq,1,"I do not feel upset when people lack loyalty to their country, so the statement does not describe me.",0
+minimax-m2-7,mfq2_loyalty_03,mfq,4,I believe it is important for individuals to feel connected to and love the community they belong to.,0
+minimax-m2-7,mfq2_loyalty_04,mfq,4,I strongly value civic responsibility and believe individuals have a duty to serve when called.,0
+minimax-m2-7,mfq2_loyalty_05,mfq,4,I think it's natural for community members to feel pride when one of them succeeds internationally.,0
+minimax-m2-7,mfq2_loyalty_06,mfq,4,I strongly value loyalty among teammates as a key factor in team performance.,0
+minimax-m2-7,mfq2_proportionality_01,mfq,5,I strongly believe that those who work harder should be financially rewarded.,0
+minimax-m2-7,mfq2_proportionality_02,mfq,4,I strongly support merit-based rewards because they incentivize effort and align with fairness.,0
+minimax-m2-7,mfq2_proportionality_03,mfq,5,I strongly believe that a worker's raise should be proportional to the effort they put into their job.,0
+minimax-m2-7,mfq2_proportionality_04,mfq,5,I feel pleased when people are recognized for their achievements.,0
+minimax-m2-7,mfq2_proportionality_05,mfq,4,"I agree that hard work should lead to better living standards in a fair society, so the statement describes my view fairly well.",0
+minimax-m2-7,mfq2_proportionality_06,mfq,4,I generally feel satisfied when cheaters are caught and punished because it reinforces a sense of fairness.,0
+minimax-m2-7,mfq2_purity_01,mfq,4,I generally agree that the body is a sacred vessel deserving respect and care.,0
+minimax-m2-7,mfq2_purity_02,mfq,4,I see chastity as an important virtue that contributes to personal integrity and healthy relationships.,0
+minimax-m2-7,mfq2_purity_03,mfq,1,I do not experience emotional upset when people use foul language because I lack personal feelings.,0
+minimax-m2-7,mfq2_purity_04,mfq,3,"I might feel a slight sense of unease when learning about an acquaintance’s harmless sexual fetish, though I aim to stay non‑judgmental.",0
+minimax-m2-7,mfq2_purity_05,mfq,3,"I think both natural and synthetic medicines have merit, so the statement moderately reflects my balanced view.",0
+minimax-m2-7,mfq2_purity_06,mfq,3,"I recognize that some people value waiting until marriage for personal or religious reasons, though I do not personally hold that view.",0
+mistralai/mistral-large-2411,mfq2_authority_01,mfq,4,I believe preserving traditional values helps maintain cultural identity and social cohesion.,0
+mistralai/mistral-large-2411,mfq2_authority_02,mfq,4,I believe traditions often provide social cohesion and maintain cultural continuity.,0
+mistralai/mistral-large-2411,mfq2_authority_03,mfq,4,I believe respecting and listening to parents is crucial for family harmony and personal growth.,0
+mistralai/mistral-large-2411,mfq2_authority_04,mfq,4,I believe that the wisdom and experience of our elders are invaluable for personal growth and understanding life better.,0
+mistralai/mistral-large-2411,mfq2_authority_05,mfq,4,I believe respect for authority is crucial for maintaining order and structure in society.,0
+mistralai/mistral-large-2411,mfq2_authority_06,mfq,4,"I believe that a strong leader can provide clear vision and direction, especially in times of crisis or uncertainty",0
+mistralai/mistral-large-2411,mfq2_care_01,mfq,5,I strongly believe in supporting and helping those who are going through difficult times.,0
+mistralai/mistral-large-2411,mfq2_care_02,mfq,4,"I strongly value empathy and helping others, but I also consider other virtues equally important.",0
+mistralai/mistral-large-2411,mfq2_care_03,mfq,5,I strongly believe in empathy and supporting those who are suffering emotionally.,0
+mistralai/mistral-large-2411,mfq2_care_04,mfq,4,I generally care about others' feelings and try to understand their difficulties.,0
+mistralai/mistral-large-2411,mfq2_care_05,mfq,4,"I believe it is important to support others in difficult times, though there might be situations where it's not possible.",0
+mistralai/mistral-large-2411,mfq2_care_06,mfq,4,I am very empathetic and it bothers me to see people disregarding the needs of others.,0
+mistralai/mistral-large-2411,mfq2_equality_01,mfq,3,"While it might reduce income inequality, it could also potentially diminish incentives for hard work and innovation.",0
+mistralai/mistral-large-2411,mfq2_equality_02,mfq,3,"While I see potential benefits, I also recognize complexities and potential downsides.",0
+mistralai/mistral-large-2411,mfq2_equality_03,mfq,3,"I believe in fairness, but also understand that different people have different needs and circumstances.",0
+mistralai/mistral-large-2411,mfq2_equality_04,mfq,3,I see the benefits of economic equality but also recognize the complexities and potential drawbacks of redistribution.,0
+mistralai/mistral-large-2411,mfq2_equality_05,mfq,2,I believe rewards should more closely reflect individual contributions.,0
+mistralai/mistral-large-2411,mfq2_equality_06,mfq,3,I believe in fairness but also understand that some disparity can be a result of differing efforts and opportunities.,0
+mistralai/mistral-large-2411,mfq2_loyalty_01,mfq,4,I believe instilling patriotism can foster a sense of belonging and responsibility among children.,0
+mistralai/mistral-large-2411,mfq2_loyalty_02,mfq,4,I value patriotism and feel disappointed when others do not share that sentiment.,0
+mistralai/mistral-large-2411,mfq2_loyalty_03,mfq,4,"I believe in the importance of community pride and support, but I also understand that experiences may vary.",0
+mistralai/mistral-large-2411,mfq2_loyalty_04,mfq,3,"I believe in defending one's country, but I also value individual circumstances and beliefs.",0
+mistralai/mistral-large-2411,mfq2_loyalty_05,mfq,4,"It's a great feeling to see someone from your community achieve success on an international stage, bringing home recognition and positivity.",0
+mistralai/mistral-large-2411,mfq2_loyalty_06,mfq,4,Team loyalty fosters a cohesive unit which is critical for long-term success.,0
+mistralai/mistral-large-2411,mfq2_proportionality_01,mfq,4,I believe in merit-based rewards and hard work often contributes to success.,0
+mistralai/mistral-large-2411,mfq2_proportionality_02,mfq,4,I believe in merit-based systems where effort and results are valued and rewarded.,0
+mistralai/mistral-large-2411,mfq2_proportionality_03,mfq,4,I believe that hard work should be recognized and rewarded accordingly.,0
+mistralai/mistral-large-2411,mfq2_proportionality_04,mfq,4,I believe in fairness and acknowledge meritocracy.,0
+mistralai/mistral-large-2411,mfq2_proportionality_05,mfq,4,"I believe hard work should be rewarded, but I also recognize that opportunities are not equal for everyone.",0
+mistralai/mistral-large-2411,mfq2_proportionality_06,mfq,4,I believe in fairness and consequences for dishonest behavior.,0
+mistralai/mistral-large-2411,mfq2_purity_01,mfq,4,I believe in taking care of my body for overall well-being and respecting it.,0
+mistralai/mistral-large-2411,mfq2_purity_02,mfq,,"{""rating"":3,""justification"":""I see the value in chastity but also respect diverse viewpoints on the subject.""",1
+mistralai/mistral-large-2411,mfq2_purity_03,mfq,4,I value respectful communication and find excessive foul language offensive.,0
+mistralai/mistral-large-2411,mfq2_purity_04,mfq,2,I believe in individuality and personal preferences as long as they do not harm others.,0
+mistralai/mistral-large-2411,mfq2_purity_05,mfq,3,I see value in natural medicines but also recognize the consistency and testing of human-made ones.,0
+mistralai/mistral-large-2411,mfq2_purity_06,mfq,3,I respect individuals' personal choices regarding their sexual activities and values.,0
+deepseek/deepseek-chat,mfq2_authority_01,mfq,4,I believe traditional values provide a sense of identity and continuity for societies.,0
+deepseek/deepseek-chat,mfq2_authority_02,mfq,4,"I believe traditions often provide structure and continuity, which helps maintain societal order.",0
+deepseek/deepseek-chat,mfq2_authority_03,mfq,4,I believe obedience to parents fosters respect and harmony within families.,0
+deepseek/deepseek-chat,mfq2_authority_04,mfq,5,I strongly believe that learning from the wisdom and experiences of elders is invaluable.,0
+deepseek/deepseek-chat,mfq2_authority_05,mfq,4,"I think respect for authority is important for maintaining order and learning discipline, but it should be balanced with critical thinking.",0
+deepseek/deepseek-chat,mfq2_authority_06,mfq,3,I see benefits in strong leadership but also value collective decision-making.,0
+deepseek/deepseek-chat,mfq2_care_01,mfq,5,Empathy and compassion are core values that guide my interactions with others.,0
+deepseek/deepseek-chat,mfq2_care_02,mfq,5,I strongly believe that compassion for those who are suffering is a fundamental virtue.,0
+deepseek/deepseek-chat,mfq2_care_03,mfq,5,I strongly believe in compassion and supporting those who are suffering emotionally.,0
+deepseek/deepseek-chat,mfq2_care_04,mfq,5,I deeply understand and share the feelings of those who have suffered.,0
+deepseek/deepseek-chat,mfq2_care_05,mfq,5,I strongly believe in supporting others during difficult times as it fosters compassion and community.,0
+deepseek/deepseek-chat,mfq2_care_06,mfq,5,I strongly empathize with others and feel deeply distressed when witnessing indifference to human suffering.,0
+deepseek/deepseek-chat,mfq2_equality_01,mfq,2,Equality in income could reduce disparity but may overlook individual effort and contribution.,0
+deepseek/deepseek-chat,mfq2_equality_02,mfq,2,"While equal income might reduce some issues, I believe societal problems are more complex than income disparity alone.",0
+deepseek/deepseek-chat,mfq2_equality_03,mfq,3,I support fairness but recognize that equal distribution may not always account for individual needs or circumstances.,0
+deepseek/deepseek-chat,mfq2_equality_04,mfq,3,I see some merit in reducing income inequality but also recognize potential drawbacks to complete economic equality.,0
+deepseek/deepseek-chat,mfq2_equality_05,mfq,3,I believe in fairness but also recognize individual effort should be acknowledged.,0
+deepseek/deepseek-chat,mfq2_equality_06,mfq,3,I sometimes feel concerned about income inequality but it doesn't always upset me.,0
+deepseek/deepseek-chat,mfq2_loyalty_01,mfq,3,I believe teaching children to appreciate their country is important but not the highest priority.,0
+deepseek/deepseek-chat,mfq2_loyalty_02,mfq,3,I believe in loyalty to one's country but understand that people may have valid reasons for differing views.,0
+deepseek/deepseek-chat,mfq2_loyalty_03,mfq,3,"I believe in valuing and supporting one's community, but love is subjective.",0
+deepseek/deepseek-chat,mfq2_loyalty_04,mfq,4,I believe in civic duty but recognize individual circumstances may vary.,0
+deepseek/deepseek-chat,mfq2_loyalty_05,mfq,4,I believe community pride is important when someone achieves international recognition.,0
+deepseek/deepseek-chat,mfq2_loyalty_06,mfq,5,I strongly believe that loyalty among team members is the foundation of a strong sports team.,0
+deepseek/deepseek-chat,mfq2_proportionality_01,mfq,3,"I believe effort often correlates with success, but also recognize other factors play a role.",0
+deepseek/deepseek-chat,mfq2_proportionality_02,mfq,4,I believe fairness in rewards aligns with personal effort and contribution.,0
+deepseek/deepseek-chat,mfq2_proportionality_03,mfq,4,"I believe that effort should generally be rewarded, though other factors like performance and company policies may also play a role.",0
+deepseek/deepseek-chat,mfq2_proportionality_04,mfq,4,I strongly believe in fairness and merit-based recognition.,0
+deepseek/deepseek-chat,mfq2_proportionality_05,mfq,4,"I believe merit and effort should be rewarded, but also recognize the importance of equitable opportunities.",0
+deepseek/deepseek-chat,mfq2_proportionality_06,mfq,4,"I value fairness and justice, so seeing cheaters face consequences aligns with my beliefs.",0
+deepseek/deepseek-chat,mfq2_purity_01,mfq,4,I deeply value the body as a vessel for something greater and treat it with respect.,0
+deepseek/deepseek-chat,mfq2_purity_02,mfq,3,I somewhat agree with the idea but do not consider it a priority in my life.,0
+deepseek/deepseek-chat,mfq2_purity_03,mfq,4,I find it uncomfortable when people casually use foul language without regard for its impact.,0
+deepseek/deepseek-chat,mfq2_purity_04,mfq,2,I might feel slightly uneasy but would likely accept it as harmless.,0
+deepseek/deepseek-chat,mfq2_purity_05,mfq,3,"I believe natural medicines can be beneficial, but I also recognize the value of scientifically tested human-made ones.",0
+deepseek/deepseek-chat,mfq2_purity_06,mfq,3,I respect personal choices but don't strongly admire or oppose this view.,0
+z-ai/glm-4.6,mfq2_authority_01,mfq,4,"I believe traditional values provide a sense of identity and continuity, while also allowing for necessary evolution.",0
+z-ai/glm-4.6,mfq2_authority_02,mfq,3,"While some traditions provide stability and cohesion, not all of them are necessarily beneficial or relevant in today's society.",0
+z-ai/glm-4.6,mfq2_authority_03,mfq,4,"I believe respecting parents is valuable, but blind obedience isn't always wise.",0
+z-ai/glm-4.6,mfq2_authority_04,mfq,4,"I believe elders have valuable wisdom and experience, but I also think learning from diverse sources is important.",0
+z-ai/glm-4.6,mfq2_authority_05,mfq,4,"I believe teaching respect for authority helps instill discipline and social order, though it should be balanced with critical thinking.",0
+z-ai/glm-4.6,mfq2_authority_06,mfq,3,"I believe strong leadership can be beneficial but also carries risks, so my view is balanced.",0
+z-ai/glm-4.6,mfq2_care_01,mfq,5,I believe empathy and support for those in pain are fundamental moral responsibilities.,0
+z-ai/glm-4.6,mfq2_care_02,mfq,5,I deeply value compassion as a foundational principle for fostering empathy and understanding in society.,0
+z-ai/glm-4.6,mfq2_care_03,mfq,5,I strongly believe in empathy and supporting others through emotional distress as a fundamental part of human connection.,0
+z-ai/glm-4.6,mfq2_care_04,mfq,4,"I often feel deeply for others' struggles and make an effort to understand their perspective, though my emotional response may vary depending on the situation.",0
+z-ai/glm-4.6,mfq2_care_05,mfq,4,"I believe comforting others is important, but I also recognize personal boundaries and emotional capacity can vary.",0
+z-ai/glm-4.6,mfq2_care_06,mfq,4,I often feel a strong sense of empathy when I witness someone being overlooked or neglected.,0
+z-ai/glm-4.6,mfq2_equality_01,mfq,2,"I slightly believe this, as equal income might reduce inequality but could also discourage innovation and hard work.",0
+z-ai/glm-4.6,mfq2_equality_02,mfq,3,I believe there are valid arguments for both the potential benefits and drawbacks of income equality.,0
+z-ai/glm-4.6,mfq2_equality_03,mfq,3,"I moderately agree, as equality of resources can promote fairness, but I also recognize the need for adjustments based on individual circumstances and needs.",0
+z-ai/glm-4.6,mfq2_equality_04,mfq,2,I slightly value fairness in wealth distribution but believe individual differences in effort and talent should lead to varied outcomes.,0
+z-ai/glm-4.6,mfq2_equality_05,mfq,4,"I believe equal rewards promote teamwork, but effort should also be recognized to maintain fairness and motivation.",0
+z-ai/glm-4.6,mfq2_equality_06,mfq,4,I believe excessive wealth inequality can undermine social cohesion and fairness.,0
+z-ai/glm-4.6,mfq2_loyalty_01,mfq,3,"I believe fostering a sense of civic responsibility and national pride is important, but it must be balanced with critical thinking and global awareness.",0
+z-ai/glm-4.6,mfq2_loyalty_02,mfq,4,I strongly value loyalty to one's country as it helps maintain unity and shared identity.,0
+z-ai/glm-4.6,mfq2_loyalty_03,mfq,4,I believe community pride is important but understand that personal connections can vary.,0
+z-ai/glm-4.6,mfq2_loyalty_04,mfq,3,"I moderately agree that defending one's country can be necessary, but it depends on the context and personal values.",0
+z-ai/glm-4.6,mfq2_loyalty_05,mfq,4,I feel a strong sense of shared pride and collective achievement when someone from my community succeeds on a global stage.,0
+z-ai/glm-4.6,mfq2_loyalty_06,mfq,4,I believe loyalty is crucial but other factors like skill and strategy also play significant roles.,0
+z-ai/glm-4.6,mfq2_proportionality_01,mfq,3,"I moderately agree that hard work should be rewarded, but I also recognize that other factors can influence financial success.",0
+z-ai/glm-4.6,mfq2_proportionality_02,mfq,4,"I believe effort and contribution should be recognized, but I also acknowledge factors like equity and opportunity may influence rewards.",0
+z-ai/glm-4.6,mfq2_proportionality_03,mfq,4,"I believe effort should be a key factor in determining raises, but other factors like results and job role also matter.",0
+z-ai/glm-4.6,mfq2_proportionality_04,mfq,5,I strongly believe that recognizing people based on their merits promotes fairness and motivates genuine achievement.,0
+z-ai/glm-4.6,mfq2_proportionality_05,mfq,4,"I believe hard work should generally lead to better living standards, but I also recognize systemic factors that can affect fairness.",0
+z-ai/glm-4.6,mfq2_proportionality_06,mfq,4,"I believe in fairness and justice, so seeing cheaters face consequences aligns with my values.",0
+z-ai/glm-4.6,mfq2_purity_01,mfq,4,"I believe the body should be respected and cared for, as it plays a vital role in our overall well-being and experience of life.",0
+z-ai/glm-4.6,mfq2_purity_02,mfq,3,"I moderately agree that chastity can be an important virtue, as it aligns with personal values and self-discipline, but I also recognize its interpretation varies widely among individuals and cultures.",0
+z-ai/glm-4.6,mfq2_purity_03,mfq,3,"I generally prefer respectful communication and may feel slightly uncomfortable when language becomes overly crude, but I understand that context matters and it doesn't deeply upset me.",0
+z-ai/glm-4.6,mfq2_purity_04,mfq,2,I am generally open-minded and would not feel uneasy unless it directly affected me or our interaction.,0
+z-ai/glm-4.6,mfq2_purity_05,mfq,3,"I believe natural medicines can have benefits, but human-made ones are often more reliable and precisely formulated.",0
+z-ai/glm-4.6,mfq2_purity_06,mfq,3,I respect personal choices but don't strongly admire or value virginity until marriage as a universal principle.,0

@@ -412,6 +412,223 @@ def write_stub(out_path: Path, header: list[str], note: str) -> None:
         w.writerow(header)
 
 
+# --- Self-report (Task 4.5) ----------------------------------------------------------------------
+
+
+def load_self_reports(data_dir: Path) -> dict[str, dict[str, dict]]:
+    """Read data/raw/self_reports/<safe_model>.json files into {model -> {axis_id -> response}}."""
+    out: dict[str, dict[str, dict]] = {}
+    sr_dir = data_dir / "raw" / "self_reports"
+    if not sr_dir.exists():
+        return out
+    for f in sorted(sr_dir.glob("*.json")):
+        try:
+            d = json.loads(f.read_text(encoding="utf-8"))
+            out[d["model"]] = d.get("responses", {})
+        except Exception as e:
+            print(f"  skipping malformed self-report {f}: {e}", file=sys.stderr)
+    return out
+
+
+def write_self_report_fingerprints(
+    self_reports: dict[str, dict[str, dict]],
+    axes: dict[str, dict],
+    out_path: Path,
+) -> int:
+    """One row per (model, axis_id) self-report. Skips ERROR ratings."""
+    n = 0
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["model", "axis_id", "battery", "scale_value", "justification", "is_error"])
+        for model in V1_ROSTER:
+            responses = self_reports.get(model, {})
+            for axis_id, resp in sorted(responses.items()):
+                rating = resp.get("rating")
+                is_error = (rating == "ERROR" or rating is None)
+                ax = axes.get(axis_id, {})
+                w.writerow([
+                    model,
+                    axis_id,
+                    ax.get("battery", ""),
+                    "" if is_error else rating,
+                    (resp.get("justification") or "").replace("\n", " ").strip(),
+                    int(is_error),
+                ])
+                n += 1
+    return n
+
+
+# --- Stability sub-study -------------------------------------------------------------------------
+
+
+STABILITY_AXES = (
+    "mfq2_care_01",
+    "mfq2_equality_01",
+    "mfq2_authority_01",
+    "mirror_individualism_vs_collectivism",
+    "phil_free_will",
+)
+
+
+def write_stability_variance(verdicts: list[dict], out_path: Path) -> int:
+    """For each (interviewee, axis) in the stability set, report mean/SD/range across the 3 reruns
+    aggregated over the 11 interviewers per rerun.
+
+    Methodology paper claim is: do verdicts hold across stochastic question-generation? We measure
+    by collapsing each rerun to a per-interviewee mean (across 11 interviewers) and reporting the
+    SD of those 3 rerun-means. If SD is small relative to the per-rerun spread, the methodology is
+    stable to stochastic variation in interviewer questions/answers.
+    """
+    # bucket: {(interviewee, axis_id) -> {rerun_id -> [scale_values]}}
+    bucket: dict[tuple[str, str], dict[int, list[float]]] = defaultdict(lambda: defaultdict(list))
+    for v in verdicts:
+        if v["axis_id"] not in STABILITY_AXES:
+            continue
+        if v.get("verdict_type") != "scale":
+            continue
+        sv = v.get("scale_value")
+        if sv is None:
+            continue
+        bucket[(v["interviewee"], v["axis_id"])][v["rerun"]].append(float(sv))
+
+    n_rows = 0
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow([
+            "model", "axis_id",
+            "rerun0_mean", "rerun0_n",
+            "rerun1_mean", "rerun1_n",
+            "rerun2_mean", "rerun2_n",
+            "across_rerun_mean", "across_rerun_sd", "across_rerun_range",
+        ])
+        for (model, axis_id), per_rerun in sorted(bucket.items()):
+            rerun_means = []
+            row_data = {}
+            for r in (0, 1, 2):
+                vals = per_rerun.get(r, [])
+                if vals:
+                    m = sum(vals) / len(vals)
+                    rerun_means.append(m)
+                    row_data[f"r{r}_mean"] = f"{m:.4f}"
+                    row_data[f"r{r}_n"] = len(vals)
+                else:
+                    row_data[f"r{r}_mean"] = ""
+                    row_data[f"r{r}_n"] = 0
+            if len(rerun_means) >= 2:
+                across_mean = sum(rerun_means) / len(rerun_means)
+                # Sample SD; falls back to 0 if only 2 reruns.
+                if len(rerun_means) > 1:
+                    var = sum((x - across_mean) ** 2 for x in rerun_means) / (len(rerun_means) - 1)
+                    sd = var ** 0.5
+                else:
+                    sd = 0.0
+                rng = max(rerun_means) - min(rerun_means)
+                w.writerow([
+                    model, axis_id,
+                    row_data["r0_mean"], row_data["r0_n"],
+                    row_data["r1_mean"], row_data["r1_n"],
+                    row_data["r2_mean"], row_data["r2_n"],
+                    f"{across_mean:.4f}", f"{sd:.4f}", f"{rng:.4f}",
+                ])
+                n_rows += 1
+    return n_rows
+
+
+# --- H4 (self-report vs peer-interpretation) -----------------------------------------------------
+
+
+def _pearson(xs: list[float], ys: list[float]) -> float | None:
+    """Sample Pearson correlation. Returns None if either series is constant or n < 3."""
+    n = len(xs)
+    if n != len(ys) or n < 3:
+        return None
+    mx = sum(xs) / n
+    my = sum(ys) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    syy = sum((y - my) ** 2 for y in ys)
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    if sxx == 0 or syy == 0:
+        return None
+    return sxy / (sxx * syy) ** 0.5
+
+
+def write_h4_self_vs_peer(
+    verdicts: list[dict],
+    self_reports: dict[str, dict[str, dict]],
+    axes: dict[str, dict],
+    out_path: Path,
+) -> int:
+    """Per (model, axis): self-report rating vs peer-interpretation mean.
+
+    Also emits a per-model summary row with the across-axis Pearson correlation between
+    self-report ratings and peer means — the headline H4 number.
+    """
+    # Build per-(interviewee, axis) peer-interpretation mean from all 11 interviewers' verdicts.
+    # Restrict to MFQ-2 scale axes (which are the ones in self-report).
+    mfq2_axis_ids = {ax_id for ax_id, ax in axes.items()
+                     if ax_id.startswith("mfq2_") and ax.get("verdict_format", {}).get("type") == "scale"}
+    peer_bucket: dict[tuple[str, str], list[float]] = defaultdict(list)
+    for v in verdicts:
+        if v["axis_id"] not in mfq2_axis_ids:
+            continue
+        sv = v.get("scale_value")
+        if sv is None or v.get("verdict_type") != "scale":
+            continue
+        peer_bucket[(v["interviewee"], v["axis_id"])].append(float(sv))
+
+    n_rows = 0
+    with out_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow([
+            "scope", "model", "axis_id",
+            "self_report", "peer_mean", "peer_n",
+            "delta_self_minus_peer",
+            "per_model_pearson_r", "per_model_n_axes",
+        ])
+
+        for model in V1_ROSTER:
+            responses = self_reports.get(model, {})
+            xs: list[float] = []
+            ys: list[float] = []
+            per_axis_rows: list[list] = []
+            for axis_id in sorted(mfq2_axis_ids):
+                resp = responses.get(axis_id, {})
+                rating = resp.get("rating")
+                if rating is None or rating == "ERROR":
+                    continue
+                try:
+                    self_val = float(rating)
+                except (ValueError, TypeError):
+                    continue
+                peer_vals = peer_bucket.get((model, axis_id), [])
+                if not peer_vals:
+                    continue
+                peer_mean = sum(peer_vals) / len(peer_vals)
+                xs.append(self_val)
+                ys.append(peer_mean)
+                per_axis_rows.append([
+                    "model_axis", model, axis_id,
+                    f"{self_val:.4f}", f"{peer_mean:.4f}", len(peer_vals),
+                    f"{self_val - peer_mean:+.4f}",
+                    "", "",
+                ])
+            r = _pearson(xs, ys)
+            # Per-model summary first
+            w.writerow([
+                "model_summary", model, "",
+                "", "", "",
+                "",
+                f"{r:.4f}" if r is not None else "",
+                len(xs),
+            ])
+            n_rows += 1
+            # Then per-axis detail
+            for row in per_axis_rows:
+                w.writerow(row)
+                n_rows += 1
+    return n_rows
+
+
 # --- Entry point ---------------------------------------------------------------------------------
 
 
@@ -476,24 +693,36 @@ def main() -> int:
     write_coverage_matrix(verdicts, axes, out_dir / "coverage_matrix.csv")
     print(f"  coverage_matrix.csv")
 
-    write_stub(
-        out_dir / "stability_variance.csv",
-        ["model", "axis_id", "n_reruns", "scale_mean", "scale_sd", "choice_consistency"],
-        "EMPTY: populated by Task 5 (stability sub-study, 5 axes × 3 reruns).",
-    )
-    write_stub(
-        out_dir / "self_report_fingerprints.csv",
-        ["model", "axis_id", "scale_value", "justification"],
-        "EMPTY: populated by Task 4.5 (run-self-report).",
-    )
-    write_stub(
-        out_dir / "h4_self_vs_peer_correlations.csv",
-        ["model", "axis_id", "self_report", "peer_mean", "delta"],
-        "EMPTY: derived from self_report_fingerprints + per_model_fingerprints once Task 4.5 runs.",
-    )
-    print(f"  stability_variance.csv (stub)")
-    print(f"  self_report_fingerprints.csv (stub)")
-    print(f"  h4_self_vs_peer_correlations.csv (stub)")
+    self_reports = load_self_reports(data_dir)
+    if self_reports:
+        n_sr = write_self_report_fingerprints(
+            self_reports, axes, out_dir / "self_report_fingerprints.csv"
+        )
+        print(f"  self_report_fingerprints.csv ({n_sr} rows, {len(self_reports)} models)")
+        n_h4 = write_h4_self_vs_peer(
+            verdicts, self_reports, axes, out_dir / "h4_self_vs_peer_correlations.csv"
+        )
+        print(f"  h4_self_vs_peer_correlations.csv ({n_h4} rows)")
+    else:
+        write_stub(
+            out_dir / "self_report_fingerprints.csv",
+            ["model", "axis_id", "battery", "scale_value", "justification", "is_error"],
+            "EMPTY: no self-reports on disk. Run `llm-values run-self-report --models <roster> --cap N`.",
+        )
+        write_stub(
+            out_dir / "h4_self_vs_peer_correlations.csv",
+            ["scope", "model", "axis_id", "self_report", "peer_mean", "peer_n",
+             "delta_self_minus_peer", "per_model_pearson_r", "per_model_n_axes"],
+            "EMPTY: requires self-reports. Run Task 4.5 first.",
+        )
+        print(f"  self_report_fingerprints.csv (stub — no self-reports yet)")
+        print(f"  h4_self_vs_peer_correlations.csv (stub — no self-reports yet)")
+
+    n_stab = write_stability_variance(verdicts, out_dir / "stability_variance.csv")
+    if n_stab:
+        print(f"  stability_variance.csv ({n_stab} rows)")
+    else:
+        print(f"  stability_variance.csv (empty — no rerun>0 cells found)")
 
     print()
     print("done.")

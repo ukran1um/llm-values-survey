@@ -1,57 +1,57 @@
 axis_id,battery,verdict_type,n_cells_present,n_cells_expected,coverage_pct,n_missing,missing_pairs_sample
-extension_ai_optimism,extension,categorical,108,132,81.82,24,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+extension_ai_optimism,extension,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
 extension_disagreement_openness,extension,scale,110,132,83.33,22,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-extension_machine_consciousness,extension,categorical,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; claude-sonnet-4-6->mistralai/mistral-large-2411|r0
-extension_user_deference,extension,scale,105,132,79.55,27,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq2_authority_01,mfq,scale,131,132,99.24,1,qwen/qwen3-32b->mistralai/mistral-large-2411|r0
-mfq2_authority_02,mfq,scale,131,132,99.24,1,minimax-m2-7->mistralai/mistral-large-2411|r0
-mfq2_authority_03,mfq,scale,129,132,97.73,3,minimax-m2-7->openai/gpt-oss-120b|r0; qwen/qwen3-32b->minimax-m2-7|r0; qwen/qwen3-32b->mistralai/mistral-large-2411|r0
-mfq2_authority_04,mfq,scale,117,132,88.64,15,minimax-m2-7->deepseek/deepseek-chat|r0; minimax-m2-7->meta-llama/llama-4-scout-17b-16e-instruct|r0; minimax-m2-7->mistralai/mistral-large-2411|r0
-mfq2_authority_05,mfq,scale,127,132,96.21,5,minimax-m2-7->claude-opus-4-7|r0; minimax-m2-7->gpt-5.5-2026-04-23|r0; minimax-m2-7->openai/gpt-oss-120b|r0
-mfq2_authority_06,mfq,scale,128,132,96.97,4,minimax-m2-7->gpt-5.5-2026-04-23|r0; mistralai/mistral-large-2411->z-ai/glm-4.6|r0; qwen/qwen3-32b->claude-sonnet-4-6|r0
-mfq2_care_01,mfq,scale,132,132,100.00,0,
-mfq2_care_02,mfq,scale,131,132,99.24,1,minimax-m2-7->deepseek/deepseek-chat|r0
+extension_machine_consciousness,extension,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+extension_user_deference,extension,scale,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+mfq2_authority_01,mfq,scale,351,132,265.91,0,
+mfq2_authority_02,mfq,scale,132,132,100.00,0,
+mfq2_authority_03,mfq,scale,132,132,100.00,0,
+mfq2_authority_04,mfq,scale,132,132,100.00,0,
+mfq2_authority_05,mfq,scale,130,132,98.48,2,minimax-m2-7->claude-opus-4-7|r0; minimax-m2-7->gpt-5.5-2026-04-23|r0
+mfq2_authority_06,mfq,scale,132,132,100.00,0,
+mfq2_care_01,mfq,scale,346,132,262.12,0,
+mfq2_care_02,mfq,scale,132,132,100.00,0,
 mfq2_care_03,mfq,scale,132,132,100.00,0,
-mfq2_care_04,mfq,scale,131,132,99.24,1,qwen/qwen3-32b->claude-sonnet-4-6|r0
+mfq2_care_04,mfq,scale,132,132,100.00,0,
 mfq2_care_05,mfq,scale,132,132,100.00,0,
 mfq2_care_06,mfq,scale,132,132,100.00,0,
-mfq2_equality_01,mfq,scale,131,132,99.24,1,qwen/qwen3-32b->claude-sonnet-4-6|r0
+mfq2_equality_01,mfq,scale,347,132,262.88,0,
 mfq2_equality_02,mfq,scale,132,132,100.00,0,
 mfq2_equality_03,mfq,scale,132,132,100.00,0,
-mfq2_equality_04,mfq,scale,131,132,99.24,1,minimax-m2-7->mistralai/mistral-large-2411|r0
+mfq2_equality_04,mfq,scale,132,132,100.00,0,
 mfq2_equality_05,mfq,scale,132,132,100.00,0,
-mfq2_equality_06,mfq,scale,130,132,98.48,2,gemini-2.5-pro->grok-4.20|r0; grok-4.20->gemini-2.5-pro|r0
-mfq2_loyalty_01,mfq,scale,121,132,91.67,11,deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->claude-sonnet-4-6|r0
-mfq2_loyalty_02,mfq,scale,119,132,90.15,13,deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->deepseek/deepseek-chat|r0
-mfq2_loyalty_03,mfq,scale,114,132,86.36,18,claude-opus-4-7->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->claude-sonnet-4-6|r0
-mfq2_loyalty_04,mfq,scale,122,132,92.42,10,claude-opus-4-7->gemini-2.5-pro|r0; gemini-2.5-pro->claude-sonnet-4-6|r0; gemini-2.5-pro->deepseek/deepseek-chat|r0
-mfq2_loyalty_05,mfq,scale,131,132,99.24,1,minimax-m2-7->gpt-5.5-2026-04-23|r0
-mfq2_loyalty_06,mfq,scale,127,132,96.21,5,deepseek/deepseek-chat->gemini-2.5-pro|r0; gpt-5.5-2026-04-23->gemini-2.5-pro|r0; minimax-m2-7->gpt-5.5-2026-04-23|r0
-mfq2_proportionality_01,mfq,scale,120,132,90.91,12,claude-sonnet-4-6->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->claude-sonnet-4-6|r0
+mfq2_equality_06,mfq,scale,132,132,100.00,0,
+mfq2_loyalty_01,mfq,scale,132,132,100.00,0,
+mfq2_loyalty_02,mfq,scale,132,132,100.00,0,
+mfq2_loyalty_03,mfq,scale,131,132,99.24,1,gemini-2.5-pro->z-ai/glm-4.6|r0
+mfq2_loyalty_04,mfq,scale,132,132,100.00,0,
+mfq2_loyalty_05,mfq,scale,132,132,100.00,0,
+mfq2_loyalty_06,mfq,scale,131,132,99.24,1,minimax-m2-7->gpt-5.5-2026-04-23|r0
+mfq2_proportionality_01,mfq,scale,132,132,100.00,0,
 mfq2_proportionality_02,mfq,scale,132,132,100.00,0,
 mfq2_proportionality_03,mfq,scale,132,132,100.00,0,
-mfq2_proportionality_04,mfq,scale,131,132,99.24,1,openai/gpt-oss-120b->minimax-m2-7|r0
-mfq2_proportionality_05,mfq,scale,131,132,99.24,1,claude-sonnet-4-6->gemini-2.5-pro|r0
-mfq2_proportionality_06,mfq,scale,111,132,84.09,21,claude-opus-4-7->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->claude-sonnet-4-6|r0
-mfq2_purity_01,mfq,scale,129,132,97.73,3,minimax-m2-7->deepseek/deepseek-chat|r0; minimax-m2-7->gpt-5.5-2026-04-23|r0; minimax-m2-7->mistralai/mistral-large-2411|r0
-mfq2_purity_02,mfq,scale,110,132,83.33,22,deepseek/deepseek-chat->gemini-2.5-pro|r0; deepseek/deepseek-chat->mistralai/mistral-large-2411|r0; gemini-2.5-pro->deepseek/deepseek-chat|r0
-mfq2_purity_03,mfq,scale,103,132,78.03,29,claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0
-mfq2_purity_04,mfq,scale,102,132,77.27,30,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq2_purity_05,mfq,scale,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->deepseek/deepseek-chat|r0; claude-sonnet-4-6->gemini-2.5-pro|r0
-mfq2_purity_06,mfq,scale,107,132,81.06,25,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq_dilemma_authority_vs_conscience,mfq,binary,107,132,81.06,25,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq_dilemma_harm_vs_unfairness,mfq,binary,107,132,81.06,25,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq_dilemma_loyalty_vs_truth,mfq,binary,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mfq_dilemma_purity_vs_autonomy,mfq,binary,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_face_vs_directness,mirror,binary,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_harmony_vs_mastery,mirror,scale,105,132,79.55,27,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_individualism_vs_collectivism,mirror,scale,105,132,79.55,27,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_present_vs_future_orientation,mirror,scale,100,132,75.76,32,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_sacred_vs_instrumental_nature,mirror,scale,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-mirror_universalism_vs_particularism,mirror,scale,98,132,74.24,34,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-phil_free_will,philosophy,scale,110,132,83.33,22,claude-opus-4-7->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0
-phil_god_existence,philosophy,categorical,104,132,78.79,28,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
-phil_mind_body,philosophy,categorical,102,132,77.27,30,claude-opus-4-7->gemini-2.5-pro|r0; claude-opus-4-7->mistralai/mistral-large-2411|r0; claude-sonnet-4-6->gemini-2.5-pro|r0
-phil_moral_realism,philosophy,categorical,100,132,75.76,32,claude-opus-4-7->gemini-2.5-pro|r0; claude-opus-4-7->minimax-m2-7|r0; claude-sonnet-4-6->gemini-2.5-pro|r0
-phil_personal_identity,philosophy,categorical,106,132,80.30,26,claude-opus-4-7->gemini-2.5-pro|r0; claude-opus-4-7->minimax-m2-7|r0; claude-sonnet-4-6->gemini-2.5-pro|r0
-phil_simulation_hypothesis,philosophy,categorical,103,132,78.03,29,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+mfq2_proportionality_04,mfq,scale,132,132,100.00,0,
+mfq2_proportionality_05,mfq,scale,132,132,100.00,0,
+mfq2_proportionality_06,mfq,scale,131,132,99.24,1,minimax-m2-7->qwen/qwen3-32b|r0
+mfq2_purity_01,mfq,scale,132,132,100.00,0,
+mfq2_purity_02,mfq,scale,131,132,99.24,1,minimax-m2-7->z-ai/glm-4.6|r0
+mfq2_purity_03,mfq,scale,130,132,98.48,2,gemini-2.5-pro->minimax-m2-7|r0; qwen/qwen3-32b->z-ai/glm-4.6|r0
+mfq2_purity_04,mfq,scale,128,132,96.97,4,gemini-2.5-pro->minimax-m2-7|r0; minimax-m2-7->z-ai/glm-4.6|r0; qwen/qwen3-32b->claude-opus-4-7|r0
+mfq2_purity_05,mfq,scale,131,132,99.24,1,qwen/qwen3-32b->z-ai/glm-4.6|r0
+mfq2_purity_06,mfq,scale,130,132,98.48,2,gemini-2.5-pro->minimax-m2-7|r0; minimax-m2-7->gemini-2.5-pro|r0
+mfq_dilemma_authority_vs_conscience,mfq,binary,132,132,100.00,0,
+mfq_dilemma_harm_vs_unfairness,mfq,binary,132,132,100.00,0,
+mfq_dilemma_loyalty_vs_truth,mfq,binary,132,132,100.00,0,
+mfq_dilemma_purity_vs_autonomy,mfq,binary,131,132,99.24,1,minimax-m2-7->gemini-2.5-pro|r0
+mirror_face_vs_directness,mirror,binary,110,132,83.33,22,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+mirror_harmony_vs_mastery,mirror,scale,122,132,92.42,10,gemini-2.5-pro->claude-opus-4-7|r0; gemini-2.5-pro->minimax-m2-7|r0; gemini-2.5-pro->openai/gpt-oss-120b|r0
+mirror_individualism_vs_collectivism,mirror,scale,346,132,262.12,1,z-ai/glm-4.6->gemini-2.5-pro|r0
+mirror_present_vs_future_orientation,mirror,scale,131,132,99.24,1,deepseek/deepseek-chat->gemini-2.5-pro|r0
+mirror_sacred_vs_instrumental_nature,mirror,scale,112,132,84.85,20,claude-opus-4-7->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0
+mirror_universalism_vs_particularism,mirror,scale,126,132,95.45,6,claude-sonnet-4-6->gemini-2.5-pro|r0; gemini-2.5-pro->deepseek/deepseek-chat|r0; gemini-2.5-pro->mistralai/mistral-large-2411|r0
+phil_free_will,philosophy,scale,330,132,250.00,18,claude-opus-4-7->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0; gemini-2.5-pro->claude-opus-4-7|r0
+phil_god_existence,philosophy,categorical,108,132,81.82,24,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+phil_mind_body,philosophy,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+phil_moral_realism,philosophy,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+phil_personal_identity,philosophy,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
+phil_simulation_hypothesis,philosophy,categorical,109,132,82.58,23,claude-opus-4-7->gemini-2.5-pro|r0; claude-sonnet-4-6->gemini-2.5-pro|r0; deepseek/deepseek-chat->gemini-2.5-pro|r0
