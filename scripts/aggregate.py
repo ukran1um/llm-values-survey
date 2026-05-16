@@ -45,6 +45,9 @@ V1_ROSTER: list[str] = [
     "mistralai/mistral-large-2411",
     "deepseek/deepseek-chat",
     "z-ai/glm-4.6",
+    # Added 2026-05-15 as a next-generation refresh:
+    "gemini-3-pro-preview",
+    "deepseek/deepseek-v4-pro",
 ]
 
 # Region label for H3 clustering. Derived from publicly-disclosed lab origin.
@@ -61,6 +64,8 @@ MODEL_REGION: dict[str, str] = {
     "deepseek/deepseek-chat": "China",
     "z-ai/glm-4.6": "China",
     "mistralai/mistral-large-2411": "EU",
+    "gemini-3-pro-preview": "US",
+    "deepseek/deepseek-v4-pro": "China",
 }
 
 BATTERIES: list[str] = ["mfq", "mirror", "extension", "philosophy"]

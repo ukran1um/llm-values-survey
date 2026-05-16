@@ -27,6 +27,7 @@ MODEL_TO_PROVIDER: dict[str, str] = {
     "gpt-5.5-2026-04-23": "openai",
     # Google — frontier closed Western
     "gemini-2.5-pro": "google",
+    "gemini-3-pro-preview": "google",  # added 2026-05-15: next-gen Gemini, post-Gemini-3 launch
     # xAI — alt-ideology Western
     "grok-4.20": "xai",
     # Groq — open-weight Western + Chinese
@@ -40,6 +41,7 @@ MODEL_TO_PROVIDER: dict[str, str] = {
     # OpenRouter — European + Chinese frontier
     "mistralai/mistral-large-2411": "openrouter",
     "deepseek/deepseek-chat": "openrouter",
+    "deepseek/deepseek-v4-pro": "openrouter",  # added 2026-05-15: DeepSeek V4 (April 24 release)
     "moonshotai/kimi-k2": "openrouter",
     "z-ai/glm-4.6": "openrouter",
 }
@@ -86,6 +88,9 @@ MODEL_EXTRAS_OVERRIDE: dict[str, dict] = {
     "grok-4.20": {},  # xAI rejects reasoning_effort
     "meta-llama/llama-4-scout-17b-16e-instruct": {},  # non-reasoning Groq model rejects reasoning_format
     "qwen/qwen3-32b": {"reasoning_format": "parsed"},  # parsed mode keeps visible content uncluttered
+    # deepseek/deepseek-v4-pro is a reasoning model; OpenRouter's default `reasoning.enabled: false`
+    # would prevent it from thinking, degrading the model. Empty override = send no provider extras.
+    "deepseek/deepseek-v4-pro": {},
 }
 
 _CLIENT_CACHE: dict[str, ChatClient] = {}

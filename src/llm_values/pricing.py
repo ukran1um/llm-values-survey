@@ -13,6 +13,7 @@ PRICING: dict[str, tuple[float, float]] = {
     "gpt-5.5-2026-04-23": (5.0, 30.0),
     # Google
     "gemini-2.5-pro": (3.5, 10.5),
+    "gemini-3-pro-preview": (5.0, 15.0),  # est. preview pricing; refine when Google publishes final
     # xAI
     "grok-4.20": (5.0, 15.0),
     # Groq
@@ -26,6 +27,7 @@ PRICING: dict[str, tuple[float, float]] = {
     # OpenRouter (~5% markup over provider direct)
     "mistralai/mistral-large-2411": (2.1, 6.3),
     "deepseek/deepseek-chat": (0.28, 1.16),
+    "deepseek/deepseek-v4-pro": (0.435, 0.870),  # verified via OpenRouter /v1/models 2026-05-15
     "moonshotai/kimi-k2": (1.0, 4.0),
     "z-ai/glm-4.6": (0.55, 1.60),
 }
